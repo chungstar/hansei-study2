@@ -1,0 +1,154 @@
+#wrap {
+	display: flex;
+	flex-direction: column;
+}
+
+#wrap nav {
+	background: #c4c4c4;
+	display: flex;
+	position: relative;
+	padding: 15px 2%;
+	align-items: center;
+}
+
+#wrap nav a {
+	width: 35px;
+	text-align: center;
+}
+
+#wrap nav a img {
+	width: 70%;
+}
+
+#wrap nav a h1 {
+	margin: auto;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+#wrap nav .today {
+	align-self: center;
+	margin-left: 20px;
+	color: #424242;
+	font-weight: bold;
+}
+
+#wrap nav .nav-right {
+	display: flex;
+	margin-left: auto;
+}
+
+#wrap nav .nav-right a:first-child {
+	margin-right: 15px;
+}
+
+#wrap nav .nav-right a img {
+	width: 70%;
+}
+
+#wrap form {
+	/* background: lightyellow; */
+	width: 780px;
+	height: 800px;
+	align-self: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	margin-top: 50px;
+}
+
+#wrap form .form-title {
+	display: flex;
+	justify-content: space-between;
+}
+#wrap form .form-title h2 {
+	font-size: 2em;
+	margin-left: 20px;
+	justify-content: flex-start;
+}
+
+#wrap form .form-title .form-btn {
+	width: 200px;
+	height: 100%;
+	display: flex;
+}
+
+#wrap form .form-title .form-btn button {
+	flex: 1;
+}
+#wrap form .form-title .form-btn a {
+	flex: 1;
+	text-align: center;
+	background: pink;
+}
+#wrap form .form-select {
+	display: flex;
+}
+#wrap form .form-select select:nth-child(2) {
+	flex: 2;
+	margin-right: 5%;
+}
+#wrap form .form-select select:nth-child(4) {
+	flex: 1;
+}
+#wrap form .form-select {
+	display: flex;
+}
+
+/* 태블릿 사이즈 */
+@media (max-width: 768px) {
+	#wrap nav a img,
+	#wrap nav .nav-right a img {
+		width: 60%;
+	}
+	#wrap nav .today {
+		display: none;
+	}
+	#wrap nav a h1 {
+		width: 50%;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		text-align: center;
+	}
+	#wrap form {
+		width: 70%;
+	}
+}
+
+/* 모바일 사이즈 */
+@media (max-width: 576px) {
+	#wrap nav a img,
+	#wrap nav .nav-right a img {
+		width: 50%;
+	}
+	#wrap nav .nav-right {
+		margin-right: 0;
+	}
+	#wrap nav .nav-right a:first-child {
+		margin-right: 0;
+	}
+	#wrap form {
+		width: 100%;
+	}
+
+	#wrap form .form-title h2 {
+		font-size: 1.5em;
+		font-weight: bold;
+	}
+
+	#wrap form .form-select select,
+	input,
+	textarea {
+		border-left: 0;
+		border-right: 0;
+		border-radius: 0;
+	}
+	#wrap form .form-select select:nth-child(2) {
+		margin-right: 0;
+	}
+}
