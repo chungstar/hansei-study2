@@ -68,27 +68,58 @@
         </select>
       </div>
       <input type="text" placeholder="제목">
-      <textarea id="summernote" name="editordata"></textarea>
+      <textarea id="summernote" name="editordata" style="height: 100vh;"></textarea>
       <input type="text" placeholder="#해시태그">
     </form>
   </div>
   <script>
     $(document).ready(function () {
       $('#summernote').summernote({
-        height: 700,
-        minHeight: 700,
-        maxHeight: 700,
+        height: 600,
         toolbar: [
-          ['style', ['bold', 'italic', 'underline', 'clear']],
-          ['fontname', ['fontname']],
-          ['fontsize', ['fontsize']],
-          ['color', ['color']],
-          ['para', ['paragraph']],
-          ['height', ['height']],
-          ['table', ['table']],
-          ['insert', ['link', 'picture', 'video']],
-        ],
+          [
+            'style',
+            [
+              'bold', 'italic', 'underline', 'clear'
+            ]
+          ],
+          [
+            'fontname', ['fontname']
+          ],
+          [
+            'fontsize', ['fontsize']
+          ],
+          [
+            'color', ['color']
+          ],
+          [
+            'para', ['paragraph']
+          ],
+          [
+            'height', ['height']
+          ],
+          [
+            'table', ['table']
+          ],
+          [
+            'insert',
+            [
+              'link', 'picture', 'video'
+            ]
+          ]
+        ]
       });
+      // 기본 폰트 사이즈 변경
+      $('#summernote').summernote('fontSize', 15);
+      // 하단 사이즈 조절 바 삭제
+      $("#summernote").summernote({
+        toolbar: [
+          ['para', ['ul']]
+        ],
+        focus: true,
+        disableResizeEditor: true
+      });
+      $('.note-statusbar').hide();
     });
   </script>
 </body>
