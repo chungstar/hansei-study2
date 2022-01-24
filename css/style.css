@@ -76,16 +76,26 @@
 	font-size: 2em;
 	margin-left: 20px;
 	justify-content: flex-start;
+	align-self: center;
 }
 #wrap form .form-title .form-btn {
-	width: 200px;
+	width: 150px;
 	height: 100%;
 	display: flex;
 }
 #wrap form .form-title .form-btn button {
 	flex: 1;
 	margin-right: 10px;
+	background: #c4c4c4;
+	border-radius: 6px;
+	font-weight: bold;
 }
+#wrap form .form-title .form-btn button:last-child {
+	background: none;
+	border: 1px solid #c4c4c4;
+	font-weight: normal;
+}
+
 #wrap form .form-select {
 	display: flex;
 }
@@ -149,6 +159,9 @@
 	#wrap nav .nav-right a img {
 		width: 50%;
 	}
+	#wrap nav a h1 {
+		font-size: 1.2em;
+	}
 	#wrap nav .nav-right {
 		margin-right: 0;
 	}
@@ -173,6 +186,9 @@
 	#wrap form .form-title h2 {
 		font-size: 1.5em;
 		font-weight: bold;
+	}
+	#wrap form .form-title .form-btn button {
+		padding: 5px 0;
 	}
 	#wrap form .form-select select:nth-child(2) {
 		border-radius: 0;
