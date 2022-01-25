@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .containor {
+
+            /* position: relative; */
+            width: 100%;
+            height: 100px;
+            /* display: inline-block; */
+            background: black;
+
+
+        }
+        .back{
+            display: none;
+            
+            
+        }
+        .searchbx{
+            margin-top: -1%;
+            
+        }
+        .search {
+            position: absolute;
+            display: inline-block;
+            margin-left: 23%;
+            margin-top: 2.5%;
+            height: 45px;
+            /* border-radius: 5%; */
+            width: 35%;
+
+        }
+
+        .searchbtn {
+            color: white;
+            background-color: rgb(29, 29, 29);
+            height: 45px;
+            border: none;
+            width: 10%;
+            position: relative;
+            display: inline-block;
+            margin-left: 55%;
+            margin-top: 2.5%;
+            cursor: pointer;
+        }
+
+
+
+        .profileul {
+            float: right;
+            margin-right: 5%;
+            overflow: auto;
+            margin-top: 2.5%;
+
+
+        }
+
+        .navitem {
+            text-decoration: none;
+            list-style: none;
+            display: inline-block;
+            margin-top: auto;
+            margin-right: 2px;
+
+
+
+
+        }
+
+        .navitem>a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            float: left;
+
+        }
+
+
+        .menu {
+            list-style: none;
+            display: inline;
+            margin-top: 12%;
+
+
+        }
+
+        .menu>li {
+            display: inline-block;
+            margin-left: 13%;
+            margin-right: 14%;
+            
+
+
+
+        }
+
+        .menu>li>a {
+            text-decoration-line: none;
+            color: black;
+            font-size: large;
+
+        }
+
+        a:active {
+            text-decoration-line: underline;
+            color: black;
+        }
+
+        p2 {
+            margin-left: 10%;
+            font-weight: bold;
+        }
+
+        .about {
+            margin-left: 7%;
+        }
+
+        .aboutul>li {
+            display: inline-block;
+
+        }
+
+        .aboutul>li>a {
+            text-decoration-line: none;
+            color: black;
+
+        }
+
+        p3 {
+            margin-left: 10%;
+            font-weight: bold;
+        }
+
+        select {
+            margin-right: 10%;
+            float: right;
+            width: 90px;
+            height: 25px;
+            text-align: center;
+            font-size: 14px;
+
+        }
+
+        .ad {
+            position: absolute;
+            left: 85%;
+            right: 0%;
+            top: 34%;
+            bottom: 62.01%;
+            width: 185px;
+        }
+
+        .post>a {
+            color: black;
+            font-size: 22px;
+            font-weight: bold;
+            margin-left: 10%;
+            text-decoration: none;
+        }
+
+        .content {
+            color: gray;
+            margin-left: 10%;
+            font-size: 14px;
+            margin-right: 10%;
+
+        }
+
+        .postimg {
+            float: right;
+            margin-right: 10%;
+            /* position: relative; */
+            margin-left: 15%;
+            width: 160px;
+            height: 100px;
+           margin-top: 40px;
+           
+        }
+
+
+        .names {
+            margin-bottom: 13%;
+        }
+
+        .totop {
+            float: right;
+            margin-right: 50%;
+            padding-bottom: 40%;
+        }
+
+        .nb {
+            border: 1px solid rgb(167, 163, 163);
+            border-radius: 2.5%;
+            height: 180px;
+            width: 165px;
+            float: right;
+            margin-right: 15px;
+
+
+        }
+
+        .nbul {
+            /* margin-left: 3%;
+            margin-right: 6%; */
+            text-align: justify;
+            padding-left: 22px;
+            /* margin: 0; */
+
+        }
+
+        .nbul>li {
+            list-style: none;
+            text-align: justify;
+            font-size: 14px;
+            font-weight: bold;
+
+        }
+
+        p {
+            font-weight: bolder;
+            text-align: center;
+            font-size: 16px;
+            padding-right: 26px;
+
+        }
+
+
+        .titles {
+            background-color: rgba(255, 255, 255, 0.55);
+            height: 42px;
+            width: 100%;
+            margin: 0;
+            display: inline-block;
+
+
+        }
+
+        a {
+
+            color: black;
+        }
+
+        #menumb {
+            margin-top: 1%;
+            float: right;
+            position: relative;
+        }
+        @media screen and (max-width:480px) {
+            .searchbx{
+            margin-top: -1%;
+            }
+            .search{
+                /* display: inline-block; */
+                width: 40%;
+                margin-left: 26%;
+                margin-top: 5%;
+            }
+            .searchbtn{
+                position: relative;
+                margin-left: 70%;
+                margin-top: 5%;
+                display: inline-block;
+            }
+            .profileul >li:first-child,
+            .profileul >li:nth-child(2),
+            .profileul>li:nth-child(3){
+                display: none;
+                
+            }
+            .menu >li{
+                margin-right: 5%;
+            }
+            .profileul>li:last-child{
+               margin-top: 28%;
+            }
+            select{
+                margin-right: 3%;
+            }
+            .aboutul{
+                margin-left: -11%;
+            }
+            p3{
+                margin-left: 5%;
+                
+            }
+            .post > a{
+                font-size: 20px;
+                /* white-space: nowrap; */
+                margin-left: 5%;
+               position: absolute;
+                /* margin-right: 5px; */
+                /* display: inline-block; */
+                
+            }
+            .post{
+                display: inline-block;
+            }
+         
+            .postimg{
+                /* display: inline-block; */
+                width:25%;
+                padding-top: 5%;
+                margin-right: 5%;
+                margin-left: 4%;
+                float: right;
+                width: 50%;
+                height: 40%;
+                
+
+                
+            }
+            .content{
+                font-size: 12px;
+                margin-left: 5%;
+                margin-top: 25%;
+                /* position: relative; */
+                /* display: inline-block; */
+                
+                
+            }
+            p2{
+                margin-left: 5%;
+                
+            }
+         
+            }
+            @media (max-width:767px){
+            .searchbx{
+               position: relative;
+               padding-top: 28%;
+               /* padding-bottom: 10%; */
+               margin-left: 2%;
+              width: 100%;
+            } 
+            .search{
+                width: 30%;
+                margin-left: 20%;
+                margin-top: 10%;
+                border: 1px solid lightslategray;
+                
+            }
+            .searchbtn{
+                float: left;
+                margin-left: 70%;
+                border-radius: 5%;
+                /* margin-top: 3%; */
+               
+            }
+            .profileul >li:first-child,
+            .profileul >li:nth-child(2),
+            .profileul>li:nth-child(3){
+                display: none;
+                
+            }
+            .profileul>li:last-child{
+               padding-top: 2.5%;
+            }
+           .menu{
+               margin-left: -4%;
+           }
+            .menu >li{
+                margin-right: 10%;
+                margin-top: 10%;
+                
+            }
+            .aboutul{
+                margin-left: -8%;
+            }
+            .aboutul>li:first-child{
+                margin-left: -18px;
+            }
+            p3{
+                margin-left: 3%;
+                /* color: yellow; */
+            }
+            .post > a{
+                font-size: 20px;
+                /* white-space: nowrap; */
+                margin-left: 5%;
+               position: absolute;
+               text-decoration: none;
+                /* margin-right: 5px; */
+                /* display: inline-block; */
+                
+            }
+         
+            .postimg{
+                width:23%;
+                padding-top: 7%;
+                /* margin-bottom: 5%; */
+                /* padding-bottom: 30%; */
+                margin-right: 5%;
+                margin-left: 4%;
+                /* margin-bottom: -10%; */
+                /* position: relative; */
+                
+                
+            }
+            .content{
+                font-size: 12px;
+                margin-left: 5%;
+                margin-top: 2%;
+                position: relative;
+                
+                
+            }
+            p2{
+                margin-left: 5%;
+            }
+            .back{
+                /* padding-left: 1%; */
+                padding-top: 2.5%;
+                margin-right: -6%;
+                
+            }
+            }
+            @media (max-width:991px) {
+                .searchbx{
+                    margin-right: -3%;
+                }
+            .search{
+                
+                width: 78%;
+                margin-left: 5%;
+                margin-top: 5%;
+                
+                
+            }
+            .searchbtn{
+                margin-left: 80.5%;
+                margin-top: 4.8%;
+
+            }
+            .profileul >li:first-child,
+            .profileul >li:nth-child(2),
+            .profileul>li:nth-child(3){
+                display: none;
+                
+            }
+            .profileul>li:last-child{
+               margin-top: 23%;
+            }
+            .menu >li{
+                margin-right: 6%;
+                margin-top: 13%;
+                
+            }
+            .aboutul{
+                margin-left: -7%;
+            }
+            p3{
+                margin-left: 5%;
+                /* color: brown; */
+            }
+            .post > a{
+                font-size: 24px;
+                /* white-space: nowrap; */
+                margin-left: 5%;
+               position: absolute;
+                /* margin-right: 5px; */
+                /* display: inline-block; */
+                
+            }
+         
+            .postimg{
+                width:20%;
+                margin-top: 7%;
+                margin-right: 5%;
+                margin-left: 10%;
+                /* height: 218px; */
+            }
+            .content{
+                font-size: 14px;
+                margin-left: 5%;
+                margin-top: 3%;
+                
+                
+            }
+            p2{
+                margin-left: 5%;
+            }
+            .back{
+                display: block;
+                float: left;
+                margin-top: 3%;
+                margin-left: 2.5%;
+                
+                
+            }
+            }
+            @media (max-width:1199px){
+
+            }
+    </style>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+        
+        (function(win, $){
+	var $html = $("html");
+	var deviceSize = {
+		pc:1009,
+		tablet:801,
+		mobile:800
+	};
+
+	function scrollShowHide(status) {
+		$html.css({"overflow-y":status});
+		return $html.width();    
+	}
+
+	var sc_w1 = scrollShowHide("hidden"),
+					sc_w2 = scrollShowHide("scroll"),
+					sc_w3 = sc_w1 - sc_w2;
+
+	if(sc_w3 > 0) {
+					deviceSize.pc = deviceSize.pc -  sc_w3;
+					deviceSize.tablet = deviceSize.tablet -  sc_w3;
+					deviceSize.mobile = deviceSize.mobile -  sc_w3;
+	}
+	//console.log(deviceSize.pc);
+
+	$(win).on("resize", function() {
+		var w_size = $(win).width();
+		if(w_size >= deviceSize.pc 
+		&& !$("div").hasClass("pc")) {
+			$html.removeClass("mobile tablet").addClass("pc");
+			scrollShowHide("scroll");
+		} else if(w_size < deviceSize.pc 
+		&& w_size >= deviceSize.tablet 
+		&& !$("div").hasClass("tablet")) {
+			$html.removeClass("mobile pc").addClass("tablet");
+			scrollShowHide("scroll");
+		} else if(w_size <= deviceSize.mobile 
+		&& !$html.hasClass("mobile")) {
+			$html.removeClass("pc tablet").addClass("mobile");
+			var menu_pos = parseInt($(".mobile-menu-wrap").css("left"));
+			if(menu_pos >= 0) {
+							scrollShowHide("hidden");
+						}
+		}
+	});
+
+	$(function(){
+					$(win).trigger("resize");
+
+				
+	});
+}(window, jQuery));
+
+   
+    </script> -->
+</head>
+
+<body>
+    <nav>
+        <div class="containor">
+            <!-- <a class="logo" href="#!">Blog</a> -->
+
+            <div class="profile">
+            <div class="pc" id="navbarSupportedContent">
+                <a class = "back" href="#!"><img src="./assets/eva_arrow-ios-back-fill.png"></a>
+                <ul class="profileul">
+                    <li class="navitem"><a class="nav-link" href="#"><img src="./assets/unsplash_u49hkWzTL3w.png"></a>
+                    </li>
+                    <li class="navitem"><a class="names" href="#">&nbsp&nbspISFP공대인간</a></li>
+                    <li class="navitem"><a class="nav-link" href="#!"><img
+                                src="./assets/carbon_notification.png">&nbsp&nbsp</a></li>
+                    <li class="navitem"><a class="nav-link" href="#!"><img src="./assets/bx_bx-menu.png"></a></li>
+                    <!-- <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">설정</a></li> -->
+                </ul>
+            <div class="searchbx">
+            <input class="search" type="search" placeholder="검색어를 입력하세요" aria-label="Enter search term..."
+                aria-describedby="button-search"  />
+            <button class="searchbtn" id="button-search" type="button">검색</button>
+            </div>
+            </div>
+           
+    </nav>
+    <header>
+        <br>
+        <div>
+            <ul class="menu">
+                <li><a href="">글</a></li>
+                <li><a href="">사용자</a></li>
+                <li><a href="">태그</a></li>
+            </ul>
+        </div>
+        <br>
+        <hr>
+        <div>
+            <form>
+                <br>
+                <p2>'아이유'에 대한 검색결과입니다. 108건</p2>
+                <select>
+                    <option value="none">최신순</option>
+                    <option>정확도순</option>
+                    <option>인기순</option>
+                </select>
+            </form><br>
+        </div>
+        <!-- <img src="./assets/unsplash_1SAnrIxw5OY.png" class="ad"><br><br> -->
+        <hr>
+
+        <br>
+        <p3>[연관검색어]</p3>
+        <div class="about">
+            <ul class="aboutul">
+                <li><a href="">김민정</a></li>
+                <li><a href="">민정쓰</a></li>
+                <li><a href="">결과올라잇</a></li>
+            </ul>
+        </div>
+    </header>
+    <!-- <div class="nb">
+
+        <div class=titles>
+            <p>실시간 검색어</p>
+        </div>
+        <hr>
+        <ul class="nbul">
+            <li>1. 소녀의 세계</li>
+            <li>2. 브리트니 스피어스</li>
+            <li>3. 술꾼도시녀</li>
+            <li>4. 졸려</li>
+            <li>5. 공차 짱맛</li>
+        </ul>
+    </div> -->
+    <br><br>
+
+    <div class="post">
+        <img src="./assets/unsplash_1SAnrIxw5OY.png" class="postimg">
+        
+        <a href="#!">[노래추천]리무진-이무진</a><br>
+    
+        <br>
+        <div class="content">
+            빙빙 돌아가는 어쩌구 저쩌구 웅앵웅쵸키포키 자이언티 스걸파 턴즈가 우승함 와 대박 어쩌구...
+            저쩌궁ㅇㅇㅇ하이바이마마갯마을차차차 개꿀잼 노래가 전부 오토튠임 트랫브 트래비앙 어쩌구 
+            
+            <br><br><br>
+            <div class="icons">
+                <img src="./assets/topcoat_like.png" width="15px">&nbsp180&nbsp
+                <img src="./assets/fa-regular_comment-dots.png" width="15px">&nbsp 95
+            </div>
+        </div>
+        <br>
+    </div>
+    <br>
+    <hr>
+
+    <br>
+    <div class="post">
+        <img src="./assets/unsplash_TscNBt1tIVY.png" class="postimg">
+        <a href="#!">[노래추천]리무진-이무진(feat.zionT)</a><br>
+        <br>
+        <div class="content">
+            <br>빙빙 돌아가는 어쩌구 저쩌구 웅앵웅쵸키포키 자이언티 스걸파 턴즈가 우승함 와 대박 어쩌구...
+            저쩌궁ㅇㅇㅇ하이바이마마갯마을차차차 개꿀잼 노래가 전부 오토튠임 
+            
+            <br><br><br>
+            <div class="icons">
+                <img src="./assets/topcoat_like.png" width="15px">&nbsp180&nbsp
+                <img src="./assets/fa-regular_comment-dots.png" width="15px">&nbsp 95
+            </div>
+        </div>
+        <br><br>
+        <!-- <img src="./assets/akar-icons_align-to-top.png" class="totop"> -->
+    </div>
+    <hr><br>
+
+    <div class="post">
+        <!-- <img src="./assets/unsplash_TscNBt1tIVY.png" class="postimg"> -->
+        <a href="#!">[노래추천]리무진-이무진(feat.zionT)</a><br>
+        <br>
+        <div class="content">
+            <br>빙빙 돌아가는 어쩌구 저쩌구 웅앵웅쵸키포키 자이언티 스걸파 턴즈가 우승함 와 대박 어쩌구...<br>
+            저쩌궁ㅇㅇㅇ하이바이마마갯마을차차차 개꿀잼 노래가 전부 오토튠임 트랫브 트래비앙 어쩌구 <br>
+            ㅇㅇ어어얼ㅇ너랴ㅐ거ㅐㅑㅁㄷ거해ㅑㄷㄱ머랮더ㅜㄹ렁나;ㄹ후ㅏㅓ후ㅏ러우하ㅣㅇ르하ㅣㅇ르하ㅣ르하ㅣ르ㅘ<br>
+            <br><br><br>
+            <div class="icons">
+                <img src="./assets/topcoat_like.png" width="15px">&nbsp180&nbsp
+                <img src="./assets/fa-regular_comment-dots.png" >&nbsp 95
+            </div>
+        </div>
+        <br><br><br>
+        <img src="./assets/akar-icons_align-to-top.png" class="totop">
+    </div>
+</body>
+
+</html>
