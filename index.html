@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>blog...</title>
+
+  <!-- font awesome cdn -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+
+  <!-- Top navigation -->
+  <header>
+    <nav class="navbar">
+      <div>
+        <a href="#categories" class="icon"><i class="far fa-list-alt"></i></a>
+      </div>
+      <div>
+        <a href="#home">블로그 이름</a>
+      </div>
+      <div>
+        <a href="#search" class="icon"><i class="fas fa-search"></i></a>
+        <a href="#setting" class="icon"><i class="fas fa-bars"></i></a>
+      </div>
+    </nav>
+  </header>
+
+
+
+  <main id="site-main">
+    <!-- post content -->
+    <section class="container">
+      <div class="row">
+        <div class="col-8">
+          <article id="post">
+            <!-- post heading -->
+            <div class="heaing">
+              <div class="category">
+                <a href="#" class="text-black fontsize-2 px-1">카테고리명</a>
+              </div>
+
+              <div class="title">
+                <h1 class="text-black fontsize-1 text-center">글 제목</h1>
+              </div>
+
+              <div class="meta">
+                <a href="#" class="text-black fontsize-2 px-1">
+                  <i class="fas fa-user"></i> 글쓴이
+                </a>
+                <a href="#" class="text-black fontsize-2 px-1">
+                  <i class="fas fa-clock"></i> 작성일
+                </a>
+              </div>
+            </div>
+            <!-- post main -->
+            <div class="thumbnail mt-2">
+              <img src="asset/thumbnail.png" class="thumbnail" alt="">
+            </div>
+            <div class="content text-black mt-1">
+              <p>본문
+              </p>
+              <p>본문
+              </p>
+            </div>
+          </article>
+          <hr>
+          <!-- post-footer -->
+          <div class="post-footer mb-3">
+            <!-- Tags -->
+            <h3 class="footer-title fontsize-1">태그</h3>
+            <div class="tags">
+              <div class="flex flex-wrap">
+                <a href="#" class="tag-link btn bg-light">태그1</a>
+                <a href="#" class="tag-link btn bg-light">태그2</a>
+                <a href="#" class="tag-link btn bg-light">태그3</a>
+                <a href="#" class="tag-link btn bg-light">태그4</a>
+                <a href="#" class="tag-link btn bg-light">태그5</a>
+              </div>
+            </div>
+
+            <!-- comments -->
+            <div class="post-comments py-2">
+              <h3 class="fontsize-1">댓글</h3>
+              <div class="comment-details">
+                <div class="comment-item py-2">
+                  <div class="flex">
+                    <div class="avatar px-2">
+                      <img src="asset/face1.png" class="rounded" alt="">
+                    </div>
+                    <div class="comment-content">
+                      <h5 class="fontsize-2 m-0">춘식이1</h5>
+                      <p class="text-black">
+                        춘식이1
+                      </p>
+                      <a href="#" class="comment-reply btn">답글</a>
+                      <a href="#" class="comment-update btn">수정</a>
+                      <a href="#" class="comment-delete btn">삭제</a>
+                    </div>
+                  </div>
+
+                  <!-- comment reply -->
+                  <div class="reply py-2">
+                    <div class="flex">
+                      <div class="avatar px-2">
+                        <img src="asset/face2.png" class="rounded" alt="">
+                      </div>
+                      <div class="comment-content">
+                        <h5 class="fontsize-2 m-0">춘식이2</h5>
+                        <p class="text-black">
+                          춘식이2
+                        </p>
+                        <div class="row">
+                          <a href="#" class="comment-update btn">수정</a>
+                          <a href="#" class="comment-delete btn">삭제</a>
+                          <a href="#" class="comment-reply btn">답글</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- comment form -->
+              <div class="comment-form">
+
+                <h3 class="fontsize-1">댓글 남기기</h3>
+
+                <textarea class="form-control" placeholder="메세지를 입력해주세요" rows="10"></textarea>
+                <div class="text-right">
+                  <button class="comment-update btn fontsize-2 mt-2"><a href="">등록</a></button>
+                </div>
+              </div>
+            </div>
+            <!-- Trending post -->
+            <section class="trending-post mt-3">
+              <h2 class="text-black">인기글</h2>
+              <!-- post-items -->
+              <div class="post-item py-1">
+                <article class="article">
+                  <div class="flex">
+                    <a href="#">
+                      <img src="asset/face2.png" class="rounded" alt="">
+                    </a>
+                    <div class="cart-body">
+                      <div class="trending-category">
+                        <a href="#" class="text-green">
+                          카테고리명
+                        </a>
+                      </div>
+                      <a href="#" class="text-title fontsize-2 text-black">
+                        저는 춘식이입니다
+                      </a>
+                      <p class="secondary-title text-secondary">
+                        <span>
+                          <i class="far fa-clock text-primary"></i>
+                          업로드일
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <!-- post-items -->
+              <div class="post-item py-1">
+                <article class="article">
+                  <div class="flex">
+                    <a href="#">
+                      <img src="asset/face2.png" class="rounded" alt="">
+                    </a>
+                    <div class="cart-body">
+                      <div class="trending-category">
+                        <a href="#" class="text-green">
+                          카테고리명
+                        </a>
+                      </div>
+                      <a href="#" class="text-title fontsize-2 text-black">
+                        저는 춘식이입니다
+                      </a>
+                      <p class="secondary-title text-secondary">
+                        <span>
+                          <i class="far fa-clock text-primary"></i>
+                          업로드일
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <!-- post-items -->
+              <div class="post-item py-1">
+                <article class="article">
+                  <div class="flex">
+                    <a href="#">
+                      <img src="asset/face2.png" class="rounded" alt="">
+                    </a>
+                    <div class="cart-body">
+                      <div class="trending-category">
+                        <a href="#" class="text-green">
+                          카테고리명
+                        </a>
+                      </div>
+                      <a href="#" class="text-title fontsize-2 text-black">
+                        저는 춘식이입니다
+                      </a>
+                      <p class="secondary-title text-secondary">
+                        <span>
+                          <i class="far fa-clock text-primary"></i>
+                          업로드일
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+            </section>
+
+
+          </div>
+
+          <!-- pagination -->
+          <div class="pagination mb-3">
+            <a href="#">&laquo;</a>
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+            <a href="#">&raquo;</a>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <aside id="sidebar" class="px-1">
+            <!-- category -->
+            <section class="category">
+              <h2 class="text-black">카테고리</h2>
+
+              <a href="#" class="flex justify-content-between text-black">
+                <span>일기</span>
+                <span>1</span>
+              </a>
+              <a href="#" class="flex justify-content-between text-black">
+                <span>공부</span>
+                <span>2</span>
+              </a>
+              <a href="#" class="flex justify-content-between text-black">
+                <span>일상</span>
+                <span>3</span>
+              </a>
+              <a href="#" class="flex justify-content-between text-black">
+                <span>사진</span>
+                <span>4</span>
+              </a>
+            </section>
+
+          </aside>
+        </div>
+
+      </div>
+
+  </main>
+
+
+
+</body>
+
+</html>
