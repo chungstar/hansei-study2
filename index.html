@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>블로그</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/ade2c496a4.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="MenuButton">
+        <input type="checkbox" id="menuicon" />
+        <label for="menuicon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        <div class="sidebar">
+          <ul class="sidebar-menu">
+            <li class="sidebar-catecory">
+              <a href="#">전체(<span>14</span>)</a>
+              <ul class="sidebar-catecory-depth">
+                <a href="#"><li>스터디(<span>2</span>)</li></a>
+                <a href="#"><li>일기(<span>3</span>)</li></a>
+                <a href="#"><li>맛집일기(<span>6</span>)</li></a>
+                <a href="#"><li>내돈내산 후기(<span>3</span>)</li></a>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="blogname">MBTI과몰입 인간의 블로그</div>
+      <div class="icons">
+        <a href="#"><i class="far fa-bell"></i></a>
+        <a href="#"><i class="fab fa-sistrix"></i></a>
+        <input type="text" />
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <div class="main-box">
+        <div class="info">
+          <img src="image/ticket.jpg" />
+          <div class="nickname">
+            <p class="name">집사는 괴로워</p>
+            <p class="timer">2시간 전</p>
+          </div>
+        </div>
+        <div class="title">
+          <h1>고양이 두부모래 추천!</h1>
+          <ul class="hashtag">
+            <li><a href="#">#고양이</a></li>
+            <li><a href="#">#집사</a></li>
+            <li><a href="#">#두부모래</a></li>
+            <li><a href="#">#쿠팡</a></li>
+            <li><a href="#">#내돈내산</a></li>
+          </ul>
+        </div>
+        <div class="content">
+          <div class="greeting">
+            <span>안녕하세요 !</span>
+            <span>집사는 괴로워입니다:)</span>
+            <span>날씨가 추워지는 요즘 잘 지내고 계신가요?</span>
+          </div>
+          <img src="image/5.jpg" />
+        </div>
+      </div>
+      <div class="side-box">
+        <div class="writer">
+          <span>글쓰기</span>
+        </div>
+        <div class="advertise">
+          <img src="image/advertise.png" />
+        </div>
+        <div class="alert">
+          <h2>알림</h2>
+          <ul class="alert-list">
+            <li id="all"><button>전체</button></li>
+            <li id="comment"><button>댓글</button></li>
+            <li id="like"><button>좋아요</button></li>
+          </ul>
+          <div class="alert-content"></div>
+        </div>
+        <div class="visitor">
+          <h3>오늘의 방문자</h3>
+          <h2>100</h2>
+          <ul class="visitor-list">
+            <li>
+              <img src="image/5.jpg" />
+              <span>집사살려</span>
+            </li>
+            <li>
+              <img src="image/5.jpg" />
+              <span>퇴근할래</span>
+            </li>
+            <li>
+              <img src="image/5.jpg" />
+              <span>갬성집사</span>
+            </li>
+            <a href="#" id="plus">더보기 ></a>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
