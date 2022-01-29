@@ -31,18 +31,21 @@
 
     let desc
 
-    db.collection('posts').get().then(async (res) => {
-      await res.forEach((doc) => {
-        desc = doc.data()
-      })
-      console.log('in ', desc)
+    db.collection('posts').get().then(async (post) => {
+      console.log('in ', post)
+      const content = await post
+      let posts
+      for (let value of content) {
+        posts += value
+      }
+      console.log(posts)
       const {
         category,
         open,
         title,
         description,
         hashtag
-      } = desc
+      } = post
       const testDiv = document.querySelector('#test')
       testDiv.innerHTML = `
       <p>${category}</p>

@@ -51,10 +51,11 @@
         <h2>게시글 작성</h2>
         <div class="form-btn">
           <button type="submit" id="uploadBtn">등록</button>
-          <button>취소</button>
-          <input type="button" id="testBtn" value="123123">
+          <button id="redirectPrevPage">취소</button>
+          <!-- <input type="button" id="testBtn" value="123123"> -->
         </div>
       </div>
+
       <div class="form-select">
         <label for="category-select"></label>
         <select name="category" id="category-select">
@@ -64,6 +65,7 @@
           <option value="맛집일기">맛집일기</option>
           <option value="내돈내산후기">내돈내산 후기</option>
         </select>
+
         <label for="open-select"></label>
         <select name="open" id="open-select">
           <option value="공개" selected="selected">공개</option>
@@ -71,20 +73,26 @@
           <option value="이웃 공개">이웃 공개</option>
         </select>
       </div>
+
       <input type="text" placeholder="제목" id="title">
-      <textarea id="summernote" name="editordata" style="height: 100vh;"></textarea>
+      <textarea id="summernote" name="editordata"></textarea>
       <input type="text" placeholder="#해시태그" id="hashtag">
     </form>
   </div>
-  <div id="test"></div>
+
+  <!-- Firebase script -->
   <script src="https://www.gstatic.com/firebasejs/9.6.5/firebase-app-compat.js"></script>
+  <!-- Firestore script -->
   <script src="https://www.gstatic.com/firebasejs/9.6.5/firebase-firestore-compat.js"></script>
+  <!-- Authentication script -->
   <script src="https://www.gstatic.com/firebasejs/9.6.5/firebase-auth-compat.js"></script>
+  <!-- Storage script -->
   <script src="https://www.gstatic.com/firebasejs/9.6.5/firebase-storage-compat.js"></script>
+
   <script>
+    // Summernote 텍스트 에디터 실행문
     $(document).ready(function () {
       $('#summernote').summernote({
-        height: 600,
         toolbar: [
           [
             'style',
@@ -121,8 +129,9 @@
       });
     })
 
-    // 썸머노트 이미지 업로드 기능 추가
+    // Summernote 이미지 업로드 기능 추가
     $('#summernote').summernote({
+      height: 600,
       callbacks: {
         onImageUpload: function (files, editor, welEditable) {
           uploadImage(files[0], this)
@@ -130,20 +139,13 @@
       }
     })
 
-    // 기본 폰트 사이즈 변경
+    // Summernote 폰트 디폴트 값 변경
     $('#summernote').summernote('fontSize', 15);
 
-    // 하단 사이즈 조절 바 삭제
+    // Summernote 사이즈 조절 바 숨김
     $('.note-statusbar').hide();
 
-    // $("#summernote").summernote({
-    // toolbar: [
-    // ['para', ['ul']]
-    // ],
-    // focus: true,
-    // disableResizeEditor: true
-    // });
-
+    // Firebase 연결
     const firebaseApp = firebase.initializeApp({
       apiKey: 'AIzaSyAwBAj3d2YDACIRMCdIfT8OpH5SEVDxVS0',
       authDomain: 'blog-pj-b6a4e.firebaseapp.com',
@@ -154,18 +156,20 @@
     });
 
     const db = firebaseApp.firestore();
-    const auth = firebaseApp.auth();
     const storage = firebaseApp.storage()
+    // const auth = firebaseApp.auth();
 
     const category = document.querySelector('#category-select');
     const public = document.querySelector('#open-select');
     const title = document.querySelector('#title');
     const description = document.querySelector('textarea');
     const hashtag = document.querySelector('#hashtag');
+    const uploadBtn = document.querySelector('#uploadBtn');
 
 
+    // Summernote 이미지 첨부 시 실행
     const uploadImage = (file, editor) => {
-      console.log('upload image 호출!1')
+      console.log('Upload start')
 
       const image = file;
       const storageUrl = 'images/' + image.name
@@ -175,93 +179,94 @@
       // console.log('storageRef : ', storageUpRef)
       // console.log('image is : ', image.name)
 
-      task.on('state_changed', function (snapshot) {
-        console.log('uploading...')
-      }, function (error) {
-        console.log('ERROR is : ', error)
-      }, function () {
-        console.log('upload success!!')
+      // Summernote 이미지 업로드 후 해당 링크로 경로 설정
+      task.on('state_changed', (snapshot) => {
+        console.log('Uploading...')
+      }, (error) => {
+        console.log('!!Uploading Error!! => ', error)
+      }, () => {
+        console.log('Upload Success!!')
         const storageRef = storage.ref()
-        storageRef.child(storageUrl).getDownloadURL().then(function (url) {
-          console.log('URL : ', url)
+        storageRef.child(storageUrl).getDownloadURL().then((url) => {
+          // console.log('Image URL => ', url)
           const imageUrl = $('<img>').attr({
             src: url
           })
           $('#summernote').summernote('insertNode', imageUrl[0])
-        }).catch(function (error) {
-          console.log('LAST ERROR : ', error)
+        }).catch((error) => {
+          console.log('Get Url ERROR => ', error)
         })
       })
 
     }
 
-    document
-      .querySelector('#testBtn')
-      .addEventListener('click', () => {
-        event.preventDefault()
-        window.location.href = "123.html"
-        console.log('click upload btn')
-        console.log("storage ref : ", storage.ref().bucket)
+    // document
+    //   .querySelector('#testBtn')
+    //   .addEventListener('click', () => {
+    //     event.preventDefault()
+    //     window.location.href = "123.html"
+    //     console.log('click upload btn')
+    //     console.log("storage ref : ", storage.ref().bucket)
 
-        const testDiv = document.querySelector('#test')
+    //     const testDiv = document.querySelector('#test')
 
-        const desc = document.createTextNode($('#summernote').summernote('code'))
-        console.log('code is ', desc)
-        testDiv.appendChild(desc)
+    //     const desc = document.createTextNode($('#summernote').summernote('code'))
+    //     console.log('code is ', desc)
+    //     testDiv.appendChild(desc)
 
+    //     let arrs = description.value.split(' ').filter(arr => (arr.match('src')))
+    //     let mapArrs = arrs.map(v => {
+    //       return v.slice(5)
+    //     })
+    //     console.log(mapArrs)
 
+    //     const postObj = {
+    //       category: category.value,
+    //       open: public.value,
+    //       title: title.value,
+    //       description: description.value,
+    //       hashtag: hashtag
+    //         .value
+    //         .split(' '),
+    //       test: arrs,
+    //     }
+    //     console.log(postObj)
+    //   })
 
-        let arrs = description.value.split(' ').filter(arr => (arr.match('src')))
-        let mapArrs = arrs.map(v => {
-          return v.slice(5)
-        })
-        console.log(mapArrs)
+    uploadBtn.addEventListener('click', async (event) => {
+      event.preventDefault()
+      // console.log('click upload btn')
+      // const arrs = description.value.split(' ').filter(arr => (arr.match('src')))
 
-        const postObj = {
-          category: category.value,
-          open: public.value,
-          title: title.value,
-          description: description.value,
-          hashtag: hashtag
-            .value
-            .split(' '),
-          test: arrs,
-        }
-        console.log(postObj)
-      })
+      // let mapArrs = arrs.map(v => {
+      //   return v.slice(5, -1)
+      // })
+      // console.log("mapArrs is ", mapArrs)
 
-    document
-      .querySelector('#uploadBtn')
-      .addEventListener('click', async (event) => {
-        event.preventDefault()
-        console.log('click upload btn')
-
-        let arrs = description.value.split(' ').filter(arr => (arr.match('src')))
-
-        let mapArrs = arrs.map(v => {
-          return v.slice(5, -1)
-        })
-        console.log("mapArrs is ", mapArrs)
-
-        const postObj = {
-          category: category.value,
-          open: public.value,
-          title: title.value,
-          description: description.value,
-          hashtag: hashtag
-            .value
-            .split(' '),
-        }
-        try {
-          await db
-            .collection('posts')
-            .add(postObj)
-          console.log(postObj)
-          console.log('success')
-        } catch (error) {
-          console.log(error)
-        }
-      })
+      // Firestore 에 저장할 내용
+      const uploadObj = {
+        time: new Date(),
+        category: category.value,
+        open: public.value,
+        title: title.value,
+        description: description.value,
+        hashtag: hashtag
+          .value
+          .split(' '),
+      }
+      try {
+        // console.log(typeof (time))
+        await db
+          .collection('posts')
+          .doc(Date.now().toString())
+          .set(uploadObj)
+        // console.log(uploadObj)
+        // console.log('Upload Content Success')
+        window.location.href = "./123.html"
+      } catch (error) {
+        console.log('Upload Content Error => ', error)
+      }
+    })
   </script>
 </body>
 
