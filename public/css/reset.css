@@ -26,7 +26,8 @@ textarea,
 button,
 form,
 figure,
-figcaption {
+figcaption,
+label {
 	margin: 0;
 	padding: 0;
 }
