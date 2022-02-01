@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style.css.css" type="text/css">
+    
     <!-- <script
         src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
         <script> (function(win, $){ var $html = $("html"); var deviceSize = { pc:1009,
@@ -26,6 +27,41 @@
         parseInt($(".mobile-menu-wrap").css("left")); if(menu_pos >= 0) {
         scrollShowHide("hidden"); } } }); $(function(){ $(win).trigger("resize"); });
         }(window, jQuery)); </script> -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+    <script>
+        const db = firebase.firestore();
+        db.collection('post').get().then((result) => {
+            result.forEach((doc) => {
+                console.log(doc.data());
+                var temp = `<div class="post">
+
+
+<div class="subn">
+    <a href="#!" class="pn">${doc.data().제목}</a>
+</div><br>
+
+<br>
+<div class="content">
+    <img src="./assets/unsplash_1SAnrIxw5OY.png" class="postimg">
+    <div class="pp">
+        <ppp>${doc.data().내용}</ppp>
+    </div>
+    <br><br><br>
+
+    <div class="icons">
+        <img src="./assets/topcoat_like.png" width="15px">&nbsp180&nbsp
+        <img src="./assets/fa-regular_comment-dots.png" width="15px">&nbsp 95
+    </div>
+</div>
+<br><hr>
+</div>`;
+                $('.media').append(temp);
+            })
+        })
+    </script>
 </head>
 
 <body>
@@ -33,7 +69,8 @@
         <!-- <a class="logo" href="#!">Blog</a> -->
         <a class="back" href="#!"><img src="./assets/eva_arrow-ios-back-fill.png"></a>
         <div class="searchBox">
-            <input class="search" type="search" placeholder="검색어를 입력하세요" aria-label="Enter search term..." aria-describedby="button-search" />
+            <input class="search" type="search" placeholder="검색어를 입력하세요" aria-label="Enter search term..."
+                aria-describedby="button-search" />
             <button class="searchbtn" id="button-search" type="button">검색</button>
         </div>
         <div class="right">
@@ -69,7 +106,7 @@
         <hr>
 
         <br>
-        
+
         <div class="about">
             <p3>[연관검색어]</p3>
             <ul class="aboutul">
@@ -89,71 +126,105 @@
             class="nbul"> <li>1. 소녀의 세계</li> <li>2. 브리트니 스피어스</li> <li>3. 술꾼도시녀</li> <li>4.
             졸려</li> <li>5. 공차 짱맛</li> </ul> </div> -->
     <br>
+    <div class="media">
+        <!-- <div class="post">
 
-    <div class="post">
 
-
-        <div class = "subn">
-            <a href="#!" class = "pn">[노래추천]리무진-이무진</a></div><br>
+        <div class="subn">
+            <a href="#!" class="pn">[노래추천]리무진-이무진</a>
+        </div><br>
 
         <br>
         <div class="content">
             <img src="./assets/unsplash_1SAnrIxw5OY.png" class="postimg">
-            <div class="pp"><ppp>빙빙 돌아가는 어쩌구 저쩌구 웅앵웅쵸키포키 자이언티 스걸파 턴즈가 우승함 와 대박 어쩌구...
-                저쩌궁ㅇㅇㅇ하이바이마마갯마을차차차 개꿀잼 노래가 전부 오토튠임 트랫브 트래비앙 어쩌구아아아아아 우리집앞에 공차가 생겼으면 좋겠네
-            하하하하하하하 스펀지밥 안녕 하하하하 월요일은 죄악이야 안녕 뚱아 하하하 어쩔</ppp></div>
+            <div class="pp">
+                <ppp>빙빙 돌아가는 어쩌구 저쩌구 웅앵웅쵸키포키 자이언티 스걸파 턴즈가 우승함 와 대박 어쩌구...
+                    저쩌궁ㅇㅇㅇ하이바이마마갯마을차차차 개꿀잼 노래가 전부 오토튠임 트랫브 트래비앙 어쩌구아아아아아 우리집앞에 공차가 생겼으면 좋겠네
+                    하하하하하하하 스펀지밥 안녕 하하하하 월요일은 죄악이야 안녕 뚱아 하하하 어쩔</ppp>
+            </div>
             <br><br><br>
-        
+
             <div class="icons">
                 <img src="./assets/topcoat_like.png" width="15px">&nbsp180&nbsp
                 <img src="./assets/fa-regular_comment-dots.png" width="15px">&nbsp 95
             </div>
         </div>
         <br>
+    </div> -->
     </div>
     <br>
     <hr>
 
     <br>
-    <div class="post">
-        <div class = "subn">
-        <a href="#!" class = "pn">[노래추천]리무진-이무진(feat.zionT)</a></div><br>
+    <!-- <div class="post">
+        <div class="subn">
+            <a href="#!" class="pn">[노래추천]리무진-이무진(feat.zionT)</a>
+        </div><br>
         <br>
         <div class="content">
             <img src="./assets/unsplash_1SAnrIxw5OY.png" class="postimg">
-            <div class="pp"><ppp>빙빙 돌아가는 어쩌구 저쩌구 웅앵웅쵸키포키 자이언티 스걸파 턴즈가 우승함 와 대박 어쩌구...
-                저쩌궁ㅇㅇㅇ하이바이마마갯마을차차차 개꿀잼 노래가 전부 오토튠임 트랫브 트래비앙 어쩌구아아아아아 우리집앞에 공차가 생겼으면 좋겠네
-            하하하하하하하 스펀지밥 안녕 하하하하 월요일은 죄악이야 안녕 뚱아 하하하 어쩔</ppp></div>
+            <div class="pp">
+                <ppp>빙빙 돌아가는 어쩌구 저쩌구 웅앵웅쵸키포키 자이언티 스걸파 턴즈가 우승함 와 대박 어쩌구...
+                    저쩌궁ㅇㅇㅇ하이바이마마갯마을차차차 개꿀잼 노래가 전부 오토튠임 트랫브 트래비앙 어쩌구아아아아아 우리집앞에 공차가 생겼으면 좋겠네
+                    하하하하하하하 스펀지밥 안녕 하하하하 월요일은 죄악이야 안녕 뚱아 하하하 어쩔</ppp>
+            </div>
             <br><br><br>
-        
+
             <div class="icons">
                 <img src="./assets/topcoat_like.png" width="15px">&nbsp180&nbsp
                 <img src="./assets/fa-regular_comment-dots.png" width="15px">&nbsp 95
             </div>
         </div>
         <br><br>
-        <!-- <img src="./assets/akar-icons_align-to-top.png" class="totop"> -->
+        <img src="./assets/akar-icons_align-to-top.png" class="totop">
     </div>
     <hr><br>
 
     <div class="post">
-    <div class = "subn">
-    <a href="#!" class = "pn">[노래추천]리무진-이무진(feat.zionT)</a></div><br>
-    <br>
-    <div class="content">
-        <img src="./assets/unsplash_1SAnrIxw5OY.png" class="postimg">
-        <div class="pp"><ppp>빙빙 돌아가는 어쩌구 저쩌구 웅앵웅쵸키포키 자이언티 스걸파 턴즈가 우승함 와 대박 어쩌구...
-        저쩌궁ㅇㅇㅇ하이바이마마갯마을차차차 개꿀잼 노래가 전부 오토튠임 트랫브 트래비앙 어쩌구아아아아아 우리집앞에 공차가 생겼으면 좋겠네
-    하하하하하하하 스펀지밥 안녕 하하하하 월요일은 죄악이야 안녕 뚱아 하하하 어쩔 </ppp></div>
-        <br><br><br>
-    
-        <div class="icons">
-            <img src="./assets/topcoat_like.png" width="15px">&nbsp180&nbsp
-            <img src="./assets/fa-regular_comment-dots.png" width="15px">&nbsp 95
+        <div class="subn">
+            <a href="#!" class="pn">[노래추천]리무진-이무진(feat.zionT)</a>
+        </div><br>
+        <br>
+        <div class="content">
+            <img src="./assets/unsplash_1SAnrIxw5OY.png" class="postimg">
+            <div class="pp">
+                <ppp>빙빙 돌아가는 어쩌구 저쩌구 웅앵웅쵸키포키 자이언티 스걸파 턴즈가 우승함 와 대박 어쩌구...
+                    저쩌궁ㅇㅇㅇ하이바이마마갯마을차차차 개꿀잼 노래가 전부 오토튠임 트랫브 트래비앙 어쩌구아아아아아 우리집앞에 공차가 생겼으면 좋겠네
+                    하하하하하하하 스펀지밥 안녕 하하하하 월요일은 죄악이야 안녕 뚱아 하하하 어쩔 </ppp>
+            </div>
+            <br><br><br>
+
+            <div class="icons">
+                <img src="./assets/topcoat_like.png" width="15px">&nbsp180&nbsp
+                <img src="./assets/fa-regular_comment-dots.png" width="15px">&nbsp 95
+            </div>
         </div>
-    </div>
-    <br><br>
+        <br><br> -->
     <!-- <img src="./assets/akar-icons_align-to-top.png" class="totop"> -->
-</div>
+    <!-- </div> -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyAKbvmyjDsfVlP09HiylHf29Ow5IUMtQqo",
+          authDomain: "minjeong0204-52970.firebaseapp.com",
+          projectId: "minjeong0204-52970",
+          storageBucket: "minjeong0204-52970.appspot.com",
+          messagingSenderId: "494219730529",
+          appId: "1:494219730529:web:f58b7e6bd72779feaf5420",
+          measurementId: "G-WBT4WW6NHK"
+        };
+      
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig) 
+        const analytics = getAnalytics(app);
+      </script>
 </body>
+
 </html>
