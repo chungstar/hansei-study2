@@ -11,9 +11,8 @@
 </head>
 
 <body>
-  <div id="test">
-
-  </div>
+  <div id="test"></div>
+  <button onclick="updateBtn()">수정버튼</button>
   <script src="https://www.gstatic.com/firebasejs/9.6.5/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.5/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.5/firebase-auth-compat.js"></script>
@@ -29,29 +28,42 @@
     });
     const db = firebaseApp.firestore();
 
-    let desc
+    let content;
 
-    db.collection('posts').get().then(async (res) => {
-      await res.forEach((doc) => {
-        desc = doc.data()
+    db
+      .collection('스터디')
+      .doc('1643716413560')
+      .get()
+      .then(async (res) => {
+        content = res.data()
+        console.log('in ', content)
+        const {
+          category,
+          open,
+          title,
+          description,
+          hashtag,
+          docId,
+        } = content
+        const testDiv = document.querySelector('#test')
+        testDiv.innerHTML = `
+        <p id="category">${category}</p>
+        <p id="open">${open}</p>
+        <p id="title">${title}</p>
+        <p id="description">${description}</p>
+        <p id="hashtag">${hashtag}</p>
+        `
       })
-      console.log('in ', desc)
+
+    const updateBtn = () => {
       const {
         category,
-        open,
-        title,
-        description,
-        hashtag
-      } = desc
-      const testDiv = document.querySelector('#test')
-      testDiv.innerHTML = `
-      <p>${category}</p>
-      <p>${open}</p>
-      <p>${title}</p>
-      <p>${description}</p>
-      <p>${hashtag}</p>
-      `
-    })
+        docId
+      } = content
+      sessionStorage.setItem('category', category)
+      sessionStorage.setItem('docId', docId)
+      window.location.href = 'post.html'
+    }
   </script>
 </body>
 
