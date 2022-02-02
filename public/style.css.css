@@ -35,6 +35,8 @@
                 position: relative;
                 height: 50px;
                 margin-bottom: 0%;
+                width: 170pt;
+
             }
             ppp{
                
@@ -169,6 +171,7 @@ border: 1px solid black;
         p2 {
             margin-left: 10%;
             font-weight: bold;
+            font-size: 10pt;
         }
         
         .about {
@@ -361,7 +364,7 @@ border: 1px solid black;
                 margin-left: 4%;
                 float: right;
                 /* width: 50%; */
-                height: 35%;
+                height: 100px;
             }
 
             .content {
@@ -525,7 +528,7 @@ border: 1px solid black;
             .postimg {
                 width: 37%;
                 margin-top: -5%;
-                margin-right: -40%;
+                margin-right: -50%;
                 margin-left: 10%;
                 padding-top: 15px;
                 /* height: 7%; */
@@ -535,7 +538,7 @@ border: 1px solid black;
                 font-size: 14px;
                 margin-left: 5%;
                 margin-top: 0%;
-                margin-right: 32%;
+                margin-right: 30%;
             }
 
 

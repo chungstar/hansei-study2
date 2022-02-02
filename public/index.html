@@ -8,7 +8,7 @@
   <title>Document</title>
   <link rel="stylesheet" href="./style.css.css" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  
+ 
   
 </head>
 
@@ -31,7 +31,7 @@
 
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+  // const analytics = getAnalytics(app);
   </script>
  
   <nav>
@@ -64,10 +64,10 @@
       <form>
         <br>
         <p2>'아이유'에 대한 검색결과입니다. 108건</p2>
-        <select>
-          <option value="none">최신순</option>
-          <option>정확도순</option>
-          <option>인기순</option>
+        <select id="filter" onchange="change('filter')">
+          <option value="none">정확도순</option>
+          <option value="date">최신순</option>
+          <option value="population">인기순</option>
         </select>
       </form><br>
     </div>
@@ -91,9 +91,7 @@
       </ul>
     </div>
   </header>
-  <!-- <div class="nb"> <div class=titles> <p>실시간 검색어</p> </div> <hr> <ul
-            class="nbul"> <li>1. 소녀의 세계</li> <li>2. 브리트니 스피어스</li> <li>3. 술꾼도시녀</li> <li>4.
-            졸려</li> <li>5. 공차 짱맛</li> </ul> </div> -->
+ 
   <br>
   <div class="media">
     <script>
@@ -110,23 +108,48 @@
 
 <br>
 <div class="content">
-    <img href="gs://minjeong0204-52970.appspot.com/unsplash_TscNBt1tIVY.png" class="postimg">
+    <img class="postimg" src="./assets/unsplash_TscNBt1tIVY.png">
     <div class="pp">
         <ppp>${doc.data().내용}</ppp>
     </div>
     <br><br><br>
 
     <div class="icons">
-        <img src="./assets/topcoat_like.png" width="15px">&nbsp180&nbsp
-        <img src="./assets/fa-regular_comment-dots.png" width="15px">&nbsp 95
+        <img src="./assets/topcoat_like.png" width="15px">&nbsp${doc.data().좋아요}&nbsp
+        <img src="./assets/fa-regular_comment-dots.png" width="15px">&nbsp ${doc.data().댓글}
     </div>
 </div>
-<br><hr>
+<br><hr><br>
 </div>`;
           $('.media').append(temp);
+          
+          
         })
+       
       })
-    </script>
+      </script>
+      <script>
+       function change(id){
+            // const postRef = db.collection('post');
+            id = document.getElementById("filter");
+          if(id.value=="date"){
+            const getMyPosts = async() => {
+    const post = await db
+      .collection('post')
+      // .where('creatorId', "==" , userObj.uid)
+      .orderBy("date", "asc")
+      .get();
+    console.log(post.docs.map(doc => doc.data()))
+  }
+  useEffect(() => {
+    getMyPosts();
+  }, [])
+          }
+          else{
+              return;
+          }
+        }
+      </script>
     <!-- <div class="post">
 
 
@@ -202,7 +225,25 @@
         <br><br> -->
   <!-- <img src="./assets/akar-icons_align-to-top.png" class="totop"> -->
   <!-- </div> -->
-  
+  <!-- <script>
+   
+var gsReference = storage.refFromURL('gs://minjeong0204-52970.appspot.com/unsplash_TscNBt1tIVY.png');
+storageRef.child('unsplash_TscNBt1tIVY.png').getDownloadURL()
+  .then((url) => {
+    // `url` is the download URL for 'images/stars.jpg'
+
+    
+    // Or inserted into an <img> element
+    var img = document.getElementById('myimg');
+    img.setAttribute('src', url);
+  })
+  .catch((error) => {
+    // Handle any errors
+  });
+
+ 
+  </script>
+   -->
 </body>
 
 </html>

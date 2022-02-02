@@ -12,8 +12,9 @@
             position: relative;
         }
         .subn{
-            width: 349px;
+            width: 300px;
             height: 0px;
+            margin-right: 10%;
         }
         .pn{
             overflow: hidden;
@@ -22,7 +23,8 @@
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 1;
             margin-left: 10%;
-            font-size: 24px;
+            
+            font-size: 22px;
             font-weight: bold;
             text-decoration: none;
             position: absolute;
@@ -169,6 +171,7 @@ border: 1px solid black;
         p2 {
             margin-left: 10%;
             font-weight: bold;
+            font-size: 10%;
         }
         
         .about {
@@ -236,7 +239,7 @@ border: 1px solid black;
             margin-left: 15%;
             width: 160px;
             height: 120px;
-            margin-top: -8px;
+            margin-top: 0px;
         }
 
         .names {
