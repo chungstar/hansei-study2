@@ -33,23 +33,28 @@
       <!-- <a href="#">
         <img src="./assets/icons/menu.png" alt="메뉴버튼">
       </a> -->
-      <input type="checkbox" id="menuicon" />
-      <label for="menuicon">
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
+      <a href="#">
+        <img src="./assets/icons/setting.png" alt="설정버튼">
+      </a>
       <!-- <div class="today">Today: 1234 / Total: 12345</div> -->
       <a href="">
         <h1>MBTI 과몰입 인간의 블로그</h1>
       </a>
       <div class="nav-right">
+        <div id="profile">
+
+        </div>
+        <button id="logInBtn" class="log-in">로그인</button>
+        <button id="logOutBtn" class="log-out">로그아웃</button>
         <a href="#">
           <img src="./assets/icons/search.png" alt="검색버튼">
         </a>
-        <a href="#">
-          <img src="./assets/icons/setting.png" alt="설정버튼">
-        </a>
+        <input type="checkbox" id="menuicon" />
+        <label for="menuicon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
       </div>
     </nav>
 
@@ -137,19 +142,57 @@
       appId: '1:857327371964:web:b316e6a45eeb07d05132b9'
     });
 
+    // firebase
     const db = firebaseApp.firestore();
     const storage = firebaseApp.storage()
-    // const auth = firebaseApp.auth();
+    const Auth = firebaseApp.auth();
 
+    // 선택자
     const category = document.querySelector('#category-select');
     const public = document.querySelector('#open-select');
     const title = document.querySelector('#title');
     const description = document.querySelector('textarea');
     const hashtag = document.querySelector('#hashtag');
     const uploadBtn = document.querySelector('#uploadBtn');
+    const logInBtn = document.querySelector('#logInBtn');
 
-    console.log(sessionStorage.getItem('category'))
-    console.log(sessionStorage.getItem('docId'))
+    // 구글 로그인 버튼 동작
+    document.querySelector('#logInBtn').addEventListener('click', async () => {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      const logIn = await Auth.signInWithPopup(provider);
+      console.log(logIn)
+      if (logIn) {
+        const {
+          displayName,
+          photoURL
+        } = logIn.user
+        // console.log(document.querySelector('#logInBtn'))
+        document.querySelector('#logInBtn').style.display = "none";
+        document.querySelector('#logOutBtn').style.display = "block";
+        document.querySelector('#profile').innerHTML = `
+          <span style="padding-right: 20px; color: #fff;">${displayName}님</span>
+        `
+      }
+    })
+
+    // 로그아웃 버튼 동작
+    document.querySelector('#logOutBtn').addEventListener('click', () => {
+      firebase.auth().signOut().then(() => {
+        // Sign-out successful.
+        console.log('logout success')
+        document.querySelector('#logInBtn').style.display = "block";
+        document.querySelector('#logOutBtn').style.display = "none";
+        document.querySelector('#profile').innerHTML = ``;
+      }).catch((error) => {
+        // An error happened.
+        console.log('logout error : ', error)
+      });
+    })
+
+
+
+    // console.log(sessionStorage.getItem('category'))
+    // console.log(sessionStorage.getItem('docId'))
 
     if (sessionStorage.getItem('docId')) {
       const updateCategory = sessionStorage.getItem('category');
@@ -201,7 +244,6 @@
           console.log('Get Url ERROR => ', error)
         })
       })
-
     }
 
     // document
