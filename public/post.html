@@ -17,7 +17,7 @@
 
   <!-- Summernote script & CSS -->
   <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+  <script src="./summernote-bs4.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/lang/summernote-ko-KR.js"></script>
 
   <!-- Local CSS -->
@@ -33,28 +33,23 @@
       <!-- <a href="#">
         <img src="./assets/icons/menu.png" alt="메뉴버튼">
       </a> -->
-      <a href="#">
-        <img src="./assets/icons/setting.png" alt="설정버튼">
-      </a>
+      <input type="checkbox" id="menuicon" />
+      <label for="menuicon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
       <!-- <div class="today">Today: 1234 / Total: 12345</div> -->
       <a href="">
         <h1>MBTI 과몰입 인간의 블로그</h1>
       </a>
       <div class="nav-right">
-        <div id="profile">
-
-        </div>
-        <button id="logInBtn" class="log-in">로그인</button>
-        <button id="logOutBtn" class="log-out">로그아웃</button>
         <a href="#">
           <img src="./assets/icons/search.png" alt="검색버튼">
         </a>
-        <input type="checkbox" id="menuicon" />
-        <label for="menuicon">
-          <span></span>
-          <span></span>
-          <span></span>
-        </label>
+        <a href="#">
+          <img src="./assets/icons/setting.png" alt="설정버튼">
+        </a>
       </div>
     </nav>
 
@@ -80,9 +75,9 @@
 
         <label for="open-select"></label>
         <select name="open" id="open-select">
-          <option value="공개" selected="selected">공개</option>
-          <option value="비공개">비공개</option>
-          <option value="이웃 공개">이웃 공개</option>
+          <option id="공개" value="공개" selected="selected">공개</option>
+          <option id="비공개" value="비공개">비공개</option>
+          <option id="이웃공개" value="이웃공개">이웃 공개</option>
         </select>
       </div>
 
@@ -102,6 +97,54 @@
   <script src="https://www.gstatic.com/firebasejs/9.6.5/firebase-storage-compat.js"></script>
 
   <script>
+    // Firebase 연결
+    const firebaseApp = firebase.initializeApp({
+      apiKey: 'AIzaSyAwBAj3d2YDACIRMCdIfT8OpH5SEVDxVS0',
+      authDomain: 'blog-pj-b6a4e.firebaseapp.com',
+      projectId: 'blog-pj-b6a4e',
+      storageBucket: 'blog-pj-b6a4e.appspot.com',
+      messagingSenderId: '857327371964',
+      appId: '1:857327371964:web:b316e6a45eeb07d05132b9'
+    });
+
+    const db = firebaseApp.firestore();
+    const storage = firebaseApp.storage()
+    // const auth = firebaseApp.auth();
+
+    const category = document.querySelector('#category-select');
+    const public = document.querySelector('#open-select');
+    const title = document.querySelector('#title');
+    const description = document.querySelector('textarea');
+    const hashtag = document.querySelector('#hashtag');
+    const uploadBtn = document.querySelector('#uploadBtn');
+
+    console.log(sessionStorage.getItem('category'))
+    console.log(sessionStorage.getItem('docId'))
+
+    // 게시글 수정 부분
+    if (sessionStorage.getItem('docId')) {
+      const updateCategory = sessionStorage.getItem('category');
+      const updateDocId = sessionStorage.getItem('docId');
+      db.collection('스터디').doc(updateDocId).get().then(async (res) => {
+        const content = await res.data();
+        console.log(content)
+        const {
+          category,
+          open,
+          title,
+          description,
+          hashtag
+        } = content;
+        // console.log(description)
+        document.querySelector(`#${category}`).setAttribute('selected', true);
+        document.querySelector(`#${open}`).setAttribute('selected', true)
+        document.querySelector('#title').value = title
+        $('#summernote').summernote('pasteHTML', description)
+        console.log(description)
+        document.querySelector('#hashtag').value = hashtag
+      })
+    }
+
     // Summernote 텍스트 에디터 실행문
     $(document).ready()
 
@@ -131,86 +174,6 @@
 
     // Summernote 사이즈 조절 바 숨김
     $('.note-statusbar').hide();
-
-    // Firebase 연결
-    const firebaseApp = firebase.initializeApp({
-      apiKey: 'AIzaSyAwBAj3d2YDACIRMCdIfT8OpH5SEVDxVS0',
-      authDomain: 'blog-pj-b6a4e.firebaseapp.com',
-      projectId: 'blog-pj-b6a4e',
-      storageBucket: 'blog-pj-b6a4e.appspot.com',
-      messagingSenderId: '857327371964',
-      appId: '1:857327371964:web:b316e6a45eeb07d05132b9'
-    });
-
-    // firebase
-    const db = firebaseApp.firestore();
-    const storage = firebaseApp.storage()
-    const Auth = firebaseApp.auth();
-
-    // 선택자
-    const category = document.querySelector('#category-select');
-    const public = document.querySelector('#open-select');
-    const title = document.querySelector('#title');
-    const description = document.querySelector('textarea');
-    const hashtag = document.querySelector('#hashtag');
-    const uploadBtn = document.querySelector('#uploadBtn');
-    const logInBtn = document.querySelector('#logInBtn');
-
-    // 구글 로그인 버튼 동작
-    document.querySelector('#logInBtn').addEventListener('click', async () => {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      const logIn = await Auth.signInWithPopup(provider);
-      console.log(logIn)
-      if (logIn) {
-        const {
-          displayName,
-          photoURL
-        } = logIn.user
-        // console.log(document.querySelector('#logInBtn'))
-        document.querySelector('#logInBtn').style.display = "none";
-        document.querySelector('#logOutBtn').style.display = "block";
-        document.querySelector('#profile').innerHTML = `
-          <span style="padding-right: 20px; color: #fff;">${displayName}님</span>
-        `
-      }
-    })
-
-    // 로그아웃 버튼 동작
-    document.querySelector('#logOutBtn').addEventListener('click', () => {
-      firebase.auth().signOut().then(() => {
-        // Sign-out successful.
-        console.log('logout success')
-        document.querySelector('#logInBtn').style.display = "block";
-        document.querySelector('#logOutBtn').style.display = "none";
-        document.querySelector('#profile').innerHTML = ``;
-      }).catch((error) => {
-        // An error happened.
-        console.log('logout error : ', error)
-      });
-    })
-
-
-
-    // console.log(sessionStorage.getItem('category'))
-    // console.log(sessionStorage.getItem('docId'))
-
-    if (sessionStorage.getItem('docId')) {
-      const updateCategory = sessionStorage.getItem('category');
-      const updateDocId = sessionStorage.getItem('docId');
-      db.collection('스터디').doc(updateDocId).get().then(async (res) => {
-        const content = res.data();
-        console.log(content)
-        const {
-          category,
-          open,
-          title,
-          description,
-          hashtag
-        } = content;
-        console.log(category)
-        document.querySelector(`#${category}`).setAttribute('selected', true)
-      })
-    }
 
     // Summernote 이미지 첨부 시 실행
     const uploadImage = (file, editor) => {
@@ -244,6 +207,7 @@
           console.log('Get Url ERROR => ', error)
         })
       })
+
     }
 
     // document
@@ -279,6 +243,7 @@
     //     console.log(postObj)
     //   })
 
+    // 등록 버튼 클릭 시 데이터 저장
     uploadBtn.addEventListener('click', async (event) => {
       event.preventDefault()
       // console.log('click upload btn')

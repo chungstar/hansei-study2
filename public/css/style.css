@@ -15,11 +15,6 @@
 	margin-bottom: 33px;
 	line-height: 40px;
 }
-#wrap nav a {
-	width: 35px;
-	text-align: center;
-	background: #fff;
-}
 #wrap nav #menuicon {
 	display: none;
 }
@@ -64,7 +59,12 @@
 	bottom: 50%;
 	transform: translateY(50%) rotate(-45deg);
 }
-#wrap nav a img {
+
+#wrap nav a {
+	width: 35px;
+	text-align: center;
+}
+#rap nav a img {
 	width: 70%;
 }
 #wrap nav a h1 {
@@ -90,15 +90,9 @@
 #wrap nav .nav-right {
 	display: flex;
 	margin-left: auto;
-	align-items: center;
 }
-#wrap nav .nav-right button {
-	margin-right: 20px;
-}
-#wrap nav .nav-right button.log-in {
-}
-#wrap nav .nav-right button.log-out {
-	display: none;
+#wrap nav .nav-right a:first-child {
+	/* margin-right: 15px; */
 }
 #wrap nav .nav-right a img {
 	width: 70%;
