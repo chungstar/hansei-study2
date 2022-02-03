@@ -10,7 +10,7 @@
       src="https://kit.fontawesome.com/ade2c496a4.js"
       crossorigin="anonymous"
     ></script>
-    <script type="text/javascript" src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   </head>
   <body>
     <header>
@@ -267,5 +267,120 @@
       </div>
       <div class="side-box"></div>
     </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+
+    <!-- firebase 코드 -->
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyB3L-fynIlgwSYypkAVmfn9O1xsY__OWJY",
+        authDomain: "blog-4cc65.firebaseapp.com",
+        projectId: "blog-4cc65",
+        storageBucket: "blog-4cc65.appspot.com",
+        messagingSenderId: "638523474773",
+        appId: "1:638523474773:web:70efc45eb10f6e89e925dc",
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      // const analytics = getAnalytics(app);
+
+      
+      const db = firebase.firestore();
+      var dt = new Date();
+
+      db.collection("product")
+        .get()
+        .then((결과) => {
+          결과.forEach((i) => {
+            const post = `
+            <div class="main-box">
+              <div class="info">
+                <img src="${i.data().프로필}" />
+                <div class="nickname">
+                  <p class="name">${i.data().닉네임}</p>
+                  <p class="timer">${i.data().시간}</p>
+                </div>
+              </div>
+              <div class="title">
+                <h1>${i.data().제목}</h1>
+                <ul class="hashtag">
+                  <li><a href="#">${i.data().해시태그}</a></li>
+                  <li><a href="#">${i.data().해시태그}</a></li>
+                  <li><a href="#">${i.data().해시태그}</a></li>
+                  <li><a href="#">${i.data().해시태그}</a></li>
+                  <li><a href="#">${i.data().해시태그}</a></li>
+               </ul>
+              </div>
+              <div class="content">
+                <div class="greeting">
+                  <span>${i.data().내용}</span>
+                  <span>${i.data().내용}</span>
+                  <span>${i.data().내용}</span>
+                </div>
+                <img src="${i.data().사진}" />
+              </div>
+            </div>
+            <div class="side-box"></div>
+            `;
+
+            const click = `
+              <div>
+              <span>일별 조회수</span>
+              <span>${dt} 현재</span>
+              </div>
+              <ul class="graph">
+                <li>
+                  <div>
+                    <span style="height: ${i.data().조회수 * 5}%"></span>
+                  </div>
+                  <span>1월 31일</span>
+                </li>
+                <li>
+                  <div>
+                    <span style="height: ${i.data().조회수 * 5}%"></span>
+                  </div>
+                  <p>2월 1일</p>
+                </li>
+                <li>
+                  <div>
+                    <span style="height: ${i.data().조회수 * 5}%"></span>
+                  </div>
+                  <p>2월 2일</p>
+                </li>
+                <li>
+                  <div>
+                    <span style="height: ${i.data().조회수 * 5}%"></span>
+                  </div>
+                  <p>2월 3일</p>
+                </li>
+                <li>
+                  <div>
+                    <span style="height: ${i.data().조회수 * 5}%"></span>
+                  </div>
+                  <p>2월 4일</p>
+                </li>
+                <li>
+                  <div>
+                    <span style="height: ${i.data().조회수 * 5}%"></span>
+                  </div>
+                  <p>2월 5일</p>
+                </li>
+              </ul>
+            `;
+
+            $(".sidebar-box3 div").remove();
+            $(".sidebar-box3 ul").remove();
+            $(".sidebar-box3").append(click);
+            $(".wrapper").append(post);
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    </script>
   </body>
 </html>
