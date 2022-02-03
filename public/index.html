@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Blog</title>
   <link rel="stylesheet" href="./style.css.css" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
  
@@ -129,21 +129,16 @@
 //       })
       </script>
       <script>
-       function change(id){
-            // const postRef = db.collection('post');
+       async function change(id){
+         const postsRef = db.collection('post');
+
+            
             id = document.getElementById("filter");
           if(id.value=="date"){
-            const getMyPosts = async() => {
-    const post = await db
-      .collection('post')
-      // .where('creatorId', "==" , userObj.uid)
-      .orderBy("date", "asc")
-      .get();
-    console.log(post.docs.map(doc => doc.data()))
-  }
-  useEffect(() => {
-    getMyPosts();
-  }, [])
+            const firstThreeRes = await postsRef.orderBy('좋아요','desc').limit(1).get();
+            firstThreeRes.forEach(doc => {
+              console.log(doc.id,'->',doc.data());
+            });
           }
           else{
               return;
