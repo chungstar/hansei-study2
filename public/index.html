@@ -96,37 +96,37 @@
   <div class="media">
     <script>
       var db = firebase.firestore();
-      db.collection('post').get().then((결과) => {
-        결과.forEach((doc) => {
-          console.log(doc.data());
-          var temp = `<div class="post">
+//       db.collection('post').get().then((결과) => {
+//         결과.forEach((doc) => {
+//           console.log(doc.data());
+//           var temp = `<div class="post">
 
 
-<div class="subn">
-    <a href="#!" class="pn">${doc.data().제목}</a>
-</div><br>
+// <div class="subn">
+//     <a href="#!" class="pn">${doc.data().제목}</a>
+// </div><br>
 
-<br>
-<div class="content">
-    <img class="postimg" src="./assets/unsplash_TscNBt1tIVY.png">
-    <div class="pp">
-        <ppp>${doc.data().내용}</ppp>
-    </div>
-    <br><br><br>
+// <br>
+// <div class="content">
+//     <img class="postimg" src='${url}'>
+//     <div class="pp">
+//         <ppp>${doc.data().내용}</ppp>
+//     </div>
+//     <br><br><br>
 
-    <div class="icons">
-        <img src="./assets/topcoat_like.png" width="15px">&nbsp${doc.data().좋아요}&nbsp
-        <img src="./assets/fa-regular_comment-dots.png" width="15px">&nbsp ${doc.data().댓글}
-    </div>
-</div>
-<br><hr><br>
-</div>`;
-          $('.media').append(temp);
+//     <div class="icons">
+//         <img src="./assets/topcoat_like.png" width="15px">&nbsp${doc.data().좋아요}&nbsp
+//         <img src="./assets/fa-regular_comment-dots.png" width="15px">&nbsp ${doc.data().댓글}
+//     </div>
+// </div>
+// <br><hr><br>
+// </div>`;
+//           $('.media').append(temp);
           
           
-        })
+//         })
        
-      })
+//       })
       </script>
       <script>
        function change(id){
@@ -225,13 +225,46 @@
         <br><br> -->
   <!-- <img src="./assets/akar-icons_align-to-top.png" class="totop"> -->
   <!-- </div> -->
-  <!-- <script>
-   
+  <script>
+   var storage = firebase.storage();
+   var storageRef = storage.ref();
+
 var gsReference = storage.refFromURL('gs://minjeong0204-52970.appspot.com/unsplash_TscNBt1tIVY.png');
 storageRef.child('unsplash_TscNBt1tIVY.png').getDownloadURL()
   .then((url) => {
     // `url` is the download URL for 'images/stars.jpg'
+    console.log(url)
+    db.collection('post').get().then((결과) => {
+        결과.forEach((doc) => {
+          console.log(doc.data());
+          var temp = `<div class="post">
 
+
+<div class="subn">
+    <a href="#!" class="pn">${doc.data().제목}</a>
+</div><br>
+
+<br>
+<div class="content">
+    <img class="postimg" src='${url}'>
+    <div class="pp">
+        <ppp>${doc.data().내용}</ppp>
+    </div>
+    <br><br><br>
+
+    <div class="icons">
+        <img src="./assets/topcoat_like.png" width="15px">&nbsp${doc.data().좋아요}&nbsp
+        <img src="./assets/fa-regular_comment-dots.png" width="15px">&nbsp ${doc.data().댓글}
+    </div>
+</div>
+<br><hr><br>
+</div>`;
+          $('.media').append(temp);
+          
+          
+        })
+       
+      })
     
     // Or inserted into an <img> element
     var img = document.getElementById('myimg');
@@ -243,7 +276,7 @@ storageRef.child('unsplash_TscNBt1tIVY.png').getDownloadURL()
 
  
   </script>
-   -->
+  
 </body>
 
 </html>
