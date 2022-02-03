@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>블로그</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <script
+      src="https://kit.fontawesome.com/ade2c496a4.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="MenuButton">
+        <input type="checkbox" id="menuicon" />
+        <label for="menuicon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        <div class="sidebar">
+          <div class="sidebar-box1">
+            <i class="far fa-grin-alt"></i>
+            <div class="Myinfo">
+              <p style="font-weight: 900"><a href="#">임송재 ></a></p>
+              <p>오늘 <span>0</span> · 전체 <span>1097</span></p>
+            </div>
+          </div>
+
+          <ul class="sidebar-box2">
+            <li>
+              <a href="#"><i class="far fa-bell"></i></a>내소식
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-child"></i></a>이웃목록
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-chart-line"></i></a>통계
+            </li>
+            <li>
+              <a href="post.html"><i class="fas fa-pen"></i></a>글쓰기
+            </li>
+          </ul>
+          <div class="sidebar-box3">
+            <div>
+              <span>일별 조회수</span>
+              <span>2022.02.02. 12시 현재</span>
+            </div>
+            <ul class="graph">
+              <li>
+                <div>
+                  <span style="height: 20%"></span>
+                </div>
+                <span>1월 31일</span>
+              </li>
+              <li>
+                <div>
+                  <span style="height: 50%"></span>
+                </div>
+                <p>2월 1일</p>
+              </li>
+              <li>
+                <div>
+                  <span style="height: 80%"></span>
+                </div>
+                <p>2월 2일</p>
+              </li>
+              <li>
+                <div>
+                  <span style="height: 90%"></span>
+                </div>
+                <p>2월 3일</p>
+              </li>
+              <li>
+                <div>
+                  <span style="height: 15%"></span>
+                </div>
+                <p>2월 4일</p>
+              </li>
+              <li>
+                <div>
+                  <span style="height: 40%"></span>
+                </div>
+                <p>2월 5일</p>
+              </li>
+            </ul>
+          </div>
+          <div class="sidebar-box4">
+            <ul>
+              <a href="#"
+                ><li><i class="fas fa-desktop"></i>내 동영상</li></a
+              >
+              <a href="#"
+                ><li><i class="fas fa-bolt"></i>내 모먼트</li></a
+              >
+              <a href="#"
+                ><li><i class="far fa-clock"></i>지난 오늘 글</li></a
+              >
+            </ul>
+            <ul>
+              <a href="#">
+                <li><i class="fas fa-box"></i>마켓 플레이스</li></a
+              >
+              <a href="#">
+                <li><i class="fas fa-box-open"></i>마켓 구매내역</li></a
+              >
+            </ul>
+            <ul>
+              <a href="#">
+                <li><i class="fas fa-blog"></i>블로그 홈</li></a
+              >
+              <a href="#">
+                <li><i class="fab fa-blogger"></i>블로그팀 공식블로그</li></a
+              >
+              <a href="#">
+                <li><i class="fab fa-microblog"></i>이달의 블로그</li></a
+              >
+              <a href="#">
+                <li><i class="fas fa-check"></i>공식 블로그</li></a
+              >
+            </ul>
+          </div>
+          <div class="sidebar-box5">
+            <ul>
+              <a href="#"><li>공지사항</li></a>
+              <a href="#"><li>환경설정</li></a>
+              <ul>
+                <a href="#"><li>로그인정보</li></a>
+                <li>songjae99</li>
+              </ul>
+              <a href="#"><li>PC버전으로 보기</li></a>
+              <a href="#"><li>블로그 고객센터</li></a>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="mobile-searching">
+        <a href="#"><i class="fab fa-sistrix"></i></a>
+      </div>
+      <div class="blogname">MBTI과몰입 인간의 블로그</div>
+      <div class="mobile-category">
+        <input type="checkbox" id="category" />
+        <label for="category">
+          <img src="image/fa-regular_list-alt.png" />
+        </label>
+        <div>
+          <div>
+            <label for="category">
+              <i class="fas fa-times"></i>
+            </label>
+            카테고리
+          </div>
+          <ul>
+            <li><a href="#">전체글</a><span>6</span></li>
+            <li><a href="#">주절주절 감성글</a><span>2</span></li>
+            <li><a href="#">맛집 로그들</a><span>4</span></li>
+            <li><a href="#">여행 로그들</a><span>0</span></li>
+            <li><a href="#">이도저도 아님..</a><span>3</span></li>
+            <li><a href="#">읽기</a><span>2</span></li>
+            <li><a href="#">메모글</a><span>1</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="icons">
+        <a href="searching.html"><i class="fab fa-sistrix"></i></a>
+        <input type="text" />
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <!-- 게시물 1 -->
+      <div class="main-box">
+        <div class="info">
+          <img src="image/ticket.jpg" />
+          <div class="nickname">
+            <p class="name">집사는 괴로워</p>
+            <p class="timer">2시간 전</p>
+          </div>
+        </div>
+        <div class="title">
+          <h1><a href="theme.html">고양이 두부모래 추천!</a></h1>
+          <ul class="hashtag">
+            <li><a href="#">#고양이</a></li>
+            <li><a href="#">#집사</a></li>
+            <li><a href="#">#두부모래</a></li>
+            <li><a href="#">#쿠팡</a></li>
+            <li><a href="#">#내돈내산</a></li>
+          </ul>
+        </div>
+        <div class="content">
+          <div class="greeting">
+            <span>안녕하세요 !!</span>
+            <span>집사는 괴로워입니다:)</span>
+            <span>날씨가 추워지는 요즘 잘 지내고 계신가요?</span>
+          </div>
+          <img src="image/5.jpg" />
+        </div>
+      </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+
+    <!-- firebase 코드 -->
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyB3L-fynIlgwSYypkAVmfn9O1xsY__OWJY",
+        authDomain: "blog-4cc65.firebaseapp.com",
+        projectId: "blog-4cc65",
+        storageBucket: "blog-4cc65.appspot.com",
+        messagingSenderId: "638523474773",
+        appId: "1:638523474773:web:70efc45eb10f6e89e925dc",
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      // const analytics = getAnalytics(app);
+
+      
+      const db = firebase.firestore();
+      var dt = new Date();
+
+      db.collection("product")
+        .get()
+        .then((결과) => {
+          결과.forEach((i) => {
+            const post = `
+            <div class="main-box">
+              <div class="info">
+                <img src="${i.data().프로필}" />
+                <div class="nickname">
+                  <p class="name">${i.data().닉네임}</p>
+                  <p class="timer">${i.data().시간}</p>
+                </div>
+              </div>
+              <div class="title">
+                <h1>${i.data().제목}</h1>
+                <ul class="hashtag">
+                  <li><a href="#">${i.data().해시태그}</a></li>
+                  <li><a href="#">${i.data().해시태그}</a></li>
+                  <li><a href="#">${i.data().해시태그}</a></li>
+                  <li><a href="#">${i.data().해시태그}</a></li>
+                  <li><a href="#">${i.data().해시태그}</a></li>
+               </ul>
+              </div>
+              <div class="content">
+                <div class="greeting">
+                  <span>${i.data().내용}</span>
+                  <span>${i.data().내용}</span>
+                  <span>${i.data().내용}</span>
+                </div>
+                <img src="${i.data().사진}" />
+              </div>
+            </div>
+            `;
+
+            const click = `
+              <div>
+              <span>일별 조회수</span>
+              <span>${dt} 현재</span>
+              </div>
+              <ul class="graph">
+                <li>
+                  <div>
+                    <span style="height: ${i.data().조회수 * 5}%"></span>
+                  </div>
+                  <span>1월 31일</span>
+                </li>
+                <li>
+                  <div>
+                    <span style="height: ${i.data().조회수 * 5}%"></span>
+                  </div>
+                  <p>2월 1일</p>
+                </li>
+                <li>
+                  <div>
+                    <span style="height: ${i.data().조회수 * 5}%"></span>
+                  </div>
+                  <p>2월 2일</p>
+                </li>
+                <li>
+                  <div>
+                    <span style="height: ${i.data().조회수 * 5}%"></span>
+                  </div>
+                  <p>2월 3일</p>
+                </li>
+                <li>
+                  <div>
+                    <span style="height: ${i.data().조회수 * 5}%"></span>
+                  </div>
+                  <p>2월 4일</p>
+                </li>
+                <li>
+                  <div>
+                    <span style="height: ${i.data().조회수 * 5}%"></span>
+                  </div>
+                  <p>2월 5일</p>
+                </li>
+              </ul>
+            `;
+
+            $(".sidebar-box3 div").remove();
+            $(".sidebar-box3 ul").remove();
+            $(".sidebar-box3").append(click);
+            $(".wrapper").append(post);
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    </script>
+  </body>
+</html>
