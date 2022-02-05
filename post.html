@@ -228,12 +228,6 @@
     const db = firebase.firestore();
     const storgae = firebase.storage();
 
-    firebase.auth().onAuthStateChanged((user)=>{
-      if(user){
-        console.log(user)
-      }
-    })
-
     var params = new URLSearchParams(window.location.search)
     //본문//
     db.collection('내돈내산 후기').doc(params.get('id')).get().then((result) => {
@@ -305,8 +299,15 @@
     })
 
     ////수정
+    
+    firebase.auth().onAuthStateChanged((user)=>{
+      if(user){
+        console.log(user)
+      }
+    })
+
     $('#edit').click(function(){
-      window.location.href = '/edit.html?id=' + params.get('id')
+      window.location.href = '/write.html?id=' + params.get('id')
     })
     
   </script>
