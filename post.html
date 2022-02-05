@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>blog...</title>
+
+  <link rel="stylesheet" href="css/postPage.css" />
+
+  <!-- font awesome cdn -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+
+<body>
+  <!-- Top navigation -->
+  <header id="header">
+    <nav class="navbar">
+      <div class="box">
+        <input type="checkbox" id="menuicon" />
+        <label for="menuicon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+      </div>
+      <a href="/" style="text-decoration: none; color: white" class="blogname">
+        MBTI 과몰입 인간의 블로그
+      </a>
+      <div class="header-right">
+        <a href="#search" class="icon"><i class="fas fa-search"></i></a>
+        <a href="#categories" class="icon"><i class="far fa-list-alt"></i></a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="site-main">
+    <!-- post content -->
+    <div class="container">
+      <hr />
+      <!-- post-footer -->
+      <div class="post-footer mb-3">
+        <!-- Tags -->
+        <h3 class="footer-title fontsize-1 py-2">태그</h3>
+        <div class="tags">
+          <div class="flex flex-wrap">
+            <a href="#" class="tag-link btn bg-light">태그1</a>
+            <a href="#" class="tag-link btn bg-light">태그2</a>
+            <a href="#" class="tag-link btn bg-light">태그3</a>
+            <a href="#" class="tag-link btn bg-light">태그4</a>
+            <a href="#" class="tag-link btn bg-light">태그5</a>
+          </div>
+        </div>
+
+        <!-- comments -->
+        <div class="post-comments py-2">
+          <h3 class="fontsize-1 py-2">댓글</h3>
+          <div class="comment-details">
+            <div class="comment-item py-2">
+              <div class="flex">
+                <div class="avatar px-2">
+                  <img src="asset/face1.png" class="rounded" alt="" />
+                </div>
+                <div class="comment-content">
+                  <h5 class="fontsize-2 m-0">춘식이1</h5>
+                  <p class="text-black">춘식이1</p>
+                  <div class="mt-3">
+                    <button class="comment-reply btn-s font">답글</button>
+                    <button class="comment-update btn-s">수정</button>
+                    <button class="comment-delete btn-s">삭제</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- comment reply -->
+              <div class="reply py-2">
+                <div class="flex">
+                  <div class="avatar px-2">
+                    <img src="asset/face2.png" class="rounded" alt="" />
+                  </div>
+                  <div class="comment-content">
+                    <h5 class="fontsize-2 m-0">춘식이2</h5>
+                    <p class="text-black">춘식이2</p>
+                    <div class="mt-3">
+                      <button class="comment-reply btn-s">답글</button>
+                      <button class="comment-update btn-s">수정</button>
+                      <button class="comment-delete btn-s">삭제</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- comment form -->
+          <div class="comment-form">
+            <h3 class="fontsize-1 py-2">댓글 남기기</h3>
+
+            <textarea class="form-control" placeholder="메세지를 입력해주세요" rows="10"></textarea>
+            <div class="text-center">
+              <button class="btn comment-send fontsize-2 mt-2">등록</button>
+            </div>
+          </div>
+        </div>
+        <!-- Trending post -->
+        <section class="trending-post mt-3">
+          <h2 class="text-black fontsize-1 py-2">인기글</h2>
+          <hr style="
+                height: 2px;
+                border-width: 0;
+                color: black;
+                background-color: black;
+              " />
+          <!-- post-items -->
+          <div class="post-item py-1">
+            <article class="article">
+              <div class="flex">
+                <a href="#">
+                  <img src="asset/face2.png" class="rounded" alt="" />
+                </a>
+                <div class="cart-body">
+                  <div class="trending-category">
+                    <a href="#" class="text-green"> 카테고리명 </a>
+                  </div>
+                  <a href="#" class="text-title fontsize-2 text-black">
+                    저는 춘식이입니다
+                  </a>
+                  <p class="secondary-title text-secondary">
+                    <span>
+                      <i class="far fa-clock text-primary"></i>
+                      업로드일
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+          <hr />
+          <!-- post-items -->
+          <div class="post-item py-1">
+            <article class="article">
+              <div class="flex">
+                <a href="#">
+                  <img src="asset/face2.png" class="rounded" alt="" />
+                </a>
+                <div class="cart-body">
+                  <div class="trending-category">
+                    <a href="#" class="text-green"> 카테고리명 </a>
+                  </div>
+                  <a href="#" class="text-title fontsize-2 text-black">
+                    저는 춘식이입니다
+                  </a>
+                  <p class="secondary-title text-secondary">
+                    <span>
+                      <i class="far fa-clock text-primary"></i>
+                      업로드일
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+          <hr />
+          <!-- post-items -->
+          <div class="post-item py-1">
+            <article class="article">
+              <div class="flex">
+                <a href="#">
+                  <img src="asset/face2.png" class="rounded" alt="" />
+                </a>
+                <div class="cart-body">
+                  <div class="trending-category">
+                    <a href="#" class="text-green"> 카테고리명 </a>
+                  </div>
+                  <a href="#" class="text-title fontsize-2 text-black">
+                    저는 춘식이입니다
+                  </a>
+                  <p class="secondary-title text-secondary">
+                    <span>
+                      <i class="far fa-clock text-primary"></i>
+                      업로드일
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+          <hr />
+        </section>
+      </div>
+
+      <!-- pagination -->
+      <div class="pagination fontsize-2 mb-3">
+        <a href="#"><i class="fas fa-chevron-left"></i></a>
+        <a href="#"><i class="fas fa-chevron-right"></i></a>
+      </div>
+    </div>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <!-- firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBf-MP5LTK_-e4T0XKNkPlz5e5vKdBiJug",
+      authDomain: "blog-626d0.firebaseapp.com",
+      projectId: "blog-626d0",
+      storageBucket: "blog-626d0.appspot.com",
+      messagingSenderId: "948496084830",
+      appId: "1:948496084830:web:6aa39861db94deb72b29cf",
+      measurementId: "G-6QMSWDCQ07",
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  <script>
+    const db = firebase.firestore();
+    db.collection("post")
+      .get()
+      .then((결과) => {
+        결과.forEach((doc) => {
+          var template = `
+        <article id="post">
+          <!-- post heading -->
+          <div class="heaing">
+            <div class="category">
+              <a href="#" class="text-black fontsize-2 px-1">${
+                doc.data().category
+              }</a>
+            </div>
+
+            <div class="title">
+              <h1 class="text-black fontsize-1 px-1">${doc.data().title}</h1>
+            </div>
+
+            <div class="meta">
+              <a href="#" class="text-black fontsize-2 px-1">
+                <i class="fas fa-user"></i> ${doc.data().user}
+              </a>
+              <a href="#" class="text-black fontsize-2 px-1">
+                <i class="fas fa-clock"></i> ${doc.data().date}
+              </a>
+            </div>
+          </div>
+          <!-- post main -->
+          <div class="thumbnail mt-2">
+            <img src="asset/thumbnail.png" class="thumbnail" alt="">
+          </div>
+          <div class="content text-black mt-1">
+          ${doc.data().article}
+      
+
+          </div>
+        </article>`;
+          $(".container").prepend(template);
+        });
+      });
+  </script>
+</body>
+
+</html>
