@@ -70,16 +70,20 @@
 
         .back {
            visibility: hidden;
-            margin-right: auto;
+           margin-right: auto;
+           margin-left: -38px;
         }
 
         .right {
             display: flex;
-            margin-left: auto;
-            align-items: center;
+            margin-right: -40px;
+            align-items: flex-end;
             width: 250px;
-            justify-content: space-between;
+            justify-content: flex-end;
+            /* visibility: visible; */
         }
+
+.right {}
 
         .searchbx {
             margin-top: -1%;
@@ -409,7 +413,7 @@ border: 1px solid black;
             .right>a:first-child,
           .right>a:nth-child(2),
           .right>a:nth-child(3){
-              display: none;
+              /* display: none; */
           }
           .back{
             visibility: visible;
@@ -470,7 +474,7 @@ border: 1px solid black;
 
             }
             .right{
-                width: 4%;
+                width: 12%;
             }
             .menud{
                 padding-top: 18%;
@@ -546,11 +550,11 @@ border: 1px solid black;
                 margin-left: 5%;
             }
 
-            /* .back {
+            .back {
                 
-                visibility: hidden;
+                visibility: visible;
                 
-            } */
+            }
            
             .menud{
                 padding-top: 80px;
