@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css.css" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyAKbvmyjDsfVlP09HiylHf29Ow5IUMtQqo",
+        authDomain: "minjeong0204-52970.firebaseapp.com",
+        projectId: "minjeong0204-52970",
+        storageBucket: "minjeong0204-52970.appspot.com",
+        messagingSenderId: "494219730529",
+        appId: "1:494219730529:web:f58b7e6bd72779feaf5420",
+        measurementId: "G-WBT4WW6NHK",
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      // const analytics = getAnalytics(app);
+    </script>
+
+    <nav>
+      <!-- <a class="logo" href="#!">Blog</a> -->
+      <a class="back" href="#!"
+        ><img src="./assets/eva_arrow-ios-back-fill.png"
+      /></a>
+      <div class="searchBox">
+        <input
+          class="search"
+          type="search"
+          placeholder="검색어를 입력하세요"
+          aria-label="Enter search term..."
+          aria-describedby="button-search"
+        />
+        <button class="searchbtn" id="button-search" type="button">검색</button>
+      </div>
+      <div class="right">
+        <a href="#"><img src="./assets/unsplash_u49hkWzTL3w.png" /></a>
+        <a class="names" href="#">ISFP공대인간</a>
+        <a href="#!"><img src="./assets/carbon_notification.png" /></a>
+        <a href="#!"><img src="./assets/bx_bx-menu.png" /></a>
+      </div>
+      <!-- <li class="nav-item"><a class="nav-link active" aria-current="page"
+                href="#">설정</a></li> -->
+    </nav>
+    <header>
+      <br />
+      <div class="menud">
+        <div class="item">글</div>
+        <div class="item">사용자</div>
+        <div class="item">태그</div>
+      </div>
+      <br />
+      <hr />
+      <div>
+        <form>
+          <br />
+          <p2>'아이유'에 대한 검색결과입니다. 108건</p2>
+          <select id="filter" onchange="change('filter')">
+            <option value="none">정확도순</option>
+            <option value="date">최신순</option>
+            <option value="population">인기순</option>
+          </select>
+        </form>
+        <br />
+      </div>
+      <!-- <img src="./assets/unsplash_1SAnrIxw5OY.png" class="ad"><br><br> -->
+      <hr />
+
+      <br />
+
+      <div class="about">
+        <p3>[연관검색어]</p3>
+        <ul class="aboutul">
+          <li>
+            <a href="">김민정</a>
+          </li>
+          <li>
+            <a href="">민정쓰</a>
+          </li>
+          <li>
+            <a href="">결과올라잇</a>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <br />
+    <div class="media">
+      <script>
+        var db = firebase.firestore();
+        //       db.collection('post').get().then((결과) => {
+        //         결과.forEach((doc) => {
+        //           console.log(doc.data());
+        //           var temp = `<div class="post">
+
+        // <div class="subn">
+        //     <a href="#!" class="pn">${doc.data().제목}</a>
+        // </div><br>
+
+        // <br>
+        // <div class="content">
+        //     <img class="postimg" src='${url}'>
+        //     <div class="pp">
+        //         <ppp>${doc.data().내용}</ppp>
+        //     </div>
+        //     <br><br><br>
+
+        //     <div class="icons">
+        //         <img src="./assets/topcoat_like.png" width="15px">&nbsp${doc.data().좋아요}&nbsp
+        //         <img src="./assets/fa-regular_comment-dots.png" width="15px">&nbsp ${doc.data().댓글}
+        //     </div>
+        // </div>
+        // <br><hr><br>
+        // </div>`;
+        //           $('.media').append(temp);
+
+        //         })
+
+        //       })
+      </script>
+      <script>
+        function change(id) {
+          // const postRef = db.collection('post');
+          id = document.getElementById("filter");
+          if (id.value == "date") {
+            const getMyPosts = async () => {
+              const post = await db
+                .collection("post")
+                // .where('creatorId', "==" , userObj.uid)
+                .orderBy("date", "asc")
+                .get();
+              console.log(post.docs.map((doc) => doc.data()));
+            };
+            useEffect(() => {
+              getMyPosts();
+            }, []);
+          } else {
+            return;
+          }
+        }
+      </script>
+      <!-- <div class="post">
+
+
+        <div class="subn">
+            <a href="#!" class="pn">[노래추천]리무진-이무진</a>
+        </div><br>
+
+        <br>
+        <div class="content">
+            <img src="./assets/unsplash_1SAnrIxw5OY.png" class="postimg">
+            <div class="pp">
+                <ppp>빙빙 돌아가는 어쩌구 저쩌구 웅앵웅쵸키포키 자이언티 스걸파 턴즈가 우승함 와 대박 어쩌구...
+                    저쩌궁ㅇㅇㅇ하이바이마마갯마을차차차 개꿀잼 노래가 전부 오토튠임 트랫브 트래비앙 어쩌구아아아아아 우리집앞에 공차가 생겼으면 좋겠네
+                    하하하하하하하 스펀지밥 안녕 하하하하 월요일은 죄악이야 안녕 뚱아 하하하 어쩔</ppp>
+            </div>
+            <br><br><br>
+
+            <div class="icons">
+                <img src="./assets/topcoat_like.png" width="15px">&nbsp180&nbsp
+                <img src="./assets/fa-regular_comment-dots.png" width="15px">&nbsp 95
+            </div>
+        </div>
+        <br>
+    </div> -->
+    </div>
+    <br />
+
+    <br />
+    <!-- <div class="post">
+        <div class="subn">
+            <a href="#!" class="pn">[노래추천]리무진-이무진(feat.zionT)</a>
+        </div><br>
+        <br>
+        <div class="content">
+            <img src="./assets/unsplash_1SAnrIxw5OY.png" class="postimg">
+            <div class="pp">
+                <ppp>빙빙 돌아가는 어쩌구 저쩌구 웅앵웅쵸키포키 자이언티 스걸파 턴즈가 우승함 와 대박 어쩌구...
+                    저쩌궁ㅇㅇㅇ하이바이마마갯마을차차차 개꿀잼 노래가 전부 오토튠임 트랫브 트래비앙 어쩌구아아아아아 우리집앞에 공차가 생겼으면 좋겠네
+                    하하하하하하하 스펀지밥 안녕 하하하하 월요일은 죄악이야 안녕 뚱아 하하하 어쩔</ppp>
+            </div>
+            <br><br><br>
+
+            <div class="icons">
+                <img src="./assets/topcoat_like.png" width="15px">&nbsp180&nbsp
+                <img src="./assets/fa-regular_comment-dots.png" width="15px">&nbsp 95
+            </div>
+        </div>
+        <br><br>
+        <img src="./assets/akar-icons_align-to-top.png" class="totop">
+    </div>
+    <hr><br>
+
+    <div class="post">
+        <div class="subn">
+            <a href="#!" class="pn">[노래추천]리무진-이무진(feat.zionT)</a>
+        </div><br>
+        <br>
+        <div class="content">
+            <img src="./assets/unsplash_1SAnrIxw5OY.png" class="postimg">
+            <div class="pp">
+                <ppp>빙빙 돌아가는 어쩌구 저쩌구 웅앵웅쵸키포키 자이언티 스걸파 턴즈가 우승함 와 대박 어쩌구...
+                    저쩌궁ㅇㅇㅇ하이바이마마갯마을차차차 개꿀잼 노래가 전부 오토튠임 트랫브 트래비앙 어쩌구아아아아아 우리집앞에 공차가 생겼으면 좋겠네
+                    하하하하하하하 스펀지밥 안녕 하하하하 월요일은 죄악이야 안녕 뚱아 하하하 어쩔 </ppp>
+            </div>
+            <br><br><br>
+
+            <div class="icons">
+                <img src="./assets/topcoat_like.png" width="15px">&nbsp180&nbsp
+                <img src="./assets/fa-regular_comment-dots.png" width="15px">&nbsp 95
+            </div>
+        </div>
+        <br><br> -->
+    <!-- <img src="./assets/akar-icons_align-to-top.png" class="totop"> -->
+    <!-- </div> -->
+    <script>
+      var storage = firebase.storage();
+      var storageRef = storage.ref();
+
+      var gsReference = storage.refFromURL(
+        "gs://minjeong0204-52970.appspot.com/unsplash_TscNBt1tIVY.png"
+      );
+      storageRef
+        .child("unsplash_TscNBt1tIVY.png")
+        .getDownloadURL()
+        .then((url) => {
+          // `url` is the download URL for 'images/stars.jpg'
+          console.log(url);
+          db.collection("post")
+            .get()
+            .then((결과) => {
+              결과.forEach((doc) => {
+                console.log(doc.data());
+                var temp = `<div class="post">
+
+
+<div class="subn">
+    <a href="#!" class="pn">${doc.data().제목}</a>
+</div><br>
+
+<br>
+<div class="content">
+    <img class="postimg" src='${url}'>
+    <div class="pp">
+        <ppp>${doc.data().내용}</ppp>
+    </div>
+    <br><br><br>
+
+    <div class="icons">
+        <img src="./assets/topcoat_like.png" width="15px">&nbsp${
+          doc.data().좋아요
+        }&nbsp
+        <img src="./assets/fa-regular_comment-dots.png" width="15px">&nbsp ${
+          doc.data().댓글
+        }
+    </div>
+</div>
+<br><hr><br>
+</div>`;
+                $(".media").append(temp);
+              });
+            });
+
+          // Or inserted into an <img> element
+          var img = document.getElementById("myimg");
+          img.setAttribute("src", url);
+        })
+        .catch((error) => {
+          // Handle any errors
+        });
+    </script>
+  </body>
+</html>
