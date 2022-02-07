@@ -24,7 +24,7 @@
         <div class="sidebar-box1">
           <i class="far fa-grin-alt"></i>
           <div class="Myinfo">
-            <p style="font-weight: 900"><a href="#">임송재 ></a></p>
+            <p style="font-weight: 900"><a href="#">임송재></a></p>
             <p>오늘 <span>0</span> · 전체 <span>1097</span></p>
           </div>
         </div>
@@ -40,7 +40,7 @@
             <a href="#"><i class="fas fa-chart-line"></i></a>통계
           </li>
           <li>
-            <div class="write"><i class="fas fa-pen"></i></a>글쓰기</div>
+            <a href="./write.html"><i class="fas fa-pen"></i></a>글쓰기
           </li>
         </ul>
         <div class="sidebar-box3">
@@ -329,16 +329,16 @@
 
     const writeBtn = document.querySelector('.write')
 
-    Auth.onAuthStateChanged((user) => {
-      // window.location.href = "./write.html"
-      writeBtn.addEventListener('click', () => {
-        if (user) {
-          window.location.href = "./write.html"
-        } else {
-          alert('로그인 없이 접근할 수 없습니다.')
-        }
-      })
-    })
+    // Auth.onAuthStateChanged((user) => {
+    //   // window.location.href = "./write.html"
+    //   writeBtn.addEventListener('click', () => {
+    //     if (user) {
+    //       window.location.href = "./write.html"
+    //     } else {
+    //       alert('로그인 없이 접근할 수 없습니다.')
+    //     }
+    //   })
+    // })
   </script>
 </body>
 

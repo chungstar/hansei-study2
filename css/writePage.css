@@ -1,3 +1,12 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+button {
+	border: none;
+}
+
 #wrap {
 	display: flex;
 	flex-direction: column;
@@ -120,7 +129,7 @@
 	justify-content: space-between;
 }
 #wrap form .form-title h2 {
-	font-size: 2em;
+	font-size: 25px;
 	margin-left: 20px;
 	justify-content: flex-start;
 	align-self: center;
@@ -139,6 +148,7 @@
 	border-radius: 6px;
 	font-weight: bold;
 	padding: 5px 0;
+	font-size: 15px;
 }
 #wrap form .form-title .form-btn button:last-child {
 	background: none;
