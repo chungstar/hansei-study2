@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>블로그</title>
-    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/index.css" />
     <script
       src="https://kit.fontawesome.com/ade2c496a4.js"
       crossorigin="anonymous"
@@ -44,10 +44,16 @@
               <a href="post.html"><i class="fas fa-pen"></i></a>글쓰기
             </li>
           </ul>
+
           <div class="sidebar-box3">
-            <!-- <div>
+            <div>
               <span>일별 조회수</span>
-              <span>2022.02.02. 12시 현재</span>
+              <span id="date"></span>
+              <script>
+                let i = new Date();
+                let date = i.getMonth() + 1 + "월 " + i.getDate() + "일";
+                document.getElementById("date").innerHTML = date;
+              </script>
             </div>
             <ul class="graph">
               <li>
@@ -86,8 +92,9 @@
                 </div>
                 <p>2월 5일</p>
               </li>
-            </ul> -->
+            </ul>
           </div>
+
           <div class="sidebar-box4">
             <ul>
               <a href="#"
@@ -362,50 +369,6 @@
               </div>
             </div>`;
 
-            const click = `
-              <div>
-              <span>일별 조회수</span>
-              <span>${i.data().like} 현재</span>
-              </div>
-              <ul class="graph">
-                <li>
-                  <div>
-                    <span style="height: ${i.data().like * 5}%"></span>
-                  </div>
-                  <span>1월 31일</span>
-                </li>
-                <li>
-                  <div>
-                    <span style="height: ${i.data().like * 5}%"></span>
-                  </div>
-                  <p>2월 1일</p>
-                </li>
-                <li>
-                  <div>
-                    <span style="height: ${i.data().like * 5}%"></span>
-                  </div>
-                  <p>2월 2일</p>
-                </li>
-                <li>
-                  <div>
-                    <span style="height: ${i.data().like * 5}%"></span>
-                  </div>
-                  <p>2월 3일</p>
-                </li>
-                <li>
-                  <div>
-                    <span style="height: ${i.data().like * 5}%"></span>
-                  </div>
-                  <p>2월 4일</p>
-                </li>
-                <li>
-                  <div>
-                    <span style="height: ${i.data().like * 5}%"></span>
-                  </div>
-                  <p>2월 5일</p>
-                </li>
-              </ul>`;
-
             const MobileClick = `
             <div class="mobile-wrapper">
               <div class="mobile-main-box">
@@ -422,7 +385,6 @@
               }" /></div>
             </div>`;
 
-            $(".sidebar-box3").append(click);
             $(".wrapper").append(post);
             $(".mobile-box").append(MobileClick);
           });
@@ -523,50 +485,6 @@
               </div>
             </div>`;
 
-            const click = `
-              <div>
-              <span>일별 조회수</span>
-              <span>${i.data().like} 현재</span>
-              </div>
-              <ul class="graph">
-                <li>
-                  <div>
-                    <span style="height: ${i.data().like * 5}%"></span>
-                  </div>
-                  <span>1월 31일</span>
-                </li>
-                <li>
-                  <div>
-                    <span style="height: ${i.data().like * 5}%"></span>
-                  </div>
-                  <p>2월 1일</p>
-                </li>
-                <li>
-                  <div>
-                    <span style="height: ${i.data().like * 5}%"></span>
-                  </div>
-                  <p>2월 2일</p>
-                </li>
-                <li>
-                  <div>
-                    <span style="height: ${i.data().like * 5}%"></span>
-                  </div>
-                  <p>2월 3일</p>
-                </li>
-                <li>
-                  <div>
-                    <span style="height: ${i.data().like * 5}%"></span>
-                  </div>
-                  <p>2월 4일</p>
-                </li>
-                <li>
-                  <div>
-                    <span style="height: ${i.data().like * 5}%"></span>
-                  </div>
-                  <p>2월 5일</p>
-                </li>
-              </ul>`;
-
             const MobileClick = `
             <div class="mobile-wrapper">
               <div class="mobile-main-box">
@@ -583,7 +501,6 @@
               }" /></div>
             </div>`;
 
-            $(".sidebar-box3").append(click);
             $(".wrapper").append(post);
             $(".mobile-box").append(MobileClick);
           });
@@ -685,50 +602,6 @@
               </div>
             </div>`;
 
-            const click = `
-              <div>
-              <span>일별 조회수</span>
-              <span>${i.data().like} 현재</span>
-              </div>
-              <ul class="graph">
-                <li>
-                  <div>
-                    <span style="height: ${i.data().like * 5}%"></span>
-                  </div>
-                  <span>1월 31일</span>
-                </li>
-                <li>
-                  <div>
-                    <span style="height: ${i.data().like * 5}%"></span>
-                  </div>
-                  <p>2월 1일</p>
-                </li>
-                <li>
-                  <div>
-                    <span style="height: ${i.data().like * 5}%"></span>
-                  </div>
-                  <p>2월 2일</p>
-                </li>
-                <li>
-                  <div>
-                    <span style="height: ${i.data().like * 5}%"></span>
-                  </div>
-                  <p>2월 3일</p>
-                </li>
-                <li>
-                  <div>
-                    <span style="height: ${i.data().like * 5}%"></span>
-                  </div>
-                  <p>2월 4일</p>
-                </li>
-                <li>
-                  <div>
-                    <span style="height: ${i.data().like * 5}%"></span>
-                  </div>
-                  <p>2월 5일</p>
-                </li>
-              </ul>`;
-
             const MobileClick = `
             <div class="mobile-wrapper">
               <div class="mobile-main-box">
@@ -745,7 +618,6 @@
               }" /></div>
             </div>`;
 
-            $(".sidebar-box3").append(click);
             $(".wrapper").append(post);
             $(".mobile-box").append(MobileClick);
           });
