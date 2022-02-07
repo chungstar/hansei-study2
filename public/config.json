@@ -1,0 +1,7 @@
+{
+    "index_name": "example",
+    "start_urls":["http://"],
+    "selectors":{
+        
+    }
+}
