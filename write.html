@@ -24,9 +24,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
   <!-- Local CSS -->
-  <link rel="stylesheet" href="./css/reset.css">
-  </link>
-  <link rel="stylesheet" href="./css/writePage.css">
+  <!-- <link rel="stylesheet" href="./css/reset.css">
+  </link> -->
+  <link rel="stylesheet" href="./css/write.css">
   </link>
 </head>
 
@@ -47,6 +47,9 @@
         <h1>MBTI 과몰입 인간의 블로그</h1>
       </a>
       <div class="header-right">
+        <div id="profile"></div>
+        <button class="log-in" id="logInBtn">로그인</button>
+        <button class="log-out" id="logOutBtn">로그아웃</button>
         <a href="#">
           <i class="fas fa-search"></i>
         </a>
@@ -62,14 +65,14 @@
         <div class="form-btn">
           <button type="submit" id="uploadBtn">등록</button>
           <button id="redirectPrevPage">취소</button>
-          <!-- <input type="button" id="testBtn" value="123123"> -->
+          <input type="button" id="testBtn" value="test">
         </div>
       </div>
 
       <div class="form-select">
         <label for="category-select"></label>
         <select name="category" id="category-select">
-          <option selected="selected" disabled="disabled">카테고리 선택</option>
+          <option selected disabled="disabled" value="카테고리 선택">카테고리 선택</option>
           <option id="스터디" value="스터디">스터디</option>
           <option id="일기" value="일기">일기</option>
           <option id="맛집일기" value="맛집일기">맛집일기</option>
@@ -79,7 +82,7 @@
         <label for="open-select"></label>
         <select name="open" id="open-select">
           <option id="공개" value="공개" selected="selected">공개</option>
-          <option id="비공개" value="비공개">비공개</option>
+          <!-- <option id="비공개" value="비공개">비공개</option> -->
         </select>
       </div>
 
@@ -90,17 +93,17 @@
   </div>
 
   <!-- Firebase script -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.5/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
   <!-- Firestore script -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.5/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
   <!-- Authentication script -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.5/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
   <!-- Storage script -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.5/firebase-storage-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
 
   <script>
     // Firebase 연결
-    const firebaseApp = firebase.initializeApp({
+    const firebaseConfig = {
       apiKey: "AIzaSyDJXIwvAOztzHf7WyXCSdJjjy9FNJenCic",
       authDomain: "blog-f9abc.firebaseapp.com",
       projectId: "blog-f9abc",
@@ -108,28 +111,39 @@
       messagingSenderId: "982347300281",
       appId: "1:982347300281:web:d197799c076b0463db8a68",
       measurementId: "G-6G254LGX0S"
-    });
+    };
+    const app = firebase.initializeApp(firebaseConfig);
 
-    const db = firebaseApp.firestore();
-    const storage = firebaseApp.storage()
-    // const auth = firebaseApp.auth();
+    const db = firebase.firestore();
+    const storage = firebase.storage()
+    const Auth = firebase.auth();
 
     const category = document.querySelector('#category-select');
     const public = document.querySelector('#open-select');
     const title = document.querySelector('#title');
     const description = document.querySelector('textarea');
     const hashtag = document.querySelector('#hashtag');
+
     const uploadBtn = document.querySelector('#uploadBtn');
     const redirectPrevPage = document.querySelector('#redirectPrevPage');
 
-    console.log(sessionStorage.getItem('category'))
-    console.log(sessionStorage.getItem('docId'))
+    // Auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
+
+    Auth.onAuthStateChanged(async (user) => {
+      // window.location.href = "./write.html"
+      const userUid = await user.uid;
+      // console.log('user', userUid)
+      if (userUid != '1C5auqKgTxa3buMjlOqApVcuX852') {
+        alert('접근 권한이 없습니다.')
+        window.location.href = "./"
+      }
+    })
+
 
     // 게시글 수정 부분
-    if (sessionStorage.getItem('docId')) {
-      const updateCategory = sessionStorage.getItem('category');
-      const updateDocId = sessionStorage.getItem('docId');
-      db.collection('스터디').doc(updateDocId).get().then(async (res) => {
+    const updateDocId = new URLSearchParams(window.location.search).get('id');
+    if (updateDocId) {
+      db.collection('post').doc(updateDocId).get().then(async (res) => {
         const content = await res.data();
         console.log(content)
         const {
@@ -144,10 +158,59 @@
         document.querySelector(`#${open}`).setAttribute('selected', true)
         document.querySelector('#title').value = title
         $('#summernote').summernote('pasteHTML', description)
-        console.log(description)
+        // console.log(description)
         document.querySelector('#hashtag').value = hashtag
       })
+    } else {
+      console.log('No exist docId')
     }
+
+    const userStateChange = (nickname) => {
+      document.querySelector('#logInBtn').style.display = "none";
+      document.querySelector('#logOutBtn').style.display = "block";
+      document.querySelector('#profile').innerHTML = `
+        <span style="padding-right: 20px; color: #fff;">${nickname}님</span>
+      `
+    }
+    // Auth.onAuthStateChanged((user) => {
+    //   console.log(user)
+    //   userStateChange(user.displayName)
+    // })
+
+    const logInBtn = document.querySelector('#logInBtn');
+
+
+    // 구글 로그인 버튼 동작
+    document.querySelector('#logInBtn').addEventListener('click', () => {
+      Auth.setPersistence(firebase.auth.Auth.Persistence.SESSION).then(async (res) => {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        const logIn = await Auth.signInWithPopup(provider);
+        console.log(logIn)
+        if (logIn) {
+          const {
+            displayName,
+            photoURL
+          } = logIn.user
+          // console.log(document.querySelector('#logInBtn'))
+          userStateChange(displayName)
+        }
+      })
+    })
+
+
+    // 로그아웃 버튼 동작
+    document.querySelector('#logOutBtn').addEventListener('click', () => {
+      firebase.auth().signOut().then(() => {
+        // Sign-out successful.
+        console.log('logout success')
+        document.querySelector('#logInBtn').style.display = "block";
+        document.querySelector('#logOutBtn').style.display = "none";
+        document.querySelector('#profile').innerHTML = ``;
+      }).catch((error) => {
+        // An error happened.
+        console.log('logout error : ', error)
+      });
+    })
 
     // Summernote 텍스트 에디터 실행문
     $(document).ready()
@@ -214,38 +277,21 @@
 
     }
 
-    // document
-    //   .querySelector('#testBtn')
-    //   .addEventListener('click', () => {
-    //     event.preventDefault()
-    //     window.location.href = "123.html"
-    //     console.log('click upload btn')
-    //     console.log("storage ref : ", storage.ref().bucket)
+    document
+      .querySelector('#testBtn')
+      .addEventListener('click', () => {
+        event.preventDefault()
+        console.log(Auth.currentUser)
 
-    //     const testDiv = document.querySelector('#test')
-
-    //     const desc = document.createTextNode($('#summernote').summernote('code'))
-    //     console.log('code is ', desc)
-    //     testDiv.appendChild(desc)
-
-    //     let arrs = description.value.split(' ').filter(arr => (arr.match('src')))
-    //     let mapArrs = arrs.map(v => {
-    //       return v.slice(5)
-    //     })
-    //     console.log(mapArrs)
-
-    //     const postObj = {
-    //       category: category.value,
-    //       open: public.value,
-    //       title: title.value,
-    //       description: description.value,
-    //       hashtag: hashtag
-    //         .value
-    //         .split(' '),
-    //       test: arrs,
-    //     }
-    //     console.log(postObj)
-    //   })
+        Auth.onAuthStateChanged((user) => {
+          console.log(user)
+        })
+        // const desc = description.value
+        // const urlStart = desc.indexOf('src="') + 5
+        // const urlEnd = desc.indexOf('media', urlStart) + 5
+        // const link = desc.substring(urlStart, urlEnd)
+        // console.log('link : ', link)
+      })
 
 
     // redirectPrevPage.addEventListener('click', (event) => {
@@ -256,39 +302,47 @@
     // 등록 버튼 클릭 시 데이터 저장
     uploadBtn.addEventListener('click', async (event) => {
       event.preventDefault()
-      // console.log('click upload btn')
-      // const arrs = description.value.split(' ').filter(arr => (arr.match('src')))
+      console.log('click upload btn')
 
-      // let mapArrs = arrs.map(v => {
-      //   return v.slice(5, -1)
-      // })
-      // console.log("mapArrs is ", mapArrs)
+      if (category.value == '카테고리 선택') {
+        return alert('카테고리 선택')
+      } else if (!title.value) {
+        return alert('제목 작성')
+      }
 
       // Firestore 에 저장할 내용
       const docId = Date.now().toString();
+
+      const desc = description.value
+
+      const urlStart = desc.indexOf('src="') + 5
+      const urlEnd = desc.indexOf('media', urlStart) + 5
+      const imageUrl = desc.substring(urlStart, urlEnd)
+
       const uploadObj = {
-        작성시간: new Date(),
-        카테고리: category.value,
-        공개여부: public.value,
-        제목: title.value,
-        본문: description.value,
-        해시태그: hashtag
+        time: new Date(),
+        category: category.value,
+        open: public.value,
+        title: title.value,
+        description: desc,
+        hashtag: hashtag
           .value
           .split(' '),
-        게시글번호: docId,
-        본문텍스트: $($("#summernote").summernote('code')).text(),
-        이미지링크: '',
-        좋아요: 0,
+        docId: docId,
+        text: $($("#summernote").summernote('code')).text(),
+        imageUrl,
+        like: 0,
       }
       try {
         // console.log(typeof (time))
         await db
-          .collection(category.value)
+          .collection('post')
           .doc(docId)
-          .set(uploadObj)
+          .set(uploadObj).then(() => {
+            window.location.href = './'
+          })
         // console.log(uploadObj)
         // console.log('Upload Content Success')
-        // window.location.href = "./main.html"
       } catch (error) {
         console.log('Upload Content Error => ', error)
       }
