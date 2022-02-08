@@ -320,7 +320,8 @@
       const imageUrl = desc.substring(urlStart, urlEnd)
 
       const uploadObj = {
-        time: new Date(),
+        // time: new Date(),
+        time: new Date().toLocaleString(),
         category: category.value,
         open: public.value,
         title: title.value,
