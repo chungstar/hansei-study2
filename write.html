@@ -48,8 +48,6 @@
       </a>
       <div class="header-right">
         <div id="profile"></div>
-        <button class="log-in" id="logInBtn">로그인</button>
-        <button class="log-out" id="logOutBtn">로그아웃</button>
         <a href="#">
           <i class="fas fa-search"></i>
         </a>
@@ -65,7 +63,7 @@
         <div class="form-btn">
           <button type="submit" id="uploadBtn">등록</button>
           <button id="redirectPrevPage">취소</button>
-          <input type="button" id="testBtn" value="test">
+          <!-- <input type="button" id="testBtn" value="test"> -->
         </div>
       </div>
 
@@ -133,7 +131,7 @@
       // window.location.href = "./write.html"
       const userUid = await user.uid;
       // console.log('user', userUid)
-      if (userUid != '1C5auqKgTxa3buMjlOqApVcuX852') {
+      if (userUid != 'e5pzPCA40GMJr6cjzVrp6XHjlrX2') {
         alert('접근 권한이 없습니다.')
         window.location.href = "./"
       }
@@ -181,36 +179,36 @@
 
 
     // 구글 로그인 버튼 동작
-    document.querySelector('#logInBtn').addEventListener('click', () => {
-      Auth.setPersistence(firebase.auth.Auth.Persistence.SESSION).then(async (res) => {
-        const provider = new firebase.auth.GoogleAuthProvider();
-        const logIn = await Auth.signInWithPopup(provider);
-        console.log(logIn)
-        if (logIn) {
-          const {
-            displayName,
-            photoURL
-          } = logIn.user
-          // console.log(document.querySelector('#logInBtn'))
-          userStateChange(displayName)
-        }
-      })
-    })
+    // document.querySelector('#logInBtn').addEventListener('click', () => {
+    //   Auth.setPersistence(firebase.auth.Auth.Persistence.SESSION).then(async (res) => {
+    //     const provider = new firebase.auth.GoogleAuthProvider();
+    //     const logIn = await Auth.signInWithPopup(provider);
+    //     console.log(logIn)
+    //     if (logIn) {
+    //       const {
+    //         displayName,
+    //         photoURL
+    //       } = logIn.user
+    //       // console.log(document.querySelector('#logInBtn'))
+    //       userStateChange(displayName)
+    //     }
+    //   })
+    // })
 
 
     // 로그아웃 버튼 동작
-    document.querySelector('#logOutBtn').addEventListener('click', () => {
-      firebase.auth().signOut().then(() => {
-        // Sign-out successful.
-        console.log('logout success')
-        document.querySelector('#logInBtn').style.display = "block";
-        document.querySelector('#logOutBtn').style.display = "none";
-        document.querySelector('#profile').innerHTML = ``;
-      }).catch((error) => {
-        // An error happened.
-        console.log('logout error : ', error)
-      });
-    })
+    // document.querySelector('#logOutBtn').addEventListener('click', () => {
+    //   firebase.auth().signOut().then(() => {
+    //     // Sign-out successful.
+    //     console.log('logout success')
+    //     document.querySelector('#logInBtn').style.display = "block";
+    //     document.querySelector('#logOutBtn').style.display = "none";
+    //     document.querySelector('#profile').innerHTML = ``;
+    //   }).catch((error) => {
+    //     // An error happened.
+    //     console.log('logout error : ', error)
+    //   });
+    // })
 
     // Summernote 텍스트 에디터 실행문
     $(document).ready()
@@ -277,21 +275,21 @@
 
     }
 
-    document
-      .querySelector('#testBtn')
-      .addEventListener('click', () => {
-        event.preventDefault()
-        console.log(Auth.currentUser)
+    // document
+    //   .querySelector('#testBtn')
+    //   .addEventListener('click', () => {
+    //     event.preventDefault()
+    //     console.log(Auth.currentUser)
 
-        Auth.onAuthStateChanged((user) => {
-          console.log(user)
-        })
-        // const desc = description.value
-        // const urlStart = desc.indexOf('src="') + 5
-        // const urlEnd = desc.indexOf('media', urlStart) + 5
-        // const link = desc.substring(urlStart, urlEnd)
-        // console.log('link : ', link)
-      })
+    //     Auth.onAuthStateChanged((user) => {
+    //       console.log(user)
+    //     })
+    //     // const desc = description.value
+    //     // const urlStart = desc.indexOf('src="') + 5
+    //     // const urlEnd = desc.indexOf('media', urlStart) + 5
+    //     // const link = desc.substring(urlStart, urlEnd)
+    //     // console.log('link : ', link)
+    //   })
 
 
     // redirectPrevPage.addEventListener('click', (event) => {

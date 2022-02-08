@@ -23,11 +23,10 @@
       <div class="sidebar">
         <div class="sidebar-box1">
           <button id="logInBtn">Google 로그인</button>
-          <i class="far fa-grin-alt"></i>
-          <div class="Myinfo">
-            <p style="font-weight: 900"><a href="#">임송재 ></a></p>
-            <p>오늘 <span>0</span> · 전체 <span>1097</span></p>
+          <div id="Myinfo">
+            <p class="nickname"></p>
           </div>
+          <button id="logOutBtn" style="display: none; margin-left: auto;">로그아웃</button>
         </div>
 
         <ul class="sidebar-box2">
@@ -155,7 +154,8 @@
       </div>
     </div>
     <div class="mobile-searching">
-      <a href="search.html"><i class="fab fa-sistrix"></i></a>
+      <a href="search.html"><i class="fas fa-search"></i>
+      </a>
     </div>
     <div class="blogname">MBTI과몰입 인간의 블로그</div>
     <div class="mobile-category">
@@ -183,7 +183,6 @@
     </div>
     <div class="icons">
       <a href="search.html"><i class="fab fa-sistrix"></i></a>
-      <input type="text" />
     </div>
   </header>
 
@@ -288,6 +287,8 @@
     const popular = document.querySelector(".popular");
     const normal = document.querySelector(".normal");
 
+    let userImage, userName;
+
     const timeFunc = (i) => {
       let strPeriod = Date.now() - parseInt(i);
       let strDay = 24 * 60 * 60 * 1000; // msec
@@ -321,6 +322,20 @@
       return time;
     };
 
+    const userStateChange = (nickname, image) => {
+      document.querySelector('#logInBtn').style.display = "none";
+      document.querySelector('#logOutBtn').style.display = "block";
+      document.querySelector('#Myinfo').innerHTML = `<img src="${image}">`
+      document.querySelector('#Myinfo').innerHTML = `<span>${nickname}님</span>`
+    }
+
+    Auth.onAuthStateChanged((user) => {
+      console.log(user.displayName)
+      userStateChange(user.displayName, user.photoURL)
+      userImage = user.photoURL;
+      userName = user.displayName;
+    })
+
     // 구글 로그인 버튼 동작
     document.querySelector("#logInBtn").addEventListener("click", () => {
       Auth.setPersistence(firebase.auth.Auth.Persistence.SESSION).then(
@@ -340,6 +355,20 @@
       );
     });
 
+    // 로그아웃 버튼 동작
+    document.querySelector('#logOutBtn').addEventListener('click', () => {
+      firebase.auth().signOut().then(() => {
+        // Sign-out successful.
+        console.log('logout success')
+        document.querySelector('#logInBtn').style.display = "block";
+        document.querySelector('#logOutBtn').style.display = "none";
+        document.querySelector('#Myinfo').innerHTML = ``;
+      }).catch((error) => {
+        // An error happened.
+        console.log('logout error : ', error)
+      });
+    })
+
     // 인기순 정렬
     popular.addEventListener("click", () => {
       postsRef
@@ -352,9 +381,9 @@
             const post = `
             <div class="main-box">
               <div class="info">
-                <img src="${i.data().imageUrl}" />
+                <img src="${userImage}" />
                 <div class="nickname">
-                  <p class="name">${i.data().hashtag}</p>
+                  <p class="name">${userName}</p>
                   <p class="timer">${timeFunc(i.data().docId)}</p>
                 </div>
               </div>
@@ -410,7 +439,7 @@
             const post = `
             <div class="main-box">
               <div class="info">
-                <img src="${i.data().imageUrl}" />
+                <img src="${userImage}" />
                 <div class="nickname">
                   <p class="name">${i.data().hashtag}</p>
                   <p class="timer">${timeFunc(i.data().docId)}</p>
@@ -467,7 +496,7 @@
           const post = `
             <div class="main-box">
               <div class="info">
-                <img src="${i.data().imageUrl}" />
+                <img src="${userImage}" />
                 <div class="nickname">
                   <p class="name">${i.data().hashtag}</p>
                   <p class="timer">${timeFunc(i.data().docId)}</p>
@@ -525,7 +554,7 @@
           const post = `
             <div class="main-box">
               <div class="info">
-                <img src="${i.data().imageUrl}" />
+                <img src="${userImage}" />
                 <div class="nickname">
                   <p class="name">${i.data().hashtag}</p>
                   <p class="timer">${timeFunc(i.data().docId)}</p>
