@@ -365,62 +365,67 @@
           });
         });
     });
-    db.collection("post")
-      .get()
-      .then((결과) => {
-        결과.forEach((i) => {
-          const post = `
-            <div class="main-box">
-              <div class="info">
-                <img src="${i.data().imageUrl}" />
-                <div class="nickname">
-                  <p class="name">${i.data().hashtag}</p>
-                  <p class="timer">${i.data().hashtag}</p>
-                </div>
-              </div>
-              <div class="title">
-                <h1>${i.data().title}</h1>
-                <ul class="hashtag">
-                  <li><a href="#">${i.data().hashtag}</a></li>
-                  <li><a href="#">${i.data().hashtag}</a></li>
-                  <li><a href="#">${i.data().hashtag}</a></li>
-                  <li><a href="#">${i.data().hashtag}</a></li>
-                  <li><a href="#">${i.data().hashtag}</a></li>
-               </ul>
-              </div>
-              <div class="content">
-                <div class="greeting">
-                  <span>${i.data().like}</span>
-                  <span>${i.data().like}</span>
-                  <span>${i.data().like}</span>
-                </div>
-                <img src="${i.data().like}" />
-              </div>
-            </div>`;
+    // db.collection("post")
+    //   .get()
+    //   .then((결과) => {
+    //     결과.forEach((i) => {
+    //       // console.log(i.data().hashtag)
+    //       let hashtags;
+    //       i.data().hashtag.forEach(arr => {
+    //         hashtags += arr
+    //       })
+    //       const post = `
+    //         <div class="main-box">
+    //           <div class="info">
+    //             <img src="${i.data().imageUrl}" />
+    //             <div class="nickname">
+    //               <p class="name">${i.data().hashtag}</p>
+    //               <p class="timer">${i.data().hashtag}</p>
+    //             </div>
+    //           </div>
+    //           <div class="title">
+    //             <h1>${i.data().title}</h1>
+    //             <ul class="hashtag">
+    //               <li><a href="#">${i.data().hashtag}</a></li>
+    //               <li><a href="#">${i.data().hashtag}</a></li>
+    //               <li><a href="#">${i.data().hashtag}</a></li>
+    //               <li><a href="#">${i.data().hashtag}</a></li>
+    //               <li><a href="#">${i.data().hashtag}</a></li>
+    //            </ul>
+    //           </div>
+    //           <div class="content">
+    //             <div class="greeting">
+    //               <span>${i.data().like}</span>
+    //               <span>${i.data().like}</span>
+    //               <span>${i.data().like}</span>
+    //             </div>
+    //             <img src="${i.data().like}" />
+    //           </div>
+    //         </div>`;
 
-          const MobileClick = `
-            <div class="mobile-wrapper">
-              <div class="mobile-main-box">
-                <div>${i.data().title}</div>
-                <div>${i.data().hashtag}</div>
-                <div>${i.data().date}</div>
-                <div>
-                  <i class="fas fa-heart"></i> ${i.data().like}
-                  <i class="far fa-comment-dots"> ${i.data().comment} </i>
-                </div>
-              </div>
-              <div class="mobile-side-box"><img src="${
-                i.data().imageUrl
-              }" /></div>
-            </div>`;
+    //       const MobileClick = `
+    //         <div class="mobile-wrapper">
+    //           <div class="mobile-main-box">
+    //             <div>${i.data().title}</div>
+    //             <div>${i.data().hashtag}</div>
+    //             <div>${i.data().date}</div>
+    //             <div>
+    //               <i class="fas fa-heart"></i> ${i.data().like}
+    //               <i class="far fa-comment-dots"> ${i.data().comment} </i>
+    //             </div>
+    //           </div>
+    //           <div class="mobile-side-box"><img src="${
+    //             i.data().imageUrl
+    //           }" /></div>
+    //         </div>`;
 
-          $(".wrapper").append(post);
-          $(".mobile-box").append(MobileClick);
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    //       $(".wrapper").append(post);
+    //       $(".mobile-box").append(MobileClick);
+    //     });
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
 
     // 최신순 정렬
     recent.addEventListener("click", () => {
@@ -481,62 +486,62 @@
           });
         });
     });
-    db.collection("post")
-      .get()
-      .then((결과) => {
-        결과.forEach((i) => {
-          const post = `
-            <div class="main-box">
-              <div class="info">
-                <img src="${i.data().imageUrl}" />
-                <div class="nickname">
-                  <p class="name">${i.data().hashtag}</p>
-                  <p class="timer">${i.data().hashtag}</p>
-                </div>
-              </div>
-              <div class="title">
-                <h1>${i.data().title}</h1>
-                <ul class="hashtag">
-                  <li><a href="#">${i.data().hashtag}</a></li>
-                  <li><a href="#">${i.data().hashtag}</a></li>
-                  <li><a href="#">${i.data().hashtag}</a></li>
-                  <li><a href="#">${i.data().hashtag}</a></li>
-                  <li><a href="#">${i.data().hashtag}</a></li>
-               </ul>
-              </div>
-              <div class="content">
-                <div class="greeting">
-                  <span>${i.data().like}</span>
-                  <span>${i.data().like}</span>
-                  <span>${i.data().like}</span>
-                </div>
-                <img src="${i.data().like}" />
-              </div>
-            </div>`;
+    // db.collection("post")
+    //   .get()
+    //   .then((결과) => {
+    //     결과.forEach((i) => {
+    //       const post = `
+    //         <div class="main-box">
+    //           <div class="info">
+    //             <img src="${i.data().imageUrl}" />
+    //             <div class="nickname">
+    //               <p class="name">${i.data().hashtag}</p>
+    //               <p class="timer">${i.data().hashtag}</p>
+    //             </div>
+    //           </div>
+    //           <div class="title">
+    //             <h1>${i.data().title}</h1>
+    //             <ul class="hashtag">
+    //               <li><a href="#">${i.data().hashtag}</a></li>
+    //               <li><a href="#">${i.data().hashtag}</a></li>
+    //               <li><a href="#">${i.data().hashtag}</a></li>
+    //               <li><a href="#">${i.data().hashtag}</a></li>
+    //               <li><a href="#">${i.data().hashtag}</a></li>
+    //            </ul>
+    //           </div>
+    //           <div class="content">
+    //             <div class="greeting">
+    //               <span>${i.data().like}</span>
+    //               <span>${i.data().like}</span>
+    //               <span>${i.data().like}</span>
+    //             </div>
+    //             <img src="${i.data().like}" />
+    //           </div>
+    //         </div>`;
 
-          const MobileClick = `
-            <div class="mobile-wrapper">
-              <div class="mobile-main-box">
-                <div>${i.data().title}</div>
-                <div>${i.data().hashtag}</div>
-                <div>${i.data().date}</div>
-                <div>
-                  <i class="fas fa-heart"></i> ${i.data().like}
-                  <i class="far fa-comment-dots"> ${i.data().comment} </i>
-                </div>
-              </div>
-              <div class="mobile-side-box"><img src="${
-                i.data().imageUrl
-              }" /></div>
-            </div>`;
+    //       const MobileClick = `
+    //         <div class="mobile-wrapper">
+    //           <div class="mobile-main-box">
+    //             <div>${i.data().title}</div>
+    //             <div>${i.data().hashtag}</div>
+    //             <div>${i.data().date}</div>
+    //             <div>
+    //               <i class="fas fa-heart"></i> ${i.data().like}
+    //               <i class="far fa-comment-dots"> ${i.data().comment} </i>
+    //             </div>
+    //           </div>
+    //           <div class="mobile-side-box"><img src="${
+    //             i.data().imageUrl
+    //           }" /></div>
+    //         </div>`;
 
-          $(".wrapper").append(post);
-          $(".mobile-box").append(MobileClick);
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    //       $(".wrapper").append(post);
+    //       $(".mobile-box").append(MobileClick);
+    //     });
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
 
     // 원래 정렬로 돌아오기
     normal.addEventListener("click", () => {
@@ -614,10 +619,6 @@
               <div class="title">
                 <h1>${i.data().title}</h1>
                 <ul class="hashtag">
-                  <li><a href="#">${i.data().hashtag}</a></li>
-                  <li><a href="#">${i.data().hashtag}</a></li>
-                  <li><a href="#">${i.data().hashtag}</a></li>
-                  <li><a href="#">${i.data().hashtag}</a></li>
                   <li><a href="#">${i.data().hashtag}</a></li>
                </ul>
               </div>
