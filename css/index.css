@@ -320,6 +320,10 @@ header .icons input {
 .mobile-wrapper .mobile-main-box {
 	width: 70%;
 }
+.mobile-wrapper .mobile-main-box a {
+	text-decoration: none;
+	color: black;
+}
 .mobile-wrapper .mobile-main-box div:nth-child(1) {
 	font-weight: 900;
 	margin-bottom: 12px;
