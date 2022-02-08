@@ -8,7 +8,7 @@
 
   <title>blog...</title>
 
-  <link rel="stylesheet" href="css/post.css" />
+  <link rel="stylesheet" href="css/postPage.css" />
 
   <!-- font awesome cdn -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
@@ -172,7 +172,8 @@
       </div>
     </div>
   </main>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <!-- firebase -->
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
@@ -213,7 +214,7 @@
 
               <div class="meta">
                 <a href="#" class="text-black fontsize-2 px-1">
-                  <i class="fas fa-clock"></i>${result.data().time}
+                  <i class="fas fa-clock"></i>${result.data().time.toDate()}
                 </a>
               </div>
             </div>
@@ -247,6 +248,7 @@
       }
       db.collection('post').doc(params.get('id')).collection('comments').add(정보);
     })
+
     ///db에 있는 댓글정보 본문에 뿌리기
     db.collection("post").doc(params.get('id')).collection('comments').orderBy("date", "desc").get().then((결과) => {
       결과.forEach((댓글) => {
@@ -262,33 +264,37 @@
               <p class="text-black">${댓글.data().content}</p>
               <div class="mt-3">
                 <button class="comment-reply btn-s font">답글</button>
-                <button class="comment-update btn-s">수정</button>
-                <button class="comment-delete btn-s">삭제</button>
+                <button class="comment-update btn-s" id="update">수정</button>
+                <button class="comment-delete btn-s" id="cut">삭제</button>
               </div>
             </div>
           </div>
         </div>`
-        $(".comment-details").prepend(userComment);
+        $(".comment-details").prepend(userComment)
+        $("#update").click(function () {
+          var 정보 = {
+            content: $('.form-control').val(),
+            uid: '춘식',
+            displayName: '춘식1'
+          }
+          db.collection('post').doc(params.get('id')).collection('comments').doc(댓글.id).update(정보)
+        })
+        $("#cut").click(function () {
+          db.collection('post').doc(params.get('id')).collection('comments').doc(댓글.id).delete()
+        })
       })
     })
-
     ////본문 수정
-
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        console.log(user)
-      }
-    })
-
     $('#edit').click(function () {
       window.location.href = '/write.html?id=' + params.get('id')
     })
 
-    ////댓글 수정
-    $('.comment-update').click(function () {
-      window.location.href = '/post.html?id=' + params.get('id')
-      $('.form-control').val(db.collection('post').doc(params.get('id')).collection('comments').doc())
+    ////본문 삭제
+    $('#delete').click(function () {
+      db.collection('post').doc(params.get('id')).delete()
     })
+
+    ///태그
   </script>
 </body>
 
