@@ -127,13 +127,25 @@
 
     // Auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
 
-    Auth.onAuthStateChanged(async (user) => {
-      // window.location.href = "./write.html"
-      const userUid = await user.uid;
-      // console.log('user', userUid)
-      if (userUid != 'e5pzPCA40GMJr6cjzVrp6XHjlrX2') {
+    let writer, writerImage;
+
+    Auth.onAuthStateChanged((user) => {
+      if (!user) {
         alert('접근 권한이 없습니다.')
-        window.location.href = "./"
+        return window.location.href = "./"
+      } else {
+
+        const {
+          uid,
+          displayName,
+          photoURL
+        } = user;
+        if (uid !== 'e5pzPCA40GMJr6cjzVrp6XHjlrX2') {
+          alert('접근 권한이 없습니다.')
+          window.location.href = "./"
+        }
+        writer = displayName;
+        writerImage = photoURL;
       }
     })
 
@@ -315,7 +327,7 @@
 
       const urlStart = desc.indexOf('src="') + 5
       const urlEnd = desc.indexOf('media', urlStart) + 5
-      const imageUrl = desc.substring(urlStart, urlEnd)
+      const firstImage = desc.substring(urlStart, urlEnd)
 
       const uploadObj = {
         // time: new Date(),
@@ -329,8 +341,11 @@
           .split(' '),
         docId: docId,
         text: $($("#summernote").summernote('code')).text(),
-        imageUrl,
+        firstImage,
         like: 0,
+        commentNumber: 0,
+        writer,
+        writerImage,
       }
       try {
         // console.log(typeof (time))
