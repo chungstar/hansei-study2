@@ -8,5 +8,5 @@ list.addEventListener('click', () => {
 
 line.addEventListener('click', () => {
 	$('.mobile-box').css('display', 'none');
-	$('.wrapper').css('display', 'block');
+	$('.wrapper').css('display', 'flex');
 });

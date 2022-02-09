@@ -3350,7 +3350,7 @@
 								var rng = this;
 								var reversed = false;
 
-								if (rng.so > 0) {
+								if (rng.so >= 0) {
 									childNodes = childNodes.reverse();
 									reversed = true;
 								}

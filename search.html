@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog2</title>
-  <link rel="stylesheet" href="./style.css.css" type="text/css">
+  <link rel="stylesheet" href="./css/style.css.css" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <!-- <script src="./script.js"></script> -->
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@{{docSearchJSVersion}}/dist/cdn/docsearch.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@{{docSearchJSVersion}}/dist/cdn/docsearch.min.css" />
 </head>
 
 <body>
@@ -33,17 +33,17 @@
 
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-  // const analytics = getAnalytics(app);
-  var db = firebase.firestore();
+    // const analytics = getAnalytics(app);
+    var db = firebase.firestore();
     async function change(id) {
       const postsRef = db.collection('post');
       id = document.getElementById("filter");
       var storage = firebase.storage();
       var storageRef = storage.ref();
-      
+
       if (id.value == "date") {
         document.querySelector('.media').innerHTML = ``; //.media에 있는 요소들을 공백화함
-        const firstThreeRes = await postsRef.orderBy('docId', 'desc').get();//문서ID(시간순으로 되어있음)대로 정렬
+        const firstThreeRes = await postsRef.orderBy('docId', 'desc').get(); //문서ID(시간순으로 되어있음)대로 정렬
 
         firstThreeRes.forEach(doc => {
           console.log(doc.id, '->', doc.data());
@@ -56,7 +56,7 @@
 
 <br>
 <div class="content">
-  <img class="postimg" src='${doc.data().imageUrl}'>
+  <img class="postimg" src='${doc.data().firstImage}'>
     <div class="pp">
         <ppp>${doc.data().text}</ppp>
     </div>
@@ -75,13 +75,12 @@
         })
 
 
-          ;
+        ;
 
-      }
-      else if (id.value == "like") {
+      } else if (id.value == "like") {
         document.querySelector('.media').innerHTML = ``; //.media에 있는 요소들을 공백화함
-        const firstThreeRes = await postsRef.orderBy('like', 'desc').get();//좋아요순대로 정렬
-       
+        const firstThreeRes = await postsRef.orderBy('like', 'desc').get(); //좋아요순대로 정렬
+
         firstThreeRes.forEach(doc => {
           console.log(doc.id, '->', doc.data());
           var temp1 = `<div class="post">
@@ -93,7 +92,7 @@
 
 <br>
 <div class="content">
-  <img class="postimg" src='${doc.data().imageUrl}'>
+  <img class="postimg" src='${doc.data().firstImage}'>
     <div class="pp">
         <ppp>${doc.data().text}</ppp>
     </div>
@@ -112,17 +111,17 @@
         })
 
 
-          ;
+        ;
       }
-      
+
 
 
     }
-  
-   
+
+
     db.collection('post').get().then((결과) => {
       결과.forEach((doc) => {
-        console.log(doc.data());// 걍 기본정렬
+        console.log(doc.data()); // 걍 기본정렬
         var temp = `<div class="post">
 
 
@@ -132,7 +131,7 @@
 
 <br>
 <div class="content">
-    <img class="postimg" src='${doc.data().imageUrl}'>
+    <img class="postimg" src='${doc.data().firstImage}'>
     <div class="pp">
         <ppp>${doc.data().text}</ppp>
     </div>
@@ -151,18 +150,13 @@
       })
 
     })
-
-   
-
-
   </script>
 
   <nav>
 
     <a class="back" href="#!"><img src="./assets/eva_arrow-ios-back-fill.png"></a>
     <div class="searchBox">
-      <input class="search" type="search" placeholder="검색어를 입력하세요" aria-label="Enter search term..."
-        aria-describedby="button-search" />
+      <input class="search" type="search" placeholder="검색어를 입력하세요" aria-label="Enter search term..." aria-describedby="button-search" />
       <button class="searchbtn" id="button-search" type="button">검색</button>
     </div>
     <div class="right">
@@ -200,10 +194,10 @@
 
   <br>
   <div class="media">
-  
+
   </div>
   <script>
-    
+
   </script>
 
 </body>

@@ -65,9 +65,9 @@ ppp {
 }
 
 .back {
-	visibility: hidden;
+	/* visibility: visible; */
 	margin-right: auto;
-	margin-left: -38px;
+	margin-left: -50px;
 }
 
 .right {
