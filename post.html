@@ -198,6 +198,7 @@
 
     //본문//
     db.collection('post').doc(params.get('id')).get().then((result) => {
+      const time = result.data().year + result.data().month + result.data().date + result.data().time;
       var template = `
           <article id="post">
             <!-- post heading -->
@@ -213,7 +214,7 @@
 
               <div class="meta">
                 <a href="#" class="text-black fontsize-2 px-1">
-                  <i class="fas fa-clock"></i>${result.data().time.toDate()}
+                  <i class="fas fa-clock"></i>${time}
                 </a>
               </div>
             </div>
@@ -223,7 +224,6 @@
             </div>
             <div class="content text-black mt-1">
             ${result.data().description}
-
             </div>
           </article>`;
       $(".container").prepend(template);

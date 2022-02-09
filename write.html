@@ -171,8 +171,109 @@
         // console.log(description)
         document.querySelector('#hashtag').value = hashtag
       })
+      // 등록 버튼 클릭 시 데이터 저장
+      uploadBtn.addEventListener('click', async (event) => {
+        event.preventDefault()
+        console.log('click upload btn')
+
+        if (category.value == '카테고리 선택') {
+          return alert('카테고리 선택')
+        } else if (!title.value) {
+          return alert('제목 작성')
+        }
+
+        // Firestore 에 저장할 내용
+        const docId = Date.now().toString();
+
+        const desc = description.value
+
+        const urlStart = desc.indexOf('src="') + 5
+        const urlEnd = desc.indexOf('media', urlStart) + 5
+        const firstImage = desc.substring(urlStart, urlEnd)
+
+        const uploadObj = {
+          // time: new Date(),
+          category: category.value,
+          open: public.value,
+          title: title.value,
+          description: desc,
+          hashtag: hashtag
+            .value
+            .split(' '),
+          text: $($("#summernote").summernote('code')).text(),
+          firstImage,
+        }
+        try {
+          // console.log(typeof (time))
+          await db
+            .collection('post')
+            .doc(updateDocId)
+            .update(uploadObj).then(() => {
+              window.location.href = './'
+            })
+          // console.log(uploadObj)
+          // console.log('Upload Content Success')
+        } catch (error) {
+          return console.log('Upload Content Error => ', error)
+        }
+      })
     } else {
       console.log('No exist docId')
+      // 등록 버튼 클릭 시 데이터 저장
+      uploadBtn.addEventListener('click', async (event) => {
+        event.preventDefault()
+        console.log('click upload btn')
+
+        if (category.value == '카테고리 선택') {
+          return alert('카테고리 선택')
+        } else if (!title.value) {
+          return alert('제목 작성')
+        }
+
+        // Firestore 에 저장할 내용
+        const docId = Date.now().toString();
+
+        const desc = description.value
+
+        const urlStart = desc.indexOf('src="') + 5
+        const urlEnd = desc.indexOf('media', urlStart) + 5
+        const firstImage = desc.substring(urlStart, urlEnd)
+
+        const uploadObj = {
+          // time: new Date(),
+          year: new Date().getFullYear() + '년',
+          month: new Date().getMonth() + '월',
+          date: new Date().getDate() + '일',
+          time: new Date().toLocaleTimeString(),
+          category: category.value,
+          open: public.value,
+          title: title.value,
+          description: desc,
+          hashtag: hashtag
+            .value
+            .split(' '),
+          docId: docId,
+          text: $($("#summernote").summernote('code')).text(),
+          firstImage,
+          like: 0,
+          commentNumber: 0,
+          writer,
+          writerImage,
+        }
+        try {
+          // console.log(typeof (time))
+          await db
+            .collection('post')
+            .doc(docId)
+            .set(uploadObj).then(() => {
+              window.location.href = './'
+            })
+          // console.log(uploadObj)
+          // console.log('Upload Content Success')
+        } catch (error) {
+          console.log('Upload Content Error => ', error)
+        }
+      })
     }
 
     const userStateChange = (nickname) => {
@@ -308,59 +409,6 @@
     //   event.preventDefault()
     //   console.log($($("#summernote").summernote('code')).text())
     // })
-
-    // 등록 버튼 클릭 시 데이터 저장
-    uploadBtn.addEventListener('click', async (event) => {
-      event.preventDefault()
-      console.log('click upload btn')
-
-      if (category.value == '카테고리 선택') {
-        return alert('카테고리 선택')
-      } else if (!title.value) {
-        return alert('제목 작성')
-      }
-
-      // Firestore 에 저장할 내용
-      const docId = Date.now().toString();
-
-      const desc = description.value
-
-      const urlStart = desc.indexOf('src="') + 5
-      const urlEnd = desc.indexOf('media', urlStart) + 5
-      const firstImage = desc.substring(urlStart, urlEnd)
-
-      const uploadObj = {
-        // time: new Date(),
-        time: new Date().toLocaleString(),
-        category: category.value,
-        open: public.value,
-        title: title.value,
-        description: desc,
-        hashtag: hashtag
-          .value
-          .split(' '),
-        docId: docId,
-        text: $($("#summernote").summernote('code')).text(),
-        firstImage,
-        like: 0,
-        commentNumber: 0,
-        writer,
-        writerImage,
-      }
-      try {
-        // console.log(typeof (time))
-        await db
-          .collection('post')
-          .doc(docId)
-          .set(uploadObj).then(() => {
-            window.location.href = './'
-          })
-        // console.log(uploadObj)
-        // console.log('Upload Content Success')
-      } catch (error) {
-        console.log('Upload Content Error => ', error)
-      }
-    })
   </script>
 </body>
 
