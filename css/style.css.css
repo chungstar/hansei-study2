@@ -12,8 +12,9 @@
             position: relative;
         }
         .subn{
-            width: 349px;
+            width: 300px;
             height: 0px;
+            margin-right: 10%;
         }
         .pn{
             overflow: hidden;
@@ -22,7 +23,8 @@
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 1;
             margin-left: 10%;
-            font-size: 24px;
+            
+            font-size: 22px;
             font-weight: bold;
             text-decoration: none;
             position: absolute;
@@ -35,8 +37,6 @@
                 position: relative;
                 height: 50px;
                 margin-bottom: 0%;
-                width: 170pt;
-
             }
             ppp{
                
@@ -70,16 +70,20 @@
 
         .back {
            visibility: hidden;
-            margin-right: auto;
+           margin-right: auto;
+           margin-left: -38px;
         }
 
         .right {
             display: flex;
-            margin-left: auto;
-            align-items: center;
+            margin-right: -40px;
+            align-items: flex-end;
             width: 250px;
-            justify-content: space-between;
+            justify-content: flex-end;
+            /* visibility: visible; */
         }
+
+.right {}
 
         .searchbx {
             margin-top: -1%;
@@ -171,7 +175,7 @@ border: 1px solid black;
         p2 {
             margin-left: 10%;
             font-weight: bold;
-            font-size: 10pt;
+            font-size: 10%;
         }
         
         .about {
@@ -239,7 +243,7 @@ border: 1px solid black;
             margin-left: 15%;
             width: 160px;
             height: 120px;
-            margin-top: -8px;
+            margin-top: 0px;
         }
 
         .names {
@@ -364,7 +368,7 @@ border: 1px solid black;
                 margin-left: 4%;
                 float: right;
                 /* width: 50%; */
-                height: 100px;
+                height: 35%;
             }
 
             .content {
@@ -409,7 +413,7 @@ border: 1px solid black;
             .right>a:first-child,
           .right>a:nth-child(2),
           .right>a:nth-child(3){
-              display: none;
+              /* display: none; */
           }
           .back{
             visibility: visible;
@@ -470,7 +474,7 @@ border: 1px solid black;
 
             }
             .right{
-                width: 4%;
+                width: 12%;
             }
             .menud{
                 padding-top: 18%;
@@ -528,7 +532,7 @@ border: 1px solid black;
             .postimg {
                 width: 37%;
                 margin-top: -5%;
-                margin-right: -50%;
+                margin-right: -40%;
                 margin-left: 10%;
                 padding-top: 15px;
                 /* height: 7%; */
@@ -538,7 +542,7 @@ border: 1px solid black;
                 font-size: 14px;
                 margin-left: 5%;
                 margin-top: 0%;
-                margin-right: 30%;
+                margin-right: 32%;
             }
 
 
@@ -546,11 +550,11 @@ border: 1px solid black;
                 margin-left: 5%;
             }
 
-            /* .back {
+            .back {
                 
-                visibility: hidden;
+                visibility: visible;
                 
-            } */
+            }
            
             .menud{
                 padding-top: 80px;
