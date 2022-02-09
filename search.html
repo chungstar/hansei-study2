@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog2</title>
+  <title>blog2</title>
   <link rel="stylesheet" href="./css/style.css.css" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <!-- <script src="./script.js"></script> -->
@@ -100,7 +100,7 @@
 
     <div class="icons">
         <img src="./assets/topcoat_like.png" width="15px">&nbsp${doc.data().like}&nbsp
-        <img src="./assets/fa-regular_comment-dots.png" width="15px">&nbsp ${doc.data().댓글}
+        <img src="./assets/fa-regular_comment-dots.png" width="15px">&nbsp ${doc.data().commentNumber}
     </div>
 </div>
 <br><hr><br>
@@ -139,7 +139,7 @@
 
     <div class="icons">
         <img src="./assets/topcoat_like.png" width="15px">&nbsp${doc.data().like}&nbsp
-        <img src="./assets/fa-regular_comment-dots.png" width="15px">&nbsp ${doc.data().댓글}
+        <img src="./assets/fa-regular_comment-dots.png" width="15px">&nbsp ${doc.data().commentNumber}
     </div>
 </div>
 <br><hr><br>
@@ -156,8 +156,8 @@
 
     <a class="back" href="#!"><img src="./assets/eva_arrow-ios-back-fill.png"></a>
     <div class="searchBox">
-      <input class="search" type="search" placeholder="검색어를 입력하세요" aria-label="Enter search term..." aria-describedby="button-search" />
-      <button class="searchbtn" id="button-search" type="button">검색</button>
+      <input class="search" id = "search2" type="search" placeholder="검색어를 입력하세요" aria-label="Enter search term..." aria-describedby="button-search" />
+      <button class="searchbtn" id="button-search" type="button" onclick="click('button-search')">검색</button>
     </div>
     <div class="right">
 
@@ -167,14 +167,14 @@
   </nav>
   <header>
     <br>
-    <div class="menud">
+    <!-- <div class="menud">
       <div class="item">글</div>
       <div class="item">사용자</div>
       <div class="item">태그</div>
-    </div>
+    </div> -->
     <br>
-    <hr>
-    <div>
+    <!-- <hr> -->
+    <!-- <div>
       <form>
         <br>
         <p2>'아이유'에 대한 검색결과입니다. 108건</p2>
@@ -183,9 +183,9 @@
           <option value="like">인기순</option>
         </select>
       </form><br>
-    </div>
+    </div> -->
 
-    <hr>
+    
 
     <br>
 
@@ -194,6 +194,16 @@
 
   <br>
   <div class="media">
+    <div>
+      <form>
+        <br>
+        <!-- <p2>'아이유'에 대한 검색결과입니다. 108건</p2> -->
+        <select id="filter" onchange="change('filter')">
+          <option value="date">최신순</option>
+          <option value="like">인기순</option>
+        </select>
+      </form><br>
+    </div>
 
   </div>
   <script>
@@ -202,7 +212,46 @@
       window.history.back();
     })
   })
+  
+  $('.searchbtn').on("click",function(){
+    var kw = document.querySelector(".search").value;
+    console.log(kw)
+    document.querySelector('.media').innerHTML = ``;
+    db.collection("post").where(`title`,"==", kw)
+    .get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+            var temp = `<div class="post" onclick="location.href='./post.html?id=${doc.data().docId}'">
 
+
+<div class="subn">
+  <a href="./post.html?id=${doc.data().docId}" class="pn">${doc.data().title}</a>
+</div><br>
+
+<br>
+<div class="content">
+    <img class="postimg" src='${doc.data().firstImage}' onError="this.onerror=null;this.src='./assets/undefined_image.JFIF';" >
+    <div class="pp">
+        <ppp>${doc.data().text}</ppp>
+    </div>
+    <br><br><br>
+
+    <div class="icons">
+        <img src="./assets/topcoat_like.png" width="15px">&nbsp${doc.data().like}&nbsp
+        <img src="./assets/fa-regular_comment-dots.png" width="15px">&nbsp ${doc.data().commentNumber}
+    </div>
+</div>
+<br><hr><br>
+</div>`;
+        $('.media').append(temp);
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
+  })
 
 
 
