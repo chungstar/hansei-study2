@@ -23,7 +23,6 @@ button {
 	position: relative;
 	padding: 25px 5%;
 	align-items: center;
-	margin-bottom: 33px;
 	color: #000;
 }
 #wrap header #menuicon {
@@ -121,6 +120,7 @@ button {
 	flex-direction: column;
 	/* justify-content: flex-end; */
 	/* margin-top: 5vh; */
+	margin-top: 30px;
 }
 #wrap form > * {
 	margin: 5px 0;

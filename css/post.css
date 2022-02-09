@@ -4,6 +4,10 @@
 	box-sizing: border-box;
 }
 
+body {
+	background: #e5e5e5;
+}
+
 a {
 	text-decoration: none;
 	text-align: center;
@@ -75,7 +79,7 @@ button {
 	color: black;
 }
 .container {
-	max-width: 80%;
+	max-width: 90%;
 	margin: auto;
 }
 
@@ -142,7 +146,7 @@ button {
 	padding-bottom: 20px;
 }
 .box {
-	margin : auto;
+	margin: auto;
 }
 
 .thumbnail {
@@ -185,7 +189,7 @@ button {
 	align-items: center;
 	padding: 25px 5%;
 	margin-bottom: 33px; */
-	background: #000;
+	background: #fff;
 	display: flex;
 	position: relative;
 	padding: 25px 5%;
@@ -196,7 +200,7 @@ button {
 }
 
 .navbar a {
-	color: #f2f2f2;
+	color: #000;
 	font-size: 30px;
 }
 
@@ -250,7 +254,7 @@ button {
 	width: 100%;
 	height: 5px;
 	border-radius: 30px;
-	background: white;
+	background: #000;
 	transition: all 0.35s;
 }
 #menuicon + label span:nth-child(1) {
@@ -285,7 +289,12 @@ button {
 
 /*main*/
 #site-main {
-	margin-top: 3em;
+	margin-top: 30px;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	background: #fff;
+	padding: 30px;
 }
 
 #post {

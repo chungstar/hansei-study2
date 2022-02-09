@@ -232,29 +232,29 @@
 
   <div class="mobile-box">
     <div class="mobile-wrapper">
-        <div class="mobile-main-box">
-          <div>고양이 두부모래 추천</div>
-          <div>#고양이 #집사 #두부모래 #쿠팡 #내돈내산</div>
-          <div>2021.12.24</div>
-          <div>
-            <i class="fas fa-heart"></i> 1
-            <i class="far fa-comment-dots"> 45 </i>
-          </div>
+      <div class="mobile-main-box">
+        <div>고양이 두부모래 추천</div>
+        <div>#고양이 #집사 #두부모래 #쿠팡 #내돈내산</div>
+        <div>2021.12.24</div>
+        <div>
+          <i class="fas fa-heart"></i> 1
+          <i class="far fa-comment-dots"> 45 </i>
         </div>
-        <div class="mobile-side-box"><img src="image/5.jpg" /></div>
       </div>
-      <div class="mobile-wrapper">
-        <div class="mobile-main-box">
-          <div>고양이 두부모래 추천</div>
-          <div>#고양이 #집사 #두부모래 #쿠팡 #내돈내산</div>
-          <div>2021.12.24</div>
-          <div>
-            <i class="fas fa-heart"></i> 1
-            <i class="far fa-comment-dots"> 45 </i>
-          </div>
+      <div class="mobile-side-box"><img src="image/5.jpg" /></div>
+    </div>
+    <div class="mobile-wrapper">
+      <div class="mobile-main-box">
+        <div>고양이 두부모래 추천</div>
+        <div>#고양이 #집사 #두부모래 #쿠팡 #내돈내산</div>
+        <div>2021.12.24</div>
+        <div>
+          <i class="fas fa-heart"></i> 1
+          <i class="far fa-comment-dots"> 45 </i>
         </div>
-        <div class="mobile-side-box"><img src="image/5.jpg" /></div>
       </div>
+      <div class="mobile-side-box"><img src="image/5.jpg" /></div>
+    </div>
   </div>
 
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
@@ -321,14 +321,14 @@
 
       let time = "";
       if (strDay != 0) {
-        time += strDay + "일";
+        time += strDay + "일 ";
       }
       console.log("time is ", time);
       if (strHour !== 0) {
-        time += strHour + "시간";
+        time += strHour + "시간 ";
       }
       if (strMinute !== 0) {
-        time += strMinute + "분";
+        time += strMinute + "분 ";
       }
       if (strSecond !== 0) {
         time += strSecond + "초 전";
@@ -346,8 +346,6 @@
     Auth.onAuthStateChanged((user) => {
       console.log(user.displayName)
       userStateChange(user.displayName, user.photoURL)
-      userImage = user.photoURL;
-      userName = user.displayName;
     })
 
     // 구글 로그인 버튼 동작
@@ -448,14 +446,12 @@
           document.querySelector(".wrapper").innerHTML = ``; // 공백화
           document.querySelector(".mobile-box").innerHTML = ``; // 공백화
           결과.forEach((i) => {
-
-
             const post = `
             <div class="main-box">
               <div class="info">
-                <img src="${userImage}" />
+                <img src="${i.data().writerImage}" />
                 <div class="nickname">
-                  <p class="name">${i.data().hashtag}</p>
+                  <p class="name">${i.data().writer}</p>
                   <p class="timer">${timeFunc(i.data().docId)}</p>
                 </div>
               </div>
