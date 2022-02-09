@@ -19,7 +19,14 @@
   <header id="header">
     <nav class="navbar">
       <div>
-        <a href="#categories" class="icon"><i class="far fa-list-alt"></i></a>
+        <div class="box">
+          <input type="checkbox" id="menuicon" />
+          <label for="menuicon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
       </div>
       <div class="blogname">
         <a href="/" style="text-decoration: none;">
@@ -30,13 +37,8 @@
         <div>
           <a href="#search" class="icon"><i class="fas fa-search"></i></a>
         </div>
-        <div class="box">
-          <input type="checkbox" id="menuicon" />
-          <label for="menuicon">
-            <span></span>
-            <span></span>
-            <span></span>
-          </label>
+        <div>
+          <a href="#categories" class="icon"><i class="far fa-list-alt"></i></a>
         </div>
       </div>
     </nav>
@@ -160,8 +162,9 @@
       }
     })
     var myUid = JSON.parse(localStorage.getItem('user')).uid;
+    var mydisplayName = JSON.parse(localStorage.getItem('user')).displayName;
     ////////////댓글작성////////////
-    $('.comment-send').click(function () {
+    $('.comment-send').on("click", function () {
       var 정보 = {
         content: $('.form-control').val(),
         date: new Date(),
@@ -170,12 +173,12 @@
         photoURL: JSON.parse(localStorage.getItem('user')).photoURL,
       }
       db.collection('post').doc(params.get('id')).collection('comments').add(정보);
+      location.reload();
     })
 
     ///db에 있는 댓글정보 본문에 뿌리기
     db.collection("post").doc(params.get('id')).collection('comments').orderBy("date", "desc").get().then((결과) => {
       결과.forEach((댓글) => {
-        // const date = 댓글.data().year + 댓글.data().month + 댓글.data().date + 댓글.data().time;
         var userComment = `
         <div class="comment-item py-2">
           <div class="flex">
@@ -195,31 +198,34 @@
           </div>
         </div>`
         $(".comment-details").prepend(userComment)
-        $("#update").click(function () {
+        $("#update").on("click",function () {
           var 정보 = {
             content: $('.form-control').val(),
             uid: JSON.parse(localStorage.getItem('user')).uid,
             displayName: JSON.parse(localStorage.getItem('user')).displayName,
             photoURL: JSON.parse(localStorage.getItem('user')).photoURL,
           }
-          db.collection('post').doc(params.get('id')).collection('comments').doc(댓글.id).update(정보)
+          db.collection('post').doc(params.get('id')).collection('comments').doc(댓글.id).update(정보);
+          location.reload();
         })
-        $("#cut").click(function () {
-          db.collection('post').doc(params.get('id')).collection('comments').doc(댓글.id).delete()
+        $("#cut").on("click",function () {
+          db.collection('post').doc(params.get('id')).collection('comments').doc(댓글.id).delete();
+          location.reload();
         })
       })
     })
     ////본문 수정
-    $('#edit').click(function () {
-      window.location.href = '/write.html?id=' + params.get('id')
+    $('#edit').on("click",function () {
+      window.location.href = '/write.html?id=' + params.get('id');
     })
 
     ////본문 삭제
-    $('#delete').click(function () {
+    $('#delete').on("click",function () {
       if (myUid != "e5pzPCA40GMJr6cjzVrp6XHjlrX2") {
         alert("작성자만 글을 삭제할 수 있습니다");
       } else {
         db.collection('post').doc(params.get('id')).delete();
+        location.href = 'index.html';
       }
     })
 
