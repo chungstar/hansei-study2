@@ -4,5 +4,9 @@ service cloud.firestore {
     match /{document=**} {
       allow read, write: if true;
     }
+    
+    match /post/{docid}/comments/{docid2} {
+  		allow read, write : if true;
+		}
   }
 }
