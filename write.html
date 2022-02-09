@@ -183,7 +183,6 @@
         }
 
         // Firestore 에 저장할 내용
-        const docId = Date.now().toString();
 
         const desc = description.value
 
@@ -242,7 +241,7 @@
         const uploadObj = {
           // time: new Date(),
           year: new Date().getFullYear() + '년',
-          month: new Date().getMonth() + '월',
+          month: new Date().getMonth() + 1 + '월',
           date: new Date().getDate() + '일',
           time: new Date().toLocaleTimeString(),
           category: category.value,
