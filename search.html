@@ -220,7 +220,7 @@
     document.querySelector('.media').innerHTML = ``;
     db.collection("post").where(`title`,"==", kw)
     .get()
-    .then(function(querySnapshot) {
+    .then(function(querySnapshot) { 
         querySnapshot.forEach(function(doc) {
             // doc.data() is never undefined for query doc snapshots
             console.log(doc.id, " => ", doc.data());
