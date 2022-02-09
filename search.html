@@ -47,11 +47,11 @@
 
         firstThreeRes.forEach(doc => {
           console.log(doc.id, '->', doc.data());
-          var temp = `<div class="post">
+          var temp = `<div class="post" onclick="location.href='./post.html?id=${doc.data().docId}'">
 
 
 <div class="subn">
-    <a href="/theme.html?id=${doc.id}" class="pn">${doc.data().title}</a>
+    <a href="/post.html?id=${doc.data().docId}}" class="pn">${doc.data().title}</a>
 </div><br>
 
 <br>
@@ -83,11 +83,11 @@
 
         firstThreeRes.forEach(doc => {
           console.log(doc.id, '->', doc.data());
-          var temp1 = `<div class="post">
+          var temp1 = `<div class="post" onclick="location.href='./post.html?id=${doc.data().docId}'>
 
 
 <div class="subn">
-  <a href="/theme.html?id=${doc.id}" class="pn">${doc.data().title}</a>
+  <a href="/post.html?id=${doc.data().docId}" class="pn">${doc.data().title}</a>
 </div><br>
 
 <br>
@@ -122,16 +122,16 @@
     db.collection('post').get().then((결과) => {
       결과.forEach((doc) => {
         console.log(doc.data()); // 걍 기본정렬
-        var temp = `<div class="post">
+        var temp = `<div class="post" onclick="location.href='./post.html?id=${doc.data().docId}'">
 
 
 <div class="subn">
-  <a href="/theme.html?id=${doc.id}" class="pn">${doc.data().title}</a>
+  <a href="./post.html?id=${doc.data().docId}" class="pn">${doc.data().title}</a>
 </div><br>
 
 <br>
 <div class="content">
-    <img class="postimg" src='${doc.data().firstImage}'>
+    <img class="postimg" src='${doc.data().firstImage}' onError="this.onerror=null;this.src='./assets/undefined_image.JFIF';" >
     <div class="pp">
         <ppp>${doc.data().text}</ppp>
     </div>
@@ -197,6 +197,14 @@
 
   </div>
   <script>
+  $(document).ready(function(){
+    $(".back").click(function(){
+      window.history.back();
+    })
+  })
+
+
+
 
   </script>
 
