@@ -6,7 +6,12 @@ body {
     margin: 0;
 }
 .media{
-    margin-top:-80px;
+    margin-top:-51px;
+}
+.query{
+    margin-right:3%;
+    float: right;
+    margin-top: -2%;
 }
 nav {
     display: flex;
@@ -34,6 +39,9 @@ nav {
     font-weight: bold;
     text-decoration: none;
     position: absolute;
+}
+.query{
+    /* padding-top: 10%; */
 }
 
 .pp {
@@ -500,9 +508,13 @@ a {
     .about{
         margin-left: 5%;
     }
-
+    .query{
+        margin-right:3%;
+        float: right;
+        margin-top: 2%;
+    }
    .media{
-       margin-top:0px;
+       margin-top:29px;
    }
 
     .searchBox {
