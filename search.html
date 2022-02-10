@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="./css/style.css.css" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <!-- <script src="./script.js"></script> -->
+  <script src="https://kit.fontawesome.com/ade2c496a4.js" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@{{docSearchJSVersion}}/dist/cdn/docsearch.min.css" />
 </head>
@@ -159,9 +160,177 @@
       <input class="search" id = "search2" type="search" placeholder="검색어를 입력하세요" aria-label="Enter search term..." aria-describedby="button-search" />
       <button class="searchbtn" id="button-search" type="button" onclick="click('button-search')">검색</button>
     </div>
-    <div class="right">
+    <!-- <div class="right">
 
       <a href="#!"><img src="./assets/bx_bx-menu.png"></a>
+    </div> -->
+    <div class="MenuButton">
+      <input type="checkbox" id="menuicon" />
+      <label for="menuicon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+      <div class="sidebar">
+        <div class="sidebar-box1">
+          <button id="logInBtn">Google 로그인</button>
+          <div id="Myinfo">
+            <p class="nickname"></p>
+          </div>
+          <button id="logOutBtn" style="display: none; margin-left: auto">
+            로그아웃
+          </button>
+        </div>
+
+        <ul class="sidebar-box2">
+          <li>
+            <a href="#"><i class="far fa-bell"></i></a>내소식
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-child"></i></a>이웃목록
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-chart-line"></i></a>통계
+          </li>
+          <li>
+            <a href="write.html"><i class="fas fa-pen"></i></a>글쓰기
+          </li>
+        </ul>
+
+        <div class="sidebar-box3">
+          <div>
+            <span>날짜별 댓글수</span>
+            <span class="date"></span>
+            <script>
+              let i = new Date();
+              let date = i.getMonth() + 1 + "월 " + i.getDate() + "일";
+              document.querySelector(".date").innerHTML = date;
+              console.log(date)
+            </script>
+          </div>
+            <ul class="graph">
+              <li>
+                <div class="rect1">
+                  <span></span>
+                </div>
+                <p id="one"></p>
+                <script>
+                  i = new Date();
+                  date = i.getMonth() + 1 + "월 " + (i.getDate() - 5) + "일";
+                  document.querySelector("#one").innerHTML = date;
+                </script>
+              </li>
+              <li>
+                <div class="rect2">
+                  <span></span>
+                </div>
+                <p id="two"></p>
+                <script>
+                  date = i.getMonth() + 1 + "월 " + (i.getDate() - 4) + "일";
+                  document.querySelector("#two").innerHTML = date;
+                </script>
+              </li>
+              <li>
+                <div class="rect3">
+                  <span></span>
+                </div>
+                <p id="three"></p>
+                <script>
+                  date = i.getMonth() + 1 + "월 " + (i.getDate() - 3) + "일";
+                  document.querySelector("#three").innerHTML = date;
+                </script>
+              </li>
+              <li>
+                <div class="rect4">
+                  <span></span>
+                </div>
+                <p id="four"></p>
+                <script>
+                  date = i.getMonth() + 1 + "월 " + (i.getDate() - 2) + "일";
+                  document.querySelector("#four").innerHTML = date;
+                </script>
+              </li>
+              <li>
+                <div class="rect5">
+                  <span></span>
+                </div>
+                <p id="five"></p>
+                <script>
+                  date = i.getMonth() + 1 + "월 " + (i.getDate() - 1) + "일";
+                  document.querySelector("#five").innerHTML = date;
+                </script>
+              </li>
+              <li>
+                <div class="rect6">
+                  <span></span>
+                </div>
+                <p id="six"></p>
+                <script>
+                  date = i.getMonth() + 1 + "월 " + i.getDate() + "일";
+                  document.querySelector("#six").innerHTML = date;
+                </script>
+              </li>
+            </ul>
+          </div>
+
+        <div class="sidebar-box4">
+          <ul>
+            <a href="#">
+              <li><i class="fas fa-desktop"></i>내 동영상</li>
+            </a>
+            <a href="#">
+              <li><i class="fas fa-bolt"></i>내 모먼트</li>
+            </a>
+            <a href="#">
+              <li><i class="far fa-clock"></i>지난 오늘 글</li>
+            </a>
+          </ul>
+          <ul>
+            <a href="#">
+              <li><i class="fas fa-box"></i>마켓 플레이스</li>
+            </a>
+            <a href="#">
+              <li><i class="fas fa-box-open"></i>마켓 구매내역</li>
+            </a>
+          </ul>
+          <ul>
+            <a href="#">
+              <li><i class="fas fa-blog"></i>블로그 홈</li>
+            </a>
+            <a href="#">
+              <li><i class="fab fa-blogger"></i>블로그팀 공식블로그</li>
+            </a>
+            <a href="#">
+              <li><i class="fab fa-microblog"></i>이달의 블로그</li>
+            </a>
+            <a href="#">
+              <li><i class="fas fa-check"></i>공식 블로그</li>
+            </a>
+          </ul>
+        </div>
+        <div class="sidebar-box5">
+          <ul>
+            <a href="#">
+              <li>공지사항</li>
+            </a>
+            <a href="#">
+              <li>환경설정</li>
+            </a>
+            <ul>
+              <a href="#">
+                <li>로그인정보</li>
+              </a>
+              <li>songjae99</li>
+            </ul>
+            <a href="#">
+              <li>PC버전으로 보기</li>
+            </a>
+            <a href="#">
+              <li>블로그 고객센터</li>
+            </a>
+          </ul>
+        </div>
+      </div>
     </div>
 
   </nav>
@@ -254,7 +423,164 @@
     });
   })
 
+  const first = db
+        .collection("post")
+        .where("month", "==", i.getMonth() + 1 + "월")
+        .where("date", "==", i.getDate() - 5 + "일");
+      first
+        .get()
+        .then((res) => {
+          let score = 0;
+          res.forEach((i) => {
+            score += i.data().commentNumber;
+          });
 
+          document.querySelector(".rect1 span").style.height = score + "%";
+        })
+        .catch((error) => {
+          console.log("Error getting documents: ", error);
+        });
+
+      const second = db
+        .collection("post")
+        .where("month", "==", i.getMonth() + 1 + "월")
+        .where("date", "==", i.getDate() - 4 + "일");
+      second
+        .get()
+        .then((res) => {
+          score = 0;
+          res.forEach((i) => {
+            score += i.data().commentNumber;
+          });
+
+          document.querySelector(".rect2 span").style.height = score + "%";
+        })
+        .catch((error) => {
+          console.log("Error getting documents: ", error);
+        });
+
+      const third = db
+        .collection("post")
+        .where("month", "==", i.getMonth() + 1 + "월")
+        .where("date", "==", i.getDate() - 3 + "일");
+      third
+        .get()
+        .then((res) => {
+          score = 0;
+          res.forEach((i) => {
+            score += i.data().commentNumber;
+          });
+
+          document.querySelector(".rect3 span").style.height = score + "%";
+        })
+        .catch((error) => {
+          console.log("Error getting documents: ", error);
+        });
+
+      const fourth = db
+        .collection("post")
+        .where("month", "==", i.getMonth() + 1 + "월")
+        .where("date", "==", i.getDate() - 2 + "일");
+      fourth
+        .get()
+        .then((res) => {
+          score = 0;
+          res.forEach((i) => {
+            score += i.data().commentNumber;
+          });
+
+          document.querySelector(".rect4 span").style.height = score + "%";
+        })
+        .catch((error) => {
+          console.log("Error getting documents: ", error);
+        });
+
+      const fiveth = db
+        .collection("post")
+        .where("month", "==", i.getMonth() + 1 + "월")
+        .where("date", "==", i.getDate() - 1 + "일");
+      fiveth
+        .get()
+        .then((res) => {
+          score = 0;
+          res.forEach((i) => {
+            score += i.data().commentNumber;
+          });
+
+          document.querySelector(".rect5 span").style.height = score + "%";
+        })
+        .catch((error) => {
+          console.log("Error getting documents: ", error);
+        });
+
+      const sixth = db
+        .collection("post")
+        .where("month", "==", i.getMonth() + 1 + "월")
+        .where("date", "==", i.getDate() + "일");
+      sixth
+        .get()
+        .then((res) => {
+          score = 0;
+          res.forEach((i) => {
+            score += i.data().commentNumber;
+          });
+
+          document.querySelector(".rect6 span").style.height = score + "%";
+        })
+        .catch((error) => {
+          console.log("Error getting documents: ", error);
+        });
+        const userStateChange = (nickname, image) => {
+      document.querySelector("#logInBtn").style.display = "none";
+      document.querySelector("#logOutBtn").style.display = "block";
+      document.querySelector("#Myinfo").innerHTML = `<img src="${image}">`;
+      document.querySelector(
+        "#Myinfo"
+      ).innerHTML = `<span>${nickname}님</span>`;
+    };
+
+    Auth.onAuthStateChanged((user) => {
+      console.log(user.displayName);
+      userStateChange(user.displayName, user.photoURL);
+    });
+
+    // 구글 로그인 버튼 동작
+    document.querySelector("#logInBtn").addEventListener("click", () => {
+      Auth.setPersistence(firebase.auth.Auth.Persistence.SESSION).then(
+        async (res) => {
+          const provider = new firebase.auth.GoogleAuthProvider();
+          const logIn = await Auth.signInWithPopup(provider);
+          console.log(logIn);
+          if (logIn) {
+            const {
+              displayName,
+              photoURL
+            } = logIn.user;
+            // console.log(document.querySelector('#logInBtn'))
+            userStateChange(displayName);
+          }
+        }
+      );
+    });
+
+    // 로그아웃 버튼 동작
+    document.querySelector("#logOutBtn").addEventListener("click", () => {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          // Sign-out successful.
+          console.log("logout success");
+          document.querySelector("#logInBtn").style.display = "block";
+          document.querySelector("#logOutBtn").style.display = "none";
+          document.querySelector("#Myinfo").innerHTML = ``;
+        })
+        .catch((error) => {
+          // An error happened.
+          console.log("logout error : ", error);
+        });
+    });
+  </script>
 
   </script>
 
