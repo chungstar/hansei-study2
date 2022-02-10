@@ -303,7 +303,7 @@
     const popular = document.querySelector(".popular");
     const normal = document.querySelector(".normal");
 
-    let userImage, userName;
+    let writerImage, userName;
 
     const timeFunc = (i) => {
       let strPeriod = Date.now() - parseInt(i);
@@ -401,7 +401,7 @@
             const post = `
             <div class="main-box">
               <div class="info">
-                <img src="${userImage}" />
+                <img src="${writerImage}" />
                 <div class="nickname">
                   <p class="name">${userName}</p>
                   <p class="timer">${timeFunc(i.data().docId)}</p>
@@ -419,7 +419,7 @@
                 <div class="greeting">
                   <p>${i.data().text}</p>
                 </div>
-                <img src="${i.data().like}" />
+                <img src="${i.data().firstImage}" />
               </div>
             </div>`;
 
@@ -477,7 +477,7 @@
                 <div class="greeting">
                   <p>${i.data().text}</p>
                 </div>
-                <img src="${i.data().like}" />
+                <img src="${i.data().firstImage}" />
               </div>
             </div>`;
 
@@ -532,7 +532,7 @@
                 <div class="greeting">
                   <p>${i.data().text}</p>
                 </div>
-                <img src="${i.data().like}" />
+                <img src="${i.data().firstImage}" />
               </div>
             </div>`;
 
@@ -588,7 +588,7 @@
                 <div class="greeting">
                   <p>${i.data().text}</p>
                 </div>
-                <img src="${i.data().like}" />
+                <img src="${i.data().firstImage}" />
               </div>
             </div>`;
 
