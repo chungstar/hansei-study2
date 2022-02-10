@@ -36,6 +36,7 @@
     firebase.initializeApp(firebaseConfig);
     // const analytics = getAnalytics(app);
     var db = firebase.firestore();
+
     async function change(id) {
       const postsRef = db.collection('post');
       id = document.getElementById("filter");
@@ -157,7 +158,7 @@
 
     <a class="back" href="#!"><img src="./assets/eva_arrow-ios-back-fill.png"></a>
     <div class="searchBox">
-      <input class="search" id = "search2" type="search" placeholder="검색어를 입력하세요" aria-label="Enter search term..." aria-describedby="button-search" />
+      <input class="search" id="search2" type="search" placeholder="검색어를 입력하세요" aria-label="Enter search term..." aria-describedby="button-search" />
       <button class="searchbtn" id="button-search" type="button" onclick="click('button-search')">검색</button>
     </div>
     <!-- <div class="right">
@@ -208,70 +209,70 @@
               console.log(date)
             </script>
           </div>
-            <ul class="graph">
-              <li>
-                <div class="rect1">
-                  <span></span>
-                </div>
-                <p id="one"></p>
-                <script>
-                  i = new Date();
-                  date = i.getMonth() + 1 + "월 " + (i.getDate() - 5) + "일";
-                  document.querySelector("#one").innerHTML = date;
-                </script>
-              </li>
-              <li>
-                <div class="rect2">
-                  <span></span>
-                </div>
-                <p id="two"></p>
-                <script>
-                  date = i.getMonth() + 1 + "월 " + (i.getDate() - 4) + "일";
-                  document.querySelector("#two").innerHTML = date;
-                </script>
-              </li>
-              <li>
-                <div class="rect3">
-                  <span></span>
-                </div>
-                <p id="three"></p>
-                <script>
-                  date = i.getMonth() + 1 + "월 " + (i.getDate() - 3) + "일";
-                  document.querySelector("#three").innerHTML = date;
-                </script>
-              </li>
-              <li>
-                <div class="rect4">
-                  <span></span>
-                </div>
-                <p id="four"></p>
-                <script>
-                  date = i.getMonth() + 1 + "월 " + (i.getDate() - 2) + "일";
-                  document.querySelector("#four").innerHTML = date;
-                </script>
-              </li>
-              <li>
-                <div class="rect5">
-                  <span></span>
-                </div>
-                <p id="five"></p>
-                <script>
-                  date = i.getMonth() + 1 + "월 " + (i.getDate() - 1) + "일";
-                  document.querySelector("#five").innerHTML = date;
-                </script>
-              </li>
-              <li>
-                <div class="rect6">
-                  <span></span>
-                </div>
-                <p id="six"></p>
-                <script>
-                  date = i.getMonth() + 1 + "월 " + i.getDate() + "일";
-                  document.querySelector("#six").innerHTML = date;
-                </script>
-              </li>
-            </ul>
-          </div>
+          <ul class="graph">
+            <li>
+              <div class="rect1">
+                <span></span>
+              </div>
+              <p id="one"></p>
+              <script>
+                i = new Date();
+                date = i.getMonth() + 1 + "월 " + (i.getDate() - 5) + "일";
+                document.querySelector("#one").innerHTML = date;
+              </script>
+            </li>
+            <li>
+              <div class="rect2">
+                <span></span>
+              </div>
+              <p id="two"></p>
+              <script>
+                date = i.getMonth() + 1 + "월 " + (i.getDate() - 4) + "일";
+                document.querySelector("#two").innerHTML = date;
+              </script>
+            </li>
+            <li>
+              <div class="rect3">
+                <span></span>
+              </div>
+              <p id="three"></p>
+              <script>
+                date = i.getMonth() + 1 + "월 " + (i.getDate() - 3) + "일";
+                document.querySelector("#three").innerHTML = date;
+              </script>
+            </li>
+            <li>
+              <div class="rect4">
+                <span></span>
+              </div>
+              <p id="four"></p>
+              <script>
+                date = i.getMonth() + 1 + "월 " + (i.getDate() - 2) + "일";
+                document.querySelector("#four").innerHTML = date;
+              </script>
+            </li>
+            <li>
+              <div class="rect5">
+                <span></span>
+              </div>
+              <p id="five"></p>
+              <script>
+                date = i.getMonth() + 1 + "월 " + (i.getDate() - 1) + "일";
+                document.querySelector("#five").innerHTML = date;
+              </script>
+            </li>
+            <li>
+              <div class="rect6">
+                <span></span>
+              </div>
+              <p id="six"></p>
+              <script>
+                date = i.getMonth() + 1 + "월 " + i.getDate() + "일";
+                document.querySelector("#six").innerHTML = date;
+              </script>
+            </li>
+          </ul>
+        </div>
 
         <div class="sidebar-box4">
           <ul>
@@ -354,7 +355,7 @@
       </form><br>
     </div> -->
 
-    
+
 
     <br>
 
@@ -364,7 +365,7 @@
   <br>
   <div class="query">
     <form>
-      
+
       <!-- <p2>'아이유'에 대한 검색결과입니다. 108건</p2> -->
       <select id="filter" onchange="change('filter')">
         <option value="date">최신순</option>
@@ -373,24 +374,24 @@
     </form><br>
   </div>
   <div class="media">
-    
+
 
   </div>
   <script>
-  $(document).ready(function(){
-    $(".back").click(function(){
-      window.history.back();
+    $(document).ready(function () {
+      $(".back").click(function () {
+        window.history.back();
+      })
     })
-  })
-  
-  $('.searchbtn').on("click",function(){
-    var kw = document.querySelector(".search").value;
-    console.log(kw)
-    document.querySelector('.media').innerHTML = ``;
-    db.collection("post").where(`title`,"==", kw)
-    .get()
-    .then(function(querySnapshot) { 
-        querySnapshot.forEach(function(doc) {
+
+    $('.searchbtn').on("click", function () {
+      var kw = document.querySelector(".search").value;
+      console.log(kw)
+      document.querySelector('.media').innerHTML = ``;
+      db.collection("post").where(`title`, "==", kw)
+        .get()
+        .then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
             // doc.data() is never undefined for query doc snapshots
             console.log(doc.id, " => ", doc.data());
             var temp = `<div class="post" onclick="location.href='./post.html?id=${doc.data().docId}'">
@@ -415,122 +416,122 @@
 </div>
 <br><hr><br>
 </div>`;
-        $('.media').append(temp);
+            $('.media').append(temp);
+          });
+        })
+        .catch(function (error) {
+          console.log("Error getting documents: ", error);
         });
     })
-    .catch(function(error) {
+
+    const first = db
+      .collection("post")
+      .where("month", "==", i.getMonth() + 1 + "월")
+      .where("date", "==", i.getDate() - 5 + "일");
+    first
+      .get()
+      .then((res) => {
+        let score = 0;
+        res.forEach((i) => {
+          score += i.data().commentNumber;
+        });
+
+        document.querySelector(".rect1 span").style.height = score + "%";
+      })
+      .catch((error) => {
         console.log("Error getting documents: ", error);
-    });
-  })
+      });
 
-  const first = db
-        .collection("post")
-        .where("month", "==", i.getMonth() + 1 + "월")
-        .where("date", "==", i.getDate() - 5 + "일");
-      first
-        .get()
-        .then((res) => {
-          let score = 0;
-          res.forEach((i) => {
-            score += i.data().commentNumber;
-          });
-
-          document.querySelector(".rect1 span").style.height = score + "%";
-        })
-        .catch((error) => {
-          console.log("Error getting documents: ", error);
+    const second = db
+      .collection("post")
+      .where("month", "==", i.getMonth() + 1 + "월")
+      .where("date", "==", i.getDate() - 4 + "일");
+    second
+      .get()
+      .then((res) => {
+        score = 0;
+        res.forEach((i) => {
+          score += i.data().commentNumber;
         });
 
-      const second = db
-        .collection("post")
-        .where("month", "==", i.getMonth() + 1 + "월")
-        .where("date", "==", i.getDate() - 4 + "일");
-      second
-        .get()
-        .then((res) => {
-          score = 0;
-          res.forEach((i) => {
-            score += i.data().commentNumber;
-          });
+        document.querySelector(".rect2 span").style.height = score + "%";
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
 
-          document.querySelector(".rect2 span").style.height = score + "%";
-        })
-        .catch((error) => {
-          console.log("Error getting documents: ", error);
+    const third = db
+      .collection("post")
+      .where("month", "==", i.getMonth() + 1 + "월")
+      .where("date", "==", i.getDate() - 3 + "일");
+    third
+      .get()
+      .then((res) => {
+        score = 0;
+        res.forEach((i) => {
+          score += i.data().commentNumber;
         });
 
-      const third = db
-        .collection("post")
-        .where("month", "==", i.getMonth() + 1 + "월")
-        .where("date", "==", i.getDate() - 3 + "일");
-      third
-        .get()
-        .then((res) => {
-          score = 0;
-          res.forEach((i) => {
-            score += i.data().commentNumber;
-          });
+        document.querySelector(".rect3 span").style.height = score + "%";
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
 
-          document.querySelector(".rect3 span").style.height = score + "%";
-        })
-        .catch((error) => {
-          console.log("Error getting documents: ", error);
+    const fourth = db
+      .collection("post")
+      .where("month", "==", i.getMonth() + 1 + "월")
+      .where("date", "==", i.getDate() - 2 + "일");
+    fourth
+      .get()
+      .then((res) => {
+        score = 0;
+        res.forEach((i) => {
+          score += i.data().commentNumber;
         });
 
-      const fourth = db
-        .collection("post")
-        .where("month", "==", i.getMonth() + 1 + "월")
-        .where("date", "==", i.getDate() - 2 + "일");
-      fourth
-        .get()
-        .then((res) => {
-          score = 0;
-          res.forEach((i) => {
-            score += i.data().commentNumber;
-          });
+        document.querySelector(".rect4 span").style.height = score + "%";
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
 
-          document.querySelector(".rect4 span").style.height = score + "%";
-        })
-        .catch((error) => {
-          console.log("Error getting documents: ", error);
+    const fiveth = db
+      .collection("post")
+      .where("month", "==", i.getMonth() + 1 + "월")
+      .where("date", "==", i.getDate() - 1 + "일");
+    fiveth
+      .get()
+      .then((res) => {
+        score = 0;
+        res.forEach((i) => {
+          score += i.data().commentNumber;
         });
 
-      const fiveth = db
-        .collection("post")
-        .where("month", "==", i.getMonth() + 1 + "월")
-        .where("date", "==", i.getDate() - 1 + "일");
-      fiveth
-        .get()
-        .then((res) => {
-          score = 0;
-          res.forEach((i) => {
-            score += i.data().commentNumber;
-          });
+        document.querySelector(".rect5 span").style.height = score + "%";
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
 
-          document.querySelector(".rect5 span").style.height = score + "%";
-        })
-        .catch((error) => {
-          console.log("Error getting documents: ", error);
+    const sixth = db
+      .collection("post")
+      .where("month", "==", i.getMonth() + 1 + "월")
+      .where("date", "==", i.getDate() + "일");
+    sixth
+      .get()
+      .then((res) => {
+        score = 0;
+        res.forEach((i) => {
+          score += i.data().commentNumber;
         });
 
-      const sixth = db
-        .collection("post")
-        .where("month", "==", i.getMonth() + 1 + "월")
-        .where("date", "==", i.getDate() + "일");
-      sixth
-        .get()
-        .then((res) => {
-          score = 0;
-          res.forEach((i) => {
-            score += i.data().commentNumber;
-          });
-
-          document.querySelector(".rect6 span").style.height = score + "%";
-        })
-        .catch((error) => {
-          console.log("Error getting documents: ", error);
-        });
-        const userStateChange = (nickname, image) => {
+        document.querySelector(".rect6 span").style.height = score + "%";
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+    const userStateChange = (nickname, image) => {
       document.querySelector("#logInBtn").style.display = "none";
       document.querySelector("#logOutBtn").style.display = "block";
       document.querySelector("#Myinfo").innerHTML = `<img src="${image}">`;
@@ -538,6 +539,9 @@
         "#Myinfo"
       ).innerHTML = `<span>${nickname}님</span>`;
     };
+
+    const Auth = firebase.auth();
+
 
     Auth.onAuthStateChanged((user) => {
       console.log(user.displayName);
