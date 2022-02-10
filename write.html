@@ -188,12 +188,9 @@
               <a href="#">
                 <li>환경설정</li>
               </a>
-              <ul>
-                <a href="#">
-                  <li>로그인정보</li>
-                </a>
-                <li>songjae99</li>
-              </ul>
+              <a href="#">
+                <li>로그인정보</li>
+              </a>
               <a href="#">
                 <li>PC버전으로 보기</li>
               </a>
@@ -210,12 +207,12 @@
       </a>
       <div class="header-right">
         <div id="profile"></div>
-        <a href="#">
+        <a href="./search.html">
           <i class="fas fa-search"></i>
         </a>
-        <a href="#">
+        <!-- <a href="#">
           <i class="far fa-list-alt"></i>
-        </a>
+        </a> -->
       </div>
     </header>
 
@@ -296,7 +293,6 @@
         alert('접근 권한이 없습니다.')
         return window.location.href = "./"
       } else {
-
         const {
           uid,
           displayName,
@@ -308,8 +304,11 @@
         }
         writer = displayName;
         writerImage = photoURL;
+        console.log(user.displayName);
+        userStateChange(user.displayName, user.photoURL);
       }
     })
+
 
 
     // 게시글 수정 부분
@@ -437,19 +436,174 @@
       })
     }
 
-    const userStateChange = (nickname) => {
-      document.querySelector('#logInBtn').style.display = "none";
-      document.querySelector('#logOutBtn').style.display = "block";
-      document.querySelector('#profile').innerHTML = `
-        <span style="padding-right: 20px; color: #fff;">${nickname}님</span>
-      `
-    }
+    // const userStateChange = (nickname) => {
+    //   document.querySelector('#logInBtn').style.display = "none";
+    //   document.querySelector('#logOutBtn').style.display = "block";
+    //   document.querySelector('#profile').innerHTML = `
+    //     <span style="padding-right: 20px; color: #fff;">${nickname}님</span>
+    //   `
+    // }
     // Auth.onAuthStateChanged((user) => {
     //   console.log(user)
     //   userStateChange(user.displayName)
     // })
 
     const logInBtn = document.querySelector('#logInBtn');
+
+    const userStateChange = (nickname, image) => {
+      document.querySelector("#logInBtn").style.display = "none";
+      document.querySelector("#logOutBtn").style.display = "block";
+      document.querySelector("#Myinfo").innerHTML = `<img src="${image}">`;
+      document.querySelector(
+        "#Myinfo"
+      ).innerHTML = `<span>${nickname}님</span>`;
+    };
+
+    // 구글 로그인 버튼 동작
+    document.querySelector("#logInBtn").addEventListener("click", () => {
+      Auth.setPersistence(firebase.auth.Auth.Persistence.SESSION).then(
+        async (res) => {
+          const provider = new firebase.auth.GoogleAuthProvider();
+          const logIn = await Auth.signInWithPopup(provider);
+          console.log(logIn);
+          if (logIn) {
+            const {
+              displayName,
+              photoURL
+            } = logIn.user;
+            // console.log(document.querySelector('#logInBtn'))
+            userStateChange(displayName);
+          }
+        }
+      );
+    });
+
+    // 로그아웃 버튼 동작
+    document.querySelector("#logOutBtn").addEventListener("click", () => {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          // Sign-out successful.
+          console.log("logout success");
+          document.querySelector("#logInBtn").style.display = "block";
+          document.querySelector("#logOutBtn").style.display = "none";
+          document.querySelector("#Myinfo").innerHTML = ``;
+        })
+        .catch((error) => {
+          // An error happened.
+          console.log("logout error : ", error);
+        });
+    });
+
+    // 통계표
+    const first = db
+      .collection("post")
+      .where("month", "==", i.getMonth() + 1 + "월")
+      .where("date", "==", i.getDate() - 5 + "일");
+    first
+      .get()
+      .then((res) => {
+        let score = 0;
+        res.forEach((i) => {
+          score += i.data().commentNumber;
+        });
+
+        document.querySelector(".rect1 span").style.height = score + "%";
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+
+    const second = db
+      .collection("post")
+      .where("month", "==", i.getMonth() + 1 + "월")
+      .where("date", "==", i.getDate() - 4 + "일");
+    second
+      .get()
+      .then((res) => {
+        score = 0;
+        res.forEach((i) => {
+          score += i.data().commentNumber;
+        });
+
+        document.querySelector(".rect2 span").style.height = score + "%";
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+
+    const third = db
+      .collection("post")
+      .where("month", "==", i.getMonth() + 1 + "월")
+      .where("date", "==", i.getDate() - 3 + "일");
+    third
+      .get()
+      .then((res) => {
+        score = 0;
+        res.forEach((i) => {
+          score += i.data().commentNumber;
+        });
+
+        document.querySelector(".rect3 span").style.height = score + "%";
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+
+    const fourth = db
+      .collection("post")
+      .where("month", "==", i.getMonth() + 1 + "월")
+      .where("date", "==", i.getDate() - 2 + "일");
+    fourth
+      .get()
+      .then((res) => {
+        score = 0;
+        res.forEach((i) => {
+          score += i.data().commentNumber;
+        });
+
+        document.querySelector(".rect4 span").style.height = score + "%";
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+
+    const fiveth = db
+      .collection("post")
+      .where("month", "==", i.getMonth() + 1 + "월")
+      .where("date", "==", i.getDate() - 1 + "일");
+    fiveth
+      .get()
+      .then((res) => {
+        score = 0;
+        res.forEach((i) => {
+          score += i.data().commentNumber;
+        });
+
+        document.querySelector(".rect5 span").style.height = score + "%";
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+
+    const sixth = db
+      .collection("post")
+      .where("month", "==", i.getMonth() + 1 + "월")
+      .where("date", "==", i.getDate() + "일");
+    sixth
+      .get()
+      .then((res) => {
+        score = 0;
+        res.forEach((i) => {
+          score += i.data().commentNumber;
+        });
+
+        document.querySelector(".rect6 span").style.height = score + "%";
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
 
 
     // 구글 로그인 버튼 동작
