@@ -334,13 +334,16 @@
     });
 
     ////////////로그인 정보 확인////////////
+    var myUid;
+    var mydisplayName;
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         localStorage.setItem('user', JSON.stringify(user))
       }
+      var myUid = JSON.parse(localStorage.getItem('user')).uid;
+      var mydisplayName = JSON.parse(localStorage.getItem('user')).displayName;
     })
-    var myUid = JSON.parse(localStorage.getItem('user')).uid;
-    var mydisplayName = JSON.parse(localStorage.getItem('user')).displayName;
+
     ////////////댓글작성////////////
     $('.comment-send').on("click", function () {
       var 정보 = {
